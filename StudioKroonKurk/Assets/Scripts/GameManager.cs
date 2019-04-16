@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
 	public Text display;
 
-	public Button button;
+	public Button button, button1, button2;
 
 	public DialogEntity currentDialog, previousDialog;
 
@@ -54,15 +54,20 @@ public class GameManager : MonoBehaviour
 		allOptions.Add(new DialogText(10, 11, "dialog11 reached"));
 		allOptions.Add(new DialogText(11, 12, "dialog12 reached"));
 		allOptions.Add(new DialogText(13, 14, "gate11 passed"));
-		allOptions.Add(new DialogText(14, 15, "dialog14 reached"));
+		allOptions.Add(new DialogText(14, 35, "dialog14 reached"));
+
 		allOptions.Add(new ItemGate(12, 13, 199, 10));
-		allOptions.Add(new ItemGate(15, 18, 199, 11));
+
+		allOptions.Add(new Choice(35, 36, 21, "Go left?", "yes", "no"));
+		allOptions.Add(new Choice(36, 20, 21, "Go right?", "no", "yes"));
+
+		allOptions.Add(new DialogText(21, 200, "You went the wrong way and died."));
+		allOptions.Add(new DialogText(20, 200, "You got out safely."));
 
 		itemList.Add(0, true);
 		itemList.Add(1, false);
 
 		itemList.Add(10, true);
-		itemList.Add(11, false);
 
 		foreach(DialogEntity e in allOptions)
 		{
@@ -106,21 +111,49 @@ public class GameManager : MonoBehaviour
 		currentDialog = GetEntityById(i);
 
 		if(currentDialog is DialogText)
+		{
 			SetupUI(currentDialog as DialogText);
+		}
+		else if(currentDialog is Choice)
+		{
+			SetupUI(currentDialog as Choice);
+		}
 		else
 		{
 			// If it's not a dialog option (or choice), execute immediately
 			SetNewDialogOption(currentDialog.GetNextId());
 			return;
 		}
-		// fallback initialisation
-		button.onClick.RemoveAllListeners();
-		button.onClick.AddListener(() => SetNewDialogOption(currentDialog.GetNextId()));
 	}
 
 	public void SetupUI(DialogText option)
 	{
+		button.gameObject.SetActive(true);
+		button1.gameObject.SetActive(false);
+		button2.gameObject.SetActive(false);
+
 		display.text = option.text;
+		button.onClick.RemoveAllListeners();
+		button.onClick.AddListener(() => SetNewDialogOption(currentDialog.GetNextId()));
+		button.GetComponentInChildren<Text>().text = "Next";
+	}
+
+	public void SetupUI(Choice choice)
+	{
+		button.gameObject.SetActive(false);
+		button1.gameObject.SetActive(true);
+		button2.gameObject.SetActive(true);
+
+
+		display.text = choice.text;
+		button1.GetComponentInChildren<Text>().text = choice.GetText(0);
+		button2.GetComponentInChildren<Text>().text = choice.GetText(1);
+
+		button1.onClick.RemoveAllListeners();
+		button1.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(0)));
+
+		button2.onClick.RemoveAllListeners();
+		button2.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(1)));
 	}
 
 	public void EndLeafFunction()
