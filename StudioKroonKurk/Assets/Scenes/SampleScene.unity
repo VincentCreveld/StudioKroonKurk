@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactPos: {fileID: 703238247}
-  dialogToStart: 2010
+  dialogToStart: 8800
 --- !u!1 &659196590
 GameObject:
   m_ObjectHideFlags: 0

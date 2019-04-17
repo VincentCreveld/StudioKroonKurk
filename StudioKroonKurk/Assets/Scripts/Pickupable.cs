@@ -12,7 +12,7 @@ public class Pickupable : Interactable
 	{
 		if(checkForActiveQuest)
 		{
-			if(GameManager.instance.questList[questToCheck])
+			if(GameManager.instance.questList[questToCheck] == QuestState.ongoing)
 			{
 				GameManager.instance.StartPickupItemDialog();
 				GameManager.instance.UnlockItemById(itemToAdd);

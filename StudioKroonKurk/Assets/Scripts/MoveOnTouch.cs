@@ -15,7 +15,8 @@ public class MoveOnTouch : MonoBehaviour
 
 	private Interactable prevInteractable;
 
-    void Start () {
+    void Start ()
+	{
         agent = gameObject.GetComponent<NavMeshAgent>();
 	}
 
@@ -24,21 +25,9 @@ public class MoveOnTouch : MonoBehaviour
         agent.SetDestination(position);
     }
 
-    private void Update () {
-		//if(GameManager.instance.IsGameStateOpen() && Input.touchCount == 1)
-		//{
-		//	RaycastHit hit;
-		//	Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-		//	if(Physics.Raycast(ray, out hit))
-		//	{
-		//		if(hit.transform.tag == "Terrain")
-		//		{
-		//			agent.SetDestination(hit.point);
-		//		}
-		//	}
-		//	return;
-		//}
-		if(GameManager.instance.IsGameStateOpen() && Input.GetMouseButtonDown(0))
+    private void Update ()
+	{
+		if(GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0))
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

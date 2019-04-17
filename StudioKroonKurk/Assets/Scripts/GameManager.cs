@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 	public List<DialogEntity> allOptions = new List<DialogEntity>();
 	public List<int> allEndLeafIDs = new List<int>();
 	
-	public Dictionary<int, bool> questList = new Dictionary<int, bool>();
+	public Dictionary<int, QuestState> questList = new Dictionary<int, QuestState>();
 	public Dictionary<int, bool> itemList = new Dictionary<int, bool>();
 	public Dictionary<int, Action> dSFuncDict = new Dictionary<int, Action>();
 
@@ -78,12 +78,23 @@ public class GameManager : MonoBehaviour
 		CreateItemUnlockDialog();
 		CreateGetItemDialog();
 		CreateItemRelevantDialogs();
+		CreateQuestNotReadyDialog();
 
 		foreach(DialogEntity e in allOptions)
 		{
 			if(e is ReturnControl)
 				allEndLeafIDs.Add(e.id);
 		}
+	}
+
+	private void FixedUpdate()
+	{
+		Debug.Log(itemList[100]);
+	}
+
+	public void CreateQuestNotReadyDialog()
+	{
+		allOptions.Add(new DialogText(401, 404, "You are not ready for this quest yet."));
 	}
 
 	public void CreateItemRelevantDialogs()
@@ -112,34 +123,36 @@ public class GameManager : MonoBehaviour
 	{
 		itemList.Add(4, false);
 
-		allOptions.Add(new Choice(2010, 6000, 6001, "Agree first", "agree", "disagree"));
-		allOptions.Add(new ItemGate(6000, 1052, 7000, 4));
-		allOptions.Add(new ItemGate(6001, 1051, 1053, 4));
-		allOptions.Add(new Function(7000, 1050, 2));
-		allOptions.Add(new DialogText(1050, 2010, "Item unlocked!"));
-		allOptions.Add(new DialogText(1052, 2010, "You already have the item, you greedy bastard"));
-		allOptions.Add(new DialogText(1053, 2010, "You need the item, try again"));
-		allOptions.Add(new DialogText(1051, 404, "You made it, gj"));
+		allOptions.Add(new QuestGate(8800, 2011, 2011, 2011, 2010, 0));
+		allOptions.Add(new Choice(2010, 6000, 404, "Want to open up the \ncollect quest? quest", "Do it", "Walk away"));
+		allOptions.Add(new Function(6000, 2012, 5));
+		allOptions.Add(new DialogText(2011, 404, "The quest is already open."));
+		allOptions.Add(new DialogText(2012, 404, "Quest is opened up!"));
 	}
 
 	public void CreateGetItemDialog()
 	{
-		questList.Add(0, false);
+		questList.Add(0, QuestState.closed);
 		itemList.Add(100, false);
 
-		allOptions.Add(new QuestGate(8100, 1200, 1100, 0));
+		allOptions.Add(new QuestGate(8100, 1160, 1200, 1100, 401, 0));
+		// Open
 		allOptions.Add(new DialogText(1100, 2100, "You see that item down the road?"));
+		// Completed
+		allOptions.Add(new DialogText(1160, 404, "You already helped me! \nI don't need any more help. \nThanks a bunch!"));
 		allOptions.Add(new Choice(2100, 6100, 1102, "Will you get it for me?", "Yes", "No"));
 		// Initiates the quest
 		allOptions.Add(new Function(6100, 1101, 3));
 		allOptions.Add(new DialogText(1101, 404, "Thanks! \nYou started the quest."));
 		allOptions.Add(new DialogText(1102, 404, "Alright, I get it."));
 
+		// Ongoing
 		allOptions.Add(new DialogText(1200, 2200, "Hey! Welcome back."));
 		allOptions.Add(new Choice(2200, 7101, 1202, "Do you remember what you were doing?", "Yes", "No"));
 		allOptions.Add(new DialogText(1202, 404, "You were fetching me the item down the road."));
 		allOptions.Add(new Choice(2201, 7100, 1211, "Will you hand me the item?", "Sure", "Not yet"));
-		allOptions.Add(new ItemGate(7100, 1210, 1212, 100));
+		allOptions.Add(new ItemGate(7100, 1616, 1212, 100));
+		allOptions.Add(new Function(1616, 1210, 4));
 		allOptions.Add(new DialogText(1210, 404, "Thank you! \nQuest complete!"));
 		allOptions.Add(new DialogText(1212, 2200, "You don't have it yet."));
 
@@ -272,7 +285,12 @@ public class GameManager : MonoBehaviour
 
 	public bool IsIdInItems(int i)
 	{
-		if(!itemList.ContainsKey(i))
+		return itemList.ContainsKey(i);
+	}
+
+	public bool IsItemUnlocked(int i)
+	{
+		if(!IsIdInItems(i))
 			return false;
 
 		return itemList[i];
@@ -280,9 +298,13 @@ public class GameManager : MonoBehaviour
 
 	public bool IsIdInQuests(int i)
 	{
-		if(!questList.ContainsKey(i))
-			return false;
+		return questList.ContainsKey(i);
+	}
 
+	public QuestState GetQuestStateById(int i)
+	{
+		if(!IsIdInQuests(i))
+			return QuestState.closed;
 		return questList[i];
 	}
 
@@ -320,10 +342,10 @@ public class GameManager : MonoBehaviour
 			itemList[i] = true;
 	}
 
-	public void UnlockQuestById(int i)
+	public void SetQuestState(int i, QuestState qs)
 	{
 		if(questList.ContainsKey(i))
-			questList[i] = true;
+			questList[i] = qs;
 	}
 
 	public void StartNoInteractionYetDialog()
