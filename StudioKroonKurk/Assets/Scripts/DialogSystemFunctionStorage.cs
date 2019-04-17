@@ -14,6 +14,7 @@ public class DialogSystemFunctionStorage
 		GameManager.instance.dSFuncDict.Add(0, DebugFunction);
 		GameManager.instance.dSFuncDict.Add(1, DebugFunction2);
 		GameManager.instance.dSFuncDict.Add(2, ()=>UnlockItem(4));
+		GameManager.instance.dSFuncDict.Add(3, ()=>UnlockQuest(0));
 	}
 
 	public void DebugFunction()

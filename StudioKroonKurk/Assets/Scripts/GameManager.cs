@@ -76,12 +76,20 @@ public class GameManager : MonoBehaviour
 
 		CreateDebugDialog();
 		CreateItemUnlockDialog();
+		CreateGetItemDialog();
+		CreateItemRelevantDialogs();
 
 		foreach(DialogEntity e in allOptions)
 		{
 			if(e is ReturnControl)
 				allEndLeafIDs.Add(e.id);
 		}
+	}
+
+	public void CreateItemRelevantDialogs()
+	{
+		allOptions.Add(new DialogText(403, 404, "You don't see a reason to do that yet."));
+		allOptions.Add(new DialogText(402, 404, "You Pick up the item."));
 	}
 
 	public void CreateDebugDialog()
@@ -112,6 +120,32 @@ public class GameManager : MonoBehaviour
 		allOptions.Add(new DialogText(1052, 2010, "You already have the item, you greedy bastard"));
 		allOptions.Add(new DialogText(1053, 2010, "You need the item, try again"));
 		allOptions.Add(new DialogText(1051, 404, "You made it, gj"));
+	}
+
+	public void CreateGetItemDialog()
+	{
+		questList.Add(0, false);
+		itemList.Add(100, false);
+
+		allOptions.Add(new QuestGate(8100, 1200, 1100, 0));
+		allOptions.Add(new DialogText(1100, 2100, "You see that item down the road?"));
+		allOptions.Add(new Choice(2100, 6100, 1102, "Will you get it for me?", "Yes", "No"));
+		// Initiates the quest
+		allOptions.Add(new Function(6100, 1101, 3));
+		allOptions.Add(new DialogText(1101, 404, "Thanks! \nYou started the quest."));
+		allOptions.Add(new DialogText(1102, 404, "Alright, I get it."));
+
+		allOptions.Add(new DialogText(1200, 2200, "Hey! Welcome back."));
+		allOptions.Add(new Choice(2200, 7101, 1202, "Do you remember what you were doing?", "Yes", "No"));
+		allOptions.Add(new DialogText(1202, 404, "You were fetching me the item down the road."));
+		allOptions.Add(new Choice(2201, 7100, 1211, "Will you hand me the item?", "Sure", "Not yet"));
+		allOptions.Add(new ItemGate(7100, 1210, 1212, 100));
+		allOptions.Add(new DialogText(1210, 404, "Thank you! \nQuest complete!"));
+		allOptions.Add(new DialogText(1212, 2200, "You don't have it yet."));
+
+		allOptions.Add(new ItemGate(7101, 2201, 1213, 100));
+		allOptions.Add(new DialogText(1211, 2201, "No need to be shy."));
+		allOptions.Add(new DialogText(1213, 404, "I see you don't have the item yet. \nPlease go get it for me."));
 	}
 
 	private void Update()
@@ -177,6 +211,11 @@ public class GameManager : MonoBehaviour
 			SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId());
 			return;
 		}
+	}
+
+	public bool IsGameStateOpen()
+	{
+		return isGameStateOpen;
 	}
 
 	public void SetupUI(DialogText option)
@@ -285,5 +324,16 @@ public class GameManager : MonoBehaviour
 	{
 		if(questList.ContainsKey(i))
 			questList[i] = true;
+	}
+
+	public void StartNoInteractionYetDialog()
+	{
+		CloseGameState();
+		SetNewDialogOption(403);
+	}
+	public void StartPickupItemDialog()
+	{
+		CloseGameState();
+		SetNewDialogOption(402);
 	}
 }
