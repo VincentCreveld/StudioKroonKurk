@@ -13,6 +13,7 @@ public class DialogSystemFunctionStorage
 
 		GameManager.instance.dSFuncDict.Add(0, DebugFunction);
 		GameManager.instance.dSFuncDict.Add(1, DebugFunction2);
+		GameManager.instance.dSFuncDict.Add(2, ()=>UnlockItem(4));
 	}
 
 	public void DebugFunction()
@@ -23,5 +24,15 @@ public class DialogSystemFunctionStorage
 	public void DebugFunction2()
 	{
 		Debug.Log("Really, man?");
+	}
+
+	public void UnlockItem(int i)
+	{
+		GameManager.instance.UnlockItemById(i);
+	}
+
+	public void UnlockQuest(int i)
+	{
+		GameManager.instance.UnlockQuestById(i);
 	}
 }

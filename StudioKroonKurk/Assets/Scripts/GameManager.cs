@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 		itemList.Add(10, true);
 
 		CreateDebugDialog();
+		CreateItemUnlockDialog();
 
 		foreach(DialogEntity e in allOptions)
 		{
@@ -97,6 +98,20 @@ public class GameManager : MonoBehaviour
 		allOptions.Add(new DialogText(1005, 404, "I hope you've learned from the experience then"));
 		allOptions.Add(new DialogText(1006, 404, "You monster."));
 		allOptions.Add(new ReturnControl(404));
+	}
+
+	public void CreateItemUnlockDialog()
+	{
+		itemList.Add(4, false);
+
+		allOptions.Add(new Choice(2010, 6000, 6001, "Agree first", "agree", "disagree"));
+		allOptions.Add(new ItemGate(6000, 1052, 7000, 4));
+		allOptions.Add(new ItemGate(6001, 1051, 1053, 4));
+		allOptions.Add(new Function(7000, 1050, 2));
+		allOptions.Add(new DialogText(1050, 2010, "Item unlocked!"));
+		allOptions.Add(new DialogText(1052, 2010, "You already have the item, you greedy bastard"));
+		allOptions.Add(new DialogText(1053, 2010, "You need the item, try again"));
+		allOptions.Add(new DialogText(1051, 404, "You made it, gj"));
 	}
 
 	private void Update()
@@ -122,6 +137,14 @@ public class GameManager : MonoBehaviour
 			if(isGameStateOpen)
 			{
 				SetNewDialogOption(1000);
+				CloseGameState();
+			}
+		}
+		if(Input.GetKeyDown(KeyCode.I))
+		{
+			if(isGameStateOpen)
+			{
+				SetNewDialogOption(2010);
 				CloseGameState();
 			}
 		}
@@ -250,5 +273,17 @@ public class GameManager : MonoBehaviour
 			dSFuncDict[i].Invoke();
 		else
 			Debug.LogError("Called invalid function id");
+	}
+
+	public void UnlockItemById(int i)
+	{
+		if(itemList.ContainsKey(i))
+			itemList[i] = true;
+	}
+
+	public void UnlockQuestById(int i)
+	{
+		if(questList.ContainsKey(i))
+			questList[i] = true;
 	}
 }
