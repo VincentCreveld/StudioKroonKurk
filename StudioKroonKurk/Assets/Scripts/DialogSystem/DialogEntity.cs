@@ -22,5 +22,5 @@ public abstract class DialogEntity
 	}
 
 	// Default checking function. Also operates the gates down the line.
-	public abstract int GetNextId();
+	public abstract int ExecuteNodeAndGetNextId();
 }

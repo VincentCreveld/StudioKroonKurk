@@ -14,7 +14,7 @@ public class DialogText : DialogEntity, IDialogText
 		uiType = UITypes.singleButton;
 	}
 
-	public override int GetNextId()
+	public override int ExecuteNodeAndGetNextId()
 	{
 		return nextId;
 	}

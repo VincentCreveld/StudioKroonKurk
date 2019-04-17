@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 	
 	public Dictionary<int, bool> questList = new Dictionary<int, bool>();
 	public Dictionary<int, bool> itemList = new Dictionary<int, bool>();
+	public Dictionary<int, Action> dSFuncDict = new Dictionary<int, Action>();
 
 	public GameObject canvas;
 
@@ -25,12 +26,16 @@ public class GameManager : MonoBehaviour
 
 	public DialogEntity currentDialog, previousDialog;
 
+	private DialogSystemFunctionStorage dsStorage;
+
 	public void Awake()
 	{
 		if(instance == null)
 			instance = this;
 		else
 			Debug.LogError("Too many GameManagers in scene");
+
+		dsStorage = new DialogSystemFunctionStorage();
 	}
 
 	public void Start()
@@ -69,11 +74,29 @@ public class GameManager : MonoBehaviour
 
 		itemList.Add(10, true);
 
+		CreateDebugDialog();
+
 		foreach(DialogEntity e in allOptions)
 		{
 			if(e is ReturnControl)
 				allEndLeafIDs.Add(e.id);
 		}
+	}
+
+	public void CreateDebugDialog()
+	{
+		allOptions.Add(new DialogText(1000, 1001, "At the end of this sequence a debug will apear"));
+		allOptions.Add(new DialogText(1001, 1002, "Agree with the following statement"));
+		allOptions.Add(new DialogText(1002, 2000, "Just do it"));
+		allOptions.Add(new Choice(2000, 9003, 9004, "Do you agree?", "Yea sure", "lmao no"));
+		allOptions.Add(new Choice(2001, 1005, 1006, "Do regret what you did?", "Yes?", "lmao no"));
+		allOptions.Add(new Function(9003, 1003, 0));
+		allOptions.Add(new Function(9004, 1004, 1));
+		allOptions.Add(new DialogText(1003, 404, "Good boy"));
+		allOptions.Add(new DialogText(1004, 2001, "Everything blew up"));
+		allOptions.Add(new DialogText(1005, 404, "I hope you've learned from the experience then"));
+		allOptions.Add(new DialogText(1006, 404, "You monster."));
+		allOptions.Add(new ReturnControl(404));
 	}
 
 	private void Update()
@@ -94,9 +117,16 @@ public class GameManager : MonoBehaviour
 				CloseGameState();
 			}
 		}
+		if(Input.GetKeyDown(KeyCode.T))
+		{
+			if(isGameStateOpen)
+			{
+				SetNewDialogOption(1000);
+				CloseGameState();
+			}
+		}
 	}
-
-	// Pass this in callbacks
+	
 	public void SetNewDialogOption(int i)
 	{
 		// "Crashes" the dialog if a value is called which doesnt exist.
@@ -120,8 +150,8 @@ public class GameManager : MonoBehaviour
 		}
 		else
 		{
-			// If it's not a dialog option (or choice), execute immediately
-			SetNewDialogOption(currentDialog.GetNextId());
+			// If it's not a text oriented option, execute immediately
+			SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId());
 			return;
 		}
 	}
@@ -134,7 +164,7 @@ public class GameManager : MonoBehaviour
 
 		display.text = option.text;
 		button.onClick.RemoveAllListeners();
-		button.onClick.AddListener(() => SetNewDialogOption(currentDialog.GetNextId()));
+		button.onClick.AddListener(() => SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId()));
 		button.GetComponentInChildren<Text>().text = "Next";
 	}
 
@@ -212,5 +242,13 @@ public class GameManager : MonoBehaviour
 				return e;
 		}
 		return null;
+	}
+
+	public void ExecuteFunctionById(int i)
+	{
+		if(dSFuncDict.ContainsKey(i))
+			dSFuncDict[i].Invoke();
+		else
+			Debug.LogError("Called invalid function id");
 	}
 }

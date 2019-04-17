@@ -24,7 +24,7 @@ public class Choice : DialogEntity, IDialogText
 	}
 
 	// Fallback function, should be dead
-	public override int GetNextId()
+	public override int ExecuteNodeAndGetNextId()
 	{
 		return nextId0;
 	}
