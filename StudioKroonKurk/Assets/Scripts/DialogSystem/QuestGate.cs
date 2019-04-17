@@ -12,8 +12,8 @@ public class QuestGate : Gate
 		negativeResult = neg;
 	}
 
-	public override int GetNextId()
+	public override int ExecuteNodeAndGetNextId()
 	{
-		return (GameManager.instance.IsIdInQuests(RequiredItemId)) ? PositiveResult : NegativeResult;
+		return (GameManager.instance.IsIdInQuests(requiredItemId)) ? positiveResult : negativeResult;
 	}
 }

@@ -14,7 +14,7 @@ public class ReturnControl : DialogEntity
 		GameManager.instance.EndLeafFunction();
 	}
 
-	public override int GetNextId()
+	public override int ExecuteNodeAndGetNextId()
 	{
 		return id;
 	}

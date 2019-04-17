@@ -12,8 +12,8 @@ public class ItemGate : Gate
 		negativeResult = neg;
 	}
 
-	public override int GetNextId()
+	public override int ExecuteNodeAndGetNextId()
 	{
-		return (GameManager.instance.IsIdInItems(RequiredItemId)) ? PositiveResult : NegativeResult;	
+		return (GameManager.instance.IsIdInItems(requiredItemId)) ? positiveResult : negativeResult;	
 	}
 }
