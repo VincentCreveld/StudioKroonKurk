@@ -10,6 +10,8 @@ public abstract class Interactable : MonoBehaviour
 	private Transform curTarget;
 	private bool isBeingTargeted = false;
 
+	public float dis;
+
 	private void Start()
 	{
 		interactDistance = Vector3.Distance(transform.position, interactPos.position) + 0.25f;
@@ -17,10 +19,9 @@ public abstract class Interactable : MonoBehaviour
 
 	private void Update()
 	{
-		float dis;
 		if(curTarget != null)
-			dis = Vector3.Distance(curTarget.position, transform.position);
-		if(isBeingTargeted && Vector3.Distance(curTarget.position, transform.position) <= interactDistance)
+			dis = Vector3.Distance(curTarget.position, interactPos.position);
+		if(isBeingTargeted && Vector3.Distance(curTarget.position, interactPos.position) <= 1.75f)
 		{
 			Execute();
 			DropTarget();

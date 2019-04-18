@@ -15,37 +15,37 @@ public class MoveOnTouch : MonoBehaviour
 
 	private Interactable prevInteractable;
 
-    void Start () {
+	public Transform cursor;
+	private Vector3 movePos;
+
+
+    void Start ()
+	{
         agent = gameObject.GetComponent<NavMeshAgent>();
+		movePos = transform.position;
 	}
 
     public void MoveTowards(Vector3 position)
     {
         agent.SetDestination(position);
-    }
+		movePos = position;
+		cursor.transform.position = new Vector3(movePos.x, 0, movePos.z);
+		cursor.gameObject.SetActive(true);
+	}
 
-    private void Update () {
-		//if(GameManager.instance.IsGameStateOpen() && Input.touchCount == 1)
-		//{
-		//	RaycastHit hit;
-		//	Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-		//	if(Physics.Raycast(ray, out hit))
-		//	{
-		//		if(hit.transform.tag == "Terrain")
-		//		{
-		//			agent.SetDestination(hit.point);
-		//		}
-		//	}
-		//	return;
-		//}
-		if(GameManager.instance.IsGameStateOpen() && Input.GetMouseButtonDown(0))
+    private void Update ()
+	{
+		float disToPlayerCursor = Vector3.Distance(cursor.position, transform.position);
+		
+		if(disToPlayerCursor < 1f)
+			cursor.gameObject.SetActive(false);
+			
+		if(GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0))
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if(Physics.Raycast(ray, out hit, layersToHit))
 			{
-				Debug.Log(hit.transform.name);
-
 				if(prevInteractable != null)
 				{
 					prevInteractable.DropTarget();
@@ -53,7 +53,7 @@ public class MoveOnTouch : MonoBehaviour
 				}
 				if(hit.transform.tag == "Terrain")
 				{
-					agent.SetDestination(hit.point);
+					MoveTowards(hit.point);
 				}
 				if(hit.transform.GetComponent<Interactable>())
 				{
@@ -62,8 +62,7 @@ public class MoveOnTouch : MonoBehaviour
 					float dis = Vector3.Distance(transform.position, pos);
 
 					npc.Interact(transform);
-					agent.SetDestination(npc.GetInteractPos());
-					
+					MoveTowards(pos);
 					prevInteractable = npc;
 				}
 			}
