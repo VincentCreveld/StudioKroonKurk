@@ -4083,6 +4083,8 @@ MonoBehaviour:
   itemToAdd: 100
   checkForActiveQuest: 1
   questToCheck: 0
+  checkForProgress: 1
+  questProgressToMatch: 2
   alsoExecuteFuntion: 1
   functionToExecute: 1004
 --- !u!208 &1653659742

@@ -27,6 +27,8 @@ public class MoveOnTouch : MonoBehaviour
 
     public void MoveTowards(Vector3 position)
     {
+		if(!agent.enabled)
+			return;
         agent.SetDestination(position);
 		movePos = position;
 		cursor.transform.position = new Vector3(movePos.x, 0, movePos.z);
