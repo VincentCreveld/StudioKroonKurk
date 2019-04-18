@@ -8,14 +8,14 @@ public class QuestGate : Gate
 {
 	public int onGoingResult, canAcceptResult;
 
-	public QuestGate(int id, int completed, int ongoing, int open, int closed, int item)
+	public QuestGate(int id, int completed, int ongoing, int canAccept, int closed, int quest)
 	{
 		this.id = id;
-		requiredItemId = item;
+		requiredItemId = quest;
 		positiveResult = completed;
 		negativeResult = closed;
 		onGoingResult = ongoing;
-		canAcceptResult = open;
+		canAcceptResult = canAccept;
 	}
 
 	public override int ExecuteNodeAndGetNextId()
