@@ -51,7 +51,7 @@ public class Pickupable : Interactable
 	public void Pickup()
 	{
 		GameManager.instance.StartPickupItemDialog();
-		GameManager.instance.UnlockItemById(itemToAdd);
+		GameManager.instance.PickupItem(itemToAdd);
 		Destroy(gameObject);
 	}
 }

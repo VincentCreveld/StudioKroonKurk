@@ -14,6 +14,12 @@ public class ItemGate : Gate
 
 	public override int ExecuteNodeAndGetNextId()
 	{
-		return (GameManager.instance.IsItemUnlocked(requiredItemId)) ? positiveResult : negativeResult;	
+		switch(GameManager.instance.IsItemUnlocked(requiredItemId))
+		{
+			case ItemState.has:
+				return positiveResult;
+			default:
+				return negativeResult;
+		}	
 	}
 }

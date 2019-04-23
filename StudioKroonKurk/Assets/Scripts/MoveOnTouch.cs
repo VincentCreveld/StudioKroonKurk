@@ -31,7 +31,7 @@ public class MoveOnTouch : MonoBehaviour
 			return;
         agent.SetDestination(position);
 		movePos = position;
-		cursor.transform.position = new Vector3(movePos.x, 0, movePos.z);
+		cursor.transform.position = new Vector3(movePos.x, movePos.y, movePos.z);
 		cursor.gameObject.SetActive(true);
 	}
 

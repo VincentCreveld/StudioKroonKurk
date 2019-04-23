@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 	public List<int> allEndLeafIDs = new List<int>();
 	
 	public Dictionary<int, Quest> questList = new Dictionary<int, Quest>();
-	public Dictionary<int, bool> itemList = new Dictionary<int, bool>();
+	public Dictionary<int, Item> itemList = new Dictionary<int, Item>();
 	public Dictionary<int, Action> dSFuncDict = new Dictionary<int, Action>();
 
 	public GameObject canvas;
@@ -72,10 +72,10 @@ public class GameManager : MonoBehaviour
 		allOptions.Add(new DialogText(21, 200, "You went the wrong way and died."));
 		allOptions.Add(new DialogText(20, 200, "You got out safely."));
 
-		itemList.Add(0, true);
-		itemList.Add(1, false);
+		itemList.Add(0, new Item(0, "item0"));
+		itemList.Add(1, new Item(1, "item1"));
 
-		itemList.Add(10, true);
+		itemList.Add(10, new Item(10,"Item10"));
 
 		CreateDebugDialog();
 		CreateItemRelevantDialogs();
@@ -206,12 +206,12 @@ public class GameManager : MonoBehaviour
 		return itemList.ContainsKey(i);
 	}
 
-	public bool IsItemUnlocked(int i)
+	public ItemState IsItemUnlocked(int i)
 	{
 		if(!IsIdInItems(i))
-			return false;
+			return ItemState.not;
 
-		return itemList[i];
+		return itemList[i].GetItemState();
 	}
 
 	public bool IsIdInQuests(int i)
@@ -261,10 +261,16 @@ public class GameManager : MonoBehaviour
 			Debug.LogError("Called invalid function id");
 	}
 
-	public void UnlockItemById(int i)
+	public void PickupItem(int i)
 	{
 		if(itemList.ContainsKey(i))
-			itemList[i] = true;
+			itemList[i].SetItemState(ItemState.has);
+	}
+
+	public void UseItem(int i)
+	{
+		if(itemList.ContainsKey(i))
+			itemList[i].SetItemState(ItemState.used);
 	}
 
 	public void StartNoInteractionYetDialog()

@@ -28,8 +28,8 @@ public class CollectionQuest : Quest
 
 		gm.questList.Add(0, this);
 		
-		gm.itemList.Add(4, false);
-		gm.itemList.Add(100, false);
+		gm.itemList.Add(4, new Item(4,"item4"));
+		gm.itemList.Add(100, new Item(100, "item100"));
 
 		gm.allOptions.Add(new QuestGate(8100, 1160, 8500, 1400, 2013, 0));
 		gm.allOptions.Add(new QuestStepGate(8500, 8501, 1890, 0, 1, 2, 3, 4, 5));
