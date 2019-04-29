@@ -43,7 +43,7 @@ public class CollectionQuest : Quest
 		gm.allOptions.Add(new Function(1718, 404, 1001));
 
 		// Open
-		gm.allOptions.Add(new DialogText(1100, 2100, "You see that item down the road?"));
+		gm.allOptions.Add(new DialogText(1100, 2100, "You see that item up at the tree? \n It's along the road to the north."));
 		// Completed
 		gm.allOptions.Add(new DialogText(1160, 404, "You already helped me! \nI don't need any more help. \nThanks a bunch!"));
 		gm.allOptions.Add(new Choice(2100, 6100, 1102, "Will you get it for me?", "Yes", "No"));
@@ -54,7 +54,7 @@ public class CollectionQuest : Quest
 		// Ongoing
 		gm.allOptions.Add(new DialogText(1200, 2200, "Hey! Welcome back."));
 		gm.allOptions.Add(new Choice(2200, 7101, 1202, "Do you remember what you were doing?", "Yes", "No"));
-		gm.allOptions.Add(new DialogText(1202, 404, "You were fetching me the item down the road."));
+		gm.allOptions.Add(new DialogText(1202, 404, "You were fetching me the item at the tree\n in the north."));
 		gm.allOptions.Add(new Choice(2201, 7100, 1211, "Will you hand me the item?", "Sure", "Not yet"));
 		gm.allOptions.Add(new ItemGate(7100, 1616, 1212, 100));
 		gm.allOptions.Add(new Function(1616, 1617, 1002));

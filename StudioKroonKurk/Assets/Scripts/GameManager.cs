@@ -100,7 +100,8 @@ public class GameManager : MonoBehaviour
 	public void CreateItemRelevantDialogs()
 	{
 		allOptions.Add(new DialogText(403, 404, "You don't see a reason to do that yet."));
-		allOptions.Add(new DialogText(402, 404, "You Pick up the item."));
+		allOptions.Add(new DialogText(402, 9407, "You Pick up the item."));
+		allOptions.Add(new Function(9407, 404, 6006));
 	}
 
 	public void CreateDebugDialog()

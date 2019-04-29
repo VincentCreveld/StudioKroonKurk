@@ -12,6 +12,11 @@ public class Pickupable : Interactable
 	public bool alsoExecuteFuntion = false;
 	public int functionToExecute = 0;
 
+	private void Start()
+	{
+		GameManager.instance.dSFuncDict.Add(6006, () => Destroy(gameObject));
+	}
+
 	public override void Execute()
 	{
 		if(checkForActiveQuest)
@@ -52,6 +57,5 @@ public class Pickupable : Interactable
 	{
 		GameManager.instance.StartPickupItemDialog(transform);
 		GameManager.instance.PickupItem(itemToAdd);
-		Destroy(gameObject);
 	}
 }
