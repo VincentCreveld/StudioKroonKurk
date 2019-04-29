@@ -5,12 +5,12 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
 	public Transform interactPos;
-	private float interactDistance;
+	public float interactDistance;
 
-	private Transform curTarget;
+	protected IInteracter curTarget;
 	private bool isBeingTargeted = false;
 
-	public float dis;
+	private float dis;
 
 	private void Start()
 	{
@@ -20,8 +20,9 @@ public abstract class Interactable : MonoBehaviour
 	private void Update()
 	{
 		if(curTarget != null)
-			dis = Vector3.Distance(curTarget.position, interactPos.position);
-		if(isBeingTargeted && Vector3.Distance(curTarget.position, interactPos.position) <= 1.75f)
+			dis = Vector3.Distance(new Vector3(curTarget.GetPos().x, interactPos.position.y, curTarget.GetPos().z), interactPos.position);
+
+		if(isBeingTargeted && dis <= 1f)
 		{
 			Execute();
 			DropTarget();
@@ -33,7 +34,7 @@ public abstract class Interactable : MonoBehaviour
 		return interactPos.position;
 	}
 
-	public virtual void Interact(Transform t)
+	public virtual void Interact(IInteracter t)
 	{
 		curTarget = t;
 		isBeingTargeted = true;

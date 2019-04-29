@@ -8,7 +8,8 @@ public class DialogNPC : Interactable
 
 	public override void Execute()
 	{
-		GameManager.instance.CloseGameState();
+		curTarget.LookAtTarget(transform.position);
+		GameManager.instance.CloseGameState(transform);
 		GameManager.instance.SetNewDialogOption(dialogToStart);
 	}
 }

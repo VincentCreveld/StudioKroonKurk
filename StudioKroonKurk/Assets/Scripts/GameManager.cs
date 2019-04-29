@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
 	private bool isGameStateOpen = true;
 
 	public static GameManager instance;
+	public CameraMovementManager camManager;
 
 	public NavMeshAgent player;
 
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
 
 	public void DebugFunction()
 	{
+		allOptions.Add(new DialogText(1337, 404, "Just asserting my dominance. \nMove along."));
+
 		allOptions.Add(new DialogText(0, 1, "dialog1 reached"));
 		allOptions.Add(new DialogText(1, 2, "dialog2 reached"));
 		allOptions.Add(new DialogText(3, 4, "gate1 passed"));
@@ -182,14 +186,20 @@ public class GameManager : MonoBehaviour
 	public void EndLeafFunction()
 	{
 		// Clean up dialog here
-		CloseGameState();
+		OpenGamestate();
 	}
 
-	public void CloseGameState()
+	public void CloseGameState(Transform focus)
 	{
 		// Requires reference to player controls (pathfinding component)
 		// Shut off player controls here
+		StartCoroutine(CloseGame(focus));
+	}
+
+	public IEnumerator CloseGame(Transform focus)
+	{
 		isGameStateOpen = false;
+		yield return StartCoroutine(camManager.MoveInLoop(focus));
 		canvas.SetActive(true);
 	}
 
@@ -197,8 +207,14 @@ public class GameManager : MonoBehaviour
 	{
 		// Finish up dialog as far as that is needed
 		// Re-enable player movement
+		StartCoroutine(OpenGame());
+	}
+
+	public IEnumerator OpenGame()
+	{
 		isGameStateOpen = true;
 		canvas.SetActive(false);
+		yield return StartCoroutine(camManager.MoveOutLoop());
 	}
 
 	public bool IsIdInItems(int i)
@@ -273,14 +289,14 @@ public class GameManager : MonoBehaviour
 			itemList[i].SetItemState(ItemState.used);
 	}
 
-	public void StartNoInteractionYetDialog()
+	public void StartNoInteractionYetDialog(Transform focus)
 	{
-		CloseGameState();
+		CloseGameState(focus);
 		SetNewDialogOption(403);
 	}
-	public void StartPickupItemDialog()
+	public void StartPickupItemDialog(Transform focus)
 	{
-		CloseGameState();
+		CloseGameState(focus);
 		SetNewDialogOption(402);
 	}
 
