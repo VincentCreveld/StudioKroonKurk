@@ -163,6 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3804009720272419585}
+  - component: {fileID: 2630472550109724828}
   m_Layer: 0
   m_Name: Boom1(LOD3) (1)
   m_TagString: Untagged
@@ -193,6 +194,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2630472550109724828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523035469709554939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d21f29006d8a948a7df1e9a1560eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 561073446642979454}
+  - {fileID: 946369858769644479}
+  - {fileID: 3635166502498869842}
+  - {fileID: 4576122856504711510}
+  - {fileID: 418157938235097775}
+  - {fileID: 6627801245163910449}
 --- !u!1 &1804724028158627192
 GameObject:
   m_ObjectHideFlags: 0

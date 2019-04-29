@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: blad4
+  m_Name: donkeroranje2
   m_Shader: {fileID: 4800000, guid: a46733fadc6008a44b19d246e3283a67, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _SPECULAR_COLOR
   m_LightmapFlags: 4
@@ -61,6 +61,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MiddleStatic:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MiddleStaticNml:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Normal0:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -105,6 +113,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WindTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 0
     - _AlphaClip: 0
@@ -116,6 +128,7 @@ Material:
     - _DstBlend: 0
     - _EmissiveIntensity: 1
     - _EnableExternalAlpha: 0
+    - _Gloss: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossinessSource: 1
@@ -151,11 +164,16 @@ Material:
     - _UseMetallicMap: 0
     - _UseNormalMap: 0
     - _UseRoughnessMap: 0
+    - _WindIntensityPanner: 0.0274
+    - _WindIntensityVertex: 0.8
     - _WindQuality: 0
+    - _WindSpeedVertex: 0.525
+    - _WindStrengthVertex: 0.025
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _windSpeedPanner: 0.189949
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.8117647, g: 0.45150626, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}

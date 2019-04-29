@@ -275,6 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881997359514715568}
+  - component: {fileID: 2333335661392606740}
   m_Layer: 0
   m_Name: booom3 (11)
   m_TagString: Untagged
@@ -306,6 +307,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 88.051, z: 0}
+--- !u!114 &2333335661392606740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302578835288410698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d21f29006d8a948a7df1e9a1560eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 9161509180277104537}
+  - {fileID: 6715562238238737102}
+  - {fileID: 2368752596752187113}
+  - {fileID: 6609424002718134780}
+  - {fileID: 6379867674846912637}
+  - {fileID: 5399503910392519388}
+  - {fileID: 8433983504021477155}
+  - {fileID: 4898814270723802320}
 --- !u!1 &3539363891450173322
 GameObject:
   m_ObjectHideFlags: 0
