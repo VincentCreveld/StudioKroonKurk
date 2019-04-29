@@ -44,7 +44,7 @@ public class MoveOnTouch : MonoBehaviour
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if(Physics.Raycast(ray, out hit, layersToHit))
+			if(Physics.Raycast(ray, out hit, Mathf.Infinity, layersToHit))
 			{
 				if(prevInteractable != null)
 				{
