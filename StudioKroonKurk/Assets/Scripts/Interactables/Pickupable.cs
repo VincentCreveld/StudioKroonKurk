@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Pickupable : Interactable
 {
+	public int functionToAdd = 0;
 	public int itemToAdd;
 	public bool checkForActiveQuest = false;
 	public int questToCheck = 0;
 	public bool checkForProgress = false;
 	public int questProgressToMatch;
-	public bool alsoExecuteFuntion = false;
+	public bool executeFuntion = false;
 	public int functionToExecute = 0;
 
 	private void Start()
 	{
-		GameManager.instance.dSFuncDict.Add(6006, () => Destroy(gameObject));
+		GameManager.instance.dSFuncDict.Add(functionToAdd, () => Destroy(gameObject));
 	}
 
 	public override void Execute()
@@ -25,7 +26,7 @@ public class Pickupable : Interactable
 			{
 				if(GameManager.instance.questList[questToCheck].GetCurrentQuestProgress() == questProgressToMatch)
 				{
-					if(alsoExecuteFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
+					if(executeFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
 						GameManager.instance.dSFuncDict[functionToExecute].Invoke();
 					Pickup();
 				}
@@ -39,7 +40,7 @@ public class Pickupable : Interactable
 			{
 				if(GameManager.instance.questList[questToCheck].GetQuestState() == QuestState.ongoing)
 				{
-					if(alsoExecuteFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
+					if(executeFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
 						GameManager.instance.dSFuncDict[functionToExecute].Invoke();
 					Pickup();
 				}
@@ -50,6 +51,8 @@ public class Pickupable : Interactable
 				return;
 			}
 		}
+		if(executeFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
+			GameManager.instance.dSFuncDict[functionToExecute].Invoke();
 		Pickup();
 	}
 

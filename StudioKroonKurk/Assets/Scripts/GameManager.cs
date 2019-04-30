@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour
 
 	public void Start()
 	{
-		DebugFunction();
+		Initialise();
 	}
 
-	public void DebugFunction()
+	public void Initialise()
 	{
 		allOptions.Add(new DialogText(1337, 404, "Just asserting my dominance. \nMove along."));
 
@@ -213,9 +213,9 @@ public class GameManager : MonoBehaviour
 
 	public IEnumerator OpenGame()
 	{
-		isGameStateOpen = true;
 		canvas.SetActive(false);
 		yield return StartCoroutine(camManager.MoveOutLoop());
+		isGameStateOpen = true;
 	}
 
 	public bool IsIdInItems(int i)

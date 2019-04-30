@@ -101,7 +101,7 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 
 		Quaternion startRot = transform.rotation;
 
-		float totalTime = 0.5f;
+		float totalTime = 0.8f;
 		float curTime = 0;
 		while(true)
 		{

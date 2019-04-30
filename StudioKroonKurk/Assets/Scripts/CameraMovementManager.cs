@@ -12,10 +12,9 @@ public class CameraMovementManager : MonoBehaviour
 	private Quaternion camRotation;
 
 	private bool isFollowing = true;
-
-	[SerializeField]
+	
 	[Range(0,1f)]
-	private float smoothing = 0.5f;
+	public float smoothing = 0.5f;
 
 	private void Awake()
 	{
@@ -41,13 +40,19 @@ public class CameraMovementManager : MonoBehaviour
 		float curTime = 0f;
 		float totalTime = 0.8f;
 		StopAllCoroutines();
+
+		Vector3 initialPos = transform.position;
 		while(true)
 		{
 			yield return null;
 			curTime += Time.deltaTime;
 
-			transform.LookAt(lookatTarget);
-			transform.position = Vector3.Slerp(playerObject.transform.position + camOffset, movePos.position, curTime / totalTime);
+			//transform.LookAt(lookatTarget);
+			Vector3 targDir = lookatTarget.position - movePos.position;
+			Quaternion targRotation = Quaternion.LookRotation(targDir);
+
+			transform.rotation = Quaternion.Lerp(camRotation, targRotation, curTime / totalTime);
+			transform.position = Vector3.Slerp(initialPos, movePos.position, curTime / totalTime);
 
 			if(curTime > totalTime)
 				break;

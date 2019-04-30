@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7732075774661669434}
   - component: {fileID: 2207507452348839397}
   - component: {fileID: 7780045049606512769}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCylinder11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1067728153316645793}
   - component: {fileID: 255989747426356511}
   - component: {fileID: 4879842799552278984}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2947930362388386470}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: group10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 3833142844586520126}
   - component: {fileID: 3572428055313265858}
   - component: {fileID: 5602911433253163965}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCylinder5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5354303578205059976}
   - component: {fileID: 7093810267679575985}
-  m_Layer: 0
+  - component: {fileID: 2388395926230283390}
+  m_Layer: 12
   m_Name: Boom1(LOD2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,6 +323,19 @@ MonoBehaviour:
   - {fileID: 3072743851007157655}
   - {fileID: 4101408720193229251}
   - {fileID: 378061184062345052}
+--- !u!65 &2388395926230283390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756932090685305970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.56, y: 0.17, z: 2.84}
+  m_Center: {x: 0, y: 2.44, z: -0.2}
 --- !u!1 &8500621925277454281
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +347,7 @@ GameObject:
   - component: {fileID: 4210936893587562714}
   - component: {fileID: 620585746375713737}
   - component: {fileID: 1374554639080774279}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCylinder10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,6 +423,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_Name
       value: Bladeren1MeshLOD (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,6 +521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bladeren1MeshLOD (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.234
@@ -595,6 +617,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_Name
       value: Bladeren1MeshLOD (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_LocalPosition.x
@@ -689,6 +715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bladeren1MeshLOD (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.342
@@ -782,6 +812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bladeren1MeshLOD (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.195
@@ -874,6 +908,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_Name
       value: Bladeren1MeshLOD
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5355564ced364af47864573f6609d402, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5355564ced364af47864573f6609d402, type: 3}
       propertyPath: m_LocalPosition.x
