@@ -169,7 +169,6 @@ MonoBehaviour:
   - {fileID: 6306200494468981867}
   - {fileID: 6103692741613221354}
   - {fileID: 5103598579755536203}
-  val: 0.4
 --- !u!65 &6795863296710398042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -181,7 +180,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 0.17, z: 2.84}
+  m_Size: {x: 3.32, y: 0.17, z: 3.72}
   m_Center: {x: 0, y: 2.44, z: -0.2}
 --- !u!1 &4590865830777627750
 GameObject:
@@ -394,7 +393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a3a053f39b7a024fa7d865d208e593e, type: 3}
+  - {fileID: 2100000, guid: 154bf499c1fb9664aaec1e0b1147994d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -6,7 +6,7 @@ public class RandomRotationGrass : MonoBehaviour
 {
     public List<GrassCluster> grass = new List<GrassCluster>();
 
-    [ContextMenu("Fill grass list")]
+	[ContextMenu("Fill grass list")]
     private void GetChildren()
     {
         grass = new List<GrassCluster>();

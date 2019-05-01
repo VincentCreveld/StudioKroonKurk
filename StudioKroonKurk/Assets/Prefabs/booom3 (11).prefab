@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8424920852471682710}
   - component: {fileID: 7622587847871959192}
   - component: {fileID: 4898814270723802320}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7969702673652477086}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: group10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 8304983282666049542}
   - component: {fileID: 8638156092546796282}
   - component: {fileID: 842946172140219781}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCylinder5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 2368752596750416905}
   - component: {fileID: 2368752596751219753}
   - component: {fileID: 2368752596752187113}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 881997359514715568}
   - component: {fileID: 2333335661392606740}
-  m_Layer: 0
+  - component: {fileID: 5642781801140525311}
+  m_Layer: 12
   m_Name: booom3 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,6 +329,19 @@ MonoBehaviour:
   - {fileID: 5399503910392519388}
   - {fileID: 8433983504021477155}
   - {fileID: 4898814270723802320}
+--- !u!65 &5642781801140525311
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302578835288410698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 0.22, z: 3.98}
+  m_Center: {x: 0.48, y: 4.02, z: -0.65}
 --- !u!1 &3539363891450173322
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +353,7 @@ GameObject:
   - component: {fileID: 1428749046403850775}
   - component: {fileID: 6596720506251594149}
   - component: {fileID: 8433983504021477155}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +432,7 @@ GameObject:
   - component: {fileID: 8936115397802417890}
   - component: {fileID: 5688035481377562097}
   - component: {fileID: 6152008873884558527}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCylinder10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +509,7 @@ GameObject:
   - component: {fileID: 5399503910394288188}
   - component: {fileID: 5399503910393485340}
   - component: {fileID: 5399503910392519388}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +588,7 @@ GameObject:
   - component: {fileID: 6379867674844488349}
   - component: {fileID: 6379867674845782717}
   - component: {fileID: 6379867674846912637}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +667,7 @@ GameObject:
   - component: {fileID: 6609424002715841308}
   - component: {fileID: 6609424002717135676}
   - component: {fileID: 6609424002718134780}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +746,7 @@ GameObject:
   - component: {fileID: 6715562238236311598}
   - component: {fileID: 6715562238237605902}
   - component: {fileID: 6715562238238737102}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +825,7 @@ GameObject:
   - component: {fileID: 9161509180274679161}
   - component: {fileID: 9161509180278103385}
   - component: {fileID: 9161509180277104537}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bladeren1Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

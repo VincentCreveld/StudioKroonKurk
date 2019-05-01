@@ -5,4 +5,8 @@ using UnityEngine;
 public class GrassCluster : MonoBehaviour
 {
     public List<Transform> grass;
+	public Transform GetCenter()
+	{
+		return transform;
+	}
 }
