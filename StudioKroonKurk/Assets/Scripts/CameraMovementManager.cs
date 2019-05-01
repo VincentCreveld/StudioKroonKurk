@@ -50,6 +50,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		float totalTime = 0.8f;
 
 		Vector3 initialPos = cam.position;
+		Quaternion startRot = cam.rotation;
 		while(true)
 		{
 			yield return null;
@@ -59,7 +60,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 			Vector3 targDir = lookatTarget.position - movePos.position;
 			Quaternion targRotation = Quaternion.LookRotation(targDir);
 
-			cam.rotation = Quaternion.Lerp(camRotation, targRotation, curTime / totalTime);
+			cam.rotation = Quaternion.Lerp(startRot, targRotation, curTime / totalTime);
 			cam.position = Vector3.Slerp(initialPos, movePos.position, curTime / totalTime);
 
 			if(curTime > totalTime)

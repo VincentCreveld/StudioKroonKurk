@@ -14,7 +14,7 @@ public class ObjectClipping : MonoBehaviour
 	private List<TreeMeshGroup> tmgs = new List<TreeMeshGroup>();
 	private List<RaycastHit> hits = new List<RaycastHit>();
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		Ray r = new Ray(camObj.position, playerObj.position - camObj.position);
 		float dist = Vector3.Distance(playerObj.position, camObj.position);

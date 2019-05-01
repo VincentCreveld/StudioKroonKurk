@@ -87,7 +87,7 @@ Material:
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 0
-    - _Cutoff: 0.73
+    - _Cutoff: 0.766
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnableExternalAlpha: 0
@@ -121,6 +121,7 @@ Material:
     - _windSpeedPanner: 0.189949
     m_Colors:
     - _Color: {r: 0.4811321, g: 0.38955146, b: 0.14751692, a: 1}
+    - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
