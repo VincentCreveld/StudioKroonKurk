@@ -6,21 +6,23 @@ public class TreeMeshGroup : MonoBehaviour
 {
     public List<MeshRenderer> renderers;
 	public bool isFaded { get; private set; }
-	private bool startedFade;
+	public bool startedFade { get; private set; }
+
+	private float curAlpha = 1f;
+	private float fadedAlpha = 0.2f;
+	private float totalTime = 0.5f;
 
 	public void Fadeout()
 	{
-		if(!isFaded && !startedFade)
+		if(!isFaded)
 		{
-			StopCoroutine(FadeIn());
 			StartCoroutine(FadeOut());
 		}
 	}
 
 	private IEnumerator FadeOut()
 	{
-		float curTime = 0f;
-		float totalTime = 0.8f;
+		float curTime = Mathf.Lerp(0, totalTime, Mathf.InverseLerp(1f, fadedAlpha, curAlpha)); ;
 
 		startedFade = true;
 
@@ -29,7 +31,7 @@ public class TreeMeshGroup : MonoBehaviour
 			yield return null;
 			curTime += Time.deltaTime;
 
-			float val = Mathf.Lerp(1f, 0.4f, curTime / totalTime);
+			curAlpha = Mathf.Lerp(1f, fadedAlpha, curTime / totalTime);
 
 			foreach(Renderer r in renderers)
 			{
@@ -37,7 +39,7 @@ public class TreeMeshGroup : MonoBehaviour
 				{
 					Color c = m.color;
 
-					m.color = new Color(c.r, c.g, c.b, val);
+					m.color = new Color(c.r, c.g, c.b, curAlpha);
 				}
 			}
 
@@ -50,17 +52,15 @@ public class TreeMeshGroup : MonoBehaviour
 
 	public void Fadein()
 	{
-		if(isFaded && !startedFade)
+		if(isFaded)
 		{
-			StopCoroutine(FadeOut());
 			StartCoroutine(FadeIn());
 		}
 	}
 
 	private IEnumerator FadeIn()
 	{
-		float curTime = 0f;
-		float totalTime = 0.8f;
+		float curTime = Mathf.Lerp(0, totalTime, Mathf.InverseLerp(fadedAlpha, 1f, curAlpha));
 
 		startedFade = true;
 
@@ -69,7 +69,7 @@ public class TreeMeshGroup : MonoBehaviour
 			yield return null;
 			curTime += Time.deltaTime;
 
-			float val = Mathf.Lerp(0.4f, 1f, curTime / totalTime);
+			curAlpha = Mathf.Lerp(fadedAlpha, 1f, curTime / totalTime);
 
 			foreach(Renderer r in renderers)
 			{
@@ -77,7 +77,7 @@ public class TreeMeshGroup : MonoBehaviour
 				{
 					Color c = m.color;
 
-					m.color = new Color(c.r, c.g, c.b, val);
+					m.color = new Color(c.r, c.g, c.b, curAlpha);
 				}
 			}
 
@@ -86,5 +86,12 @@ public class TreeMeshGroup : MonoBehaviour
 		}
 		startedFade = false;
 		isFaded = false;
+	}
+
+	public void StopFading()
+	{
+		StopAllCoroutines();
+		startedFade = false;
+		isFaded = !isFaded;
 	}
 }
