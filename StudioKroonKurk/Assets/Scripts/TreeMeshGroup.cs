@@ -16,7 +16,17 @@ public class TreeMeshGroup : MonoBehaviour
 	{
 		if(!isFaded)
 		{
-			StartCoroutine(FadeOut());
+			foreach(Renderer r in renderers)
+			{
+				foreach(Material m in r.materials)
+				{
+					Color c = m.color;
+
+					m.color = new Color(c.r, c.g, c.b, 0.4f);
+				}
+			}
+			isFaded = true;
+			//StartCoroutine(FadeOut());
 		}
 	}
 
@@ -54,7 +64,17 @@ public class TreeMeshGroup : MonoBehaviour
 	{
 		if(isFaded)
 		{
-			StartCoroutine(FadeIn());
+			foreach(Renderer r in renderers)
+			{
+				foreach(Material m in r.materials)
+				{
+					Color c = m.color;
+
+					m.color = new Color(c.r, c.g, c.b, 1f);
+				}
+			}
+			isFaded = false;
+			//StartCoroutine(FadeIn());
 		}
 	}
 
