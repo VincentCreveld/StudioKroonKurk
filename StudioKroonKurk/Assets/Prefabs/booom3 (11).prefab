@@ -272,7 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881997359514715568}
   - component: {fileID: 2333335661392606740}
-  - component: {fileID: 7848265823741936862}
+  - component: {fileID: 2529915172498762075}
   m_Layer: 12
   m_Name: booom3 (11)
   m_TagString: Untagged
@@ -379,8 +379,8 @@ MonoBehaviour:
   - {fileID: 7354024266591591130}
   opaques: {fileID: 7589820623760875280}
   transparents: {fileID: 1749859004483364674}
---- !u!65 &7848265823741936862
-BoxCollider:
+--- !u!135 &2529915172498762075
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -390,8 +390,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2, y: 0.1, z: 3.2}
-  m_Center: {x: 0.39, y: 4.21, z: -0.68}
+  m_Radius: 1.22
+  m_Center: {x: 0.43, y: 3.62, z: -0.68}
 --- !u!1 &3631763159401007299
 GameObject:
   m_ObjectHideFlags: 0

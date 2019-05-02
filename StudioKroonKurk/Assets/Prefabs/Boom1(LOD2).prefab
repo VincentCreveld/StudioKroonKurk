@@ -730,7 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5354303578205059976}
   - component: {fileID: 7093810267679575985}
-  - component: {fileID: 1915086659372223456}
+  - component: {fileID: 7089464334578555162}
   m_Layer: 12
   m_Name: Boom1(LOD2)
   m_TagString: Untagged
@@ -810,8 +810,8 @@ MonoBehaviour:
   - {fileID: 7956088576919485859}
   opaques: {fileID: 6625181271829711189}
   transparents: {fileID: 3280759840615197922}
---- !u!65 &1915086659372223456
-BoxCollider:
+--- !u!135 &7089464334578555162
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -821,8 +821,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.3, y: 0.17, z: 3.56}
-  m_Center: {x: 0, y: 2.44, z: -0.2}
+  m_Radius: 1.41
+  m_Center: {x: -0.03, y: 1.95, z: -0.18}
 --- !u!1 &7956088576921740131
 GameObject:
   m_ObjectHideFlags: 0
