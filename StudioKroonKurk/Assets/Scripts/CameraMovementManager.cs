@@ -108,6 +108,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 
 	private IEnumerator MoveCamToFollowPos(Vector3 moveTarg, Vector3 lookPos, float panTime)
 	{
+		isFollowing = false;
 		float curTime = 0f;
 		float totalTime = panTime;
 		Vector3 startPos = cam.position;
