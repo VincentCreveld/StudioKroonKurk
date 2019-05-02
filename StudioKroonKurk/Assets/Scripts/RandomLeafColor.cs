@@ -25,6 +25,10 @@ public class RandomLeafColor : MonoBehaviour
 
                 r.materials = mats.ToArray();
             }
+			foreach(MeshRenderer r in ren.transparentRenderers)
+			{
+				r.material = materialSets[i].transparentMaterial;
+			}
         }
 	}
 }
@@ -33,4 +37,5 @@ public class RandomLeafColor : MonoBehaviour
 public class MaterialSet
 {
 	public List<Material> materials;
+	public Material transparentMaterial;
 }

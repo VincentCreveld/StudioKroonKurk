@@ -5,6 +5,10 @@ using UnityEngine;
 public class TreeMeshGroup : MonoBehaviour
 {
     public List<MeshRenderer> renderers;
+    public List<MeshRenderer> transparentRenderers;
+
+	public Transform opaques, transparents;
+
 	public bool isFaded { get; private set; }
 	public bool startedFade { get; private set; }
 
@@ -16,17 +20,8 @@ public class TreeMeshGroup : MonoBehaviour
 	{
 		if(!isFaded)
 		{
-			foreach(Renderer r in renderers)
-			{
-				foreach(Material m in r.materials)
-				{
-					Color c = m.color;
-
-					m.color = new Color(c.r, c.g, c.b, 0.4f);
-				}
-			}
-			isFaded = true;
-			//StartCoroutine(FadeOut());
+			if(transparentRenderers != null && transparentRenderers.Count > 0)
+				StartCoroutine(FadeOut());
 		}
 	}
 
@@ -36,6 +31,9 @@ public class TreeMeshGroup : MonoBehaviour
 
 		startedFade = true;
 
+		opaques.gameObject.SetActive(false);
+		transparents.gameObject.SetActive(true);
+
 		while(true)
 		{
 			yield return null;
@@ -43,7 +41,7 @@ public class TreeMeshGroup : MonoBehaviour
 
 			curAlpha = Mathf.Lerp(1f, fadedAlpha, curTime / totalTime);
 
-			foreach(Renderer r in renderers)
+			foreach(Renderer r in transparentRenderers)
 			{
 				foreach(Material m in r.materials)
 				{
@@ -64,17 +62,8 @@ public class TreeMeshGroup : MonoBehaviour
 	{
 		if(isFaded)
 		{
-			foreach(Renderer r in renderers)
-			{
-				foreach(Material m in r.materials)
-				{
-					Color c = m.color;
-
-					m.color = new Color(c.r, c.g, c.b, 1f);
-				}
-			}
-			isFaded = false;
-			//StartCoroutine(FadeIn());
+			if(transparentRenderers != null && transparentRenderers.Count > 0)
+				StartCoroutine(FadeIn());
 		}
 	}
 
@@ -91,7 +80,7 @@ public class TreeMeshGroup : MonoBehaviour
 
 			curAlpha = Mathf.Lerp(fadedAlpha, 1f, curTime / totalTime);
 
-			foreach(Renderer r in renderers)
+			foreach(Renderer r in transparentRenderers)
 			{
 				foreach(Material m in r.materials)
 				{
@@ -104,6 +93,10 @@ public class TreeMeshGroup : MonoBehaviour
 			if(curTime > totalTime)
 				break;
 		}
+
+		opaques.gameObject.SetActive(true);
+		transparents.gameObject.SetActive(false);
+
 		startedFade = false;
 		isFaded = false;
 	}

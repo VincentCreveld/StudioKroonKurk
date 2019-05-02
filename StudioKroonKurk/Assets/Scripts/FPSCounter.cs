@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class FPSCounter : MonoBehaviour
 {
-	float deltaTime = 0.0f;
+	private float deltaTime = 0.0f;
+	public Text text;
 
-	void Update()
+	private void Update()
 	{
 		deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+		text.text = Mathf.Ceil(1.0f / deltaTime).ToString();
 	}
 
-	void OnGUI()
+	private void OnGUI()
 	{
 		int w = Screen.width, h = Screen.height;
 
