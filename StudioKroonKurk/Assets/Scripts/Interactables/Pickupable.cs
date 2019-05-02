@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Pickupable : Interactable
 {
+    public int pickupDialogToStart = 404;
 	public int functionToAdd = 0;
-	public int itemToAdd;
+	public int functionToAddPickup = 0;
+    public int itemToAdd;
 	public bool checkForActiveQuest = false;
 	public int questToCheck = 0;
 	public bool checkForProgress = false;
@@ -16,7 +18,8 @@ public class Pickupable : Interactable
 	private void Start()
 	{
 		GameManager.instance.dSFuncDict.Add(functionToAdd, () => Destroy(gameObject));
-	}
+        CreatePickupDialog();
+    }
 
 	public override void Execute()
 	{
@@ -58,7 +61,13 @@ public class Pickupable : Interactable
 
 	public void Pickup()
 	{
-		GameManager.instance.StartPickupItemDialog(transform);
+		GameManager.instance.StartPickupItemDialog(transform, pickupDialogToStart);
 		GameManager.instance.PickupItem(itemToAdd);
 	}
+
+    public void CreatePickupDialog()
+    {
+        GameManager.instance.allOptions.Add(new DialogText(pickupDialogToStart, functionToAddPickup, "You Pick up the item."));
+        GameManager.instance.allOptions.Add(new Function(functionToAddPickup, 404, functionToAdd));
+    }
 }

@@ -26,7 +26,7 @@ public class CollectionQuest : Quest
 		gm.dSFuncDict.Add(1003, () => SetQuestState(QuestState.canAccept));
 		gm.dSFuncDict.Add(1004, SetNextQuestMarker);
 
-		gm.questList.Add(0, this);
+		gm.questList.Add(questNo, this);
 		
 		gm.itemList.Add(4, new Item(4,"item4"));
 		gm.itemList.Add(100, new Item(100, "item100"));

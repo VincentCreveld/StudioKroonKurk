@@ -100,8 +100,8 @@ public class GameManager : MonoBehaviour
 	public void CreateItemRelevantDialogs()
 	{
 		allOptions.Add(new DialogText(403, 404, "You don't see a reason to do that yet."));
-		allOptions.Add(new DialogText(402, 9407, "You Pick up the item."));
-		allOptions.Add(new Function(9407, 404, 6006));
+		//allOptions.Add(new DialogText(402, 9407, "You Pick up the item."));
+		//allOptions.Add(new Function(9407, 404, 6006));
 	}
 
 	public void CreateDebugDialog()
@@ -295,10 +295,10 @@ public class GameManager : MonoBehaviour
 		CloseGameState(focus);
 		SetNewDialogOption(403);
 	}
-	public void StartPickupItemDialog(Transform focus)
+	public void StartPickupItemDialog(Transform focus, int dialogToStart)
 	{
 		CloseGameState(focus);
-		SetNewDialogOption(402);
+		SetNewDialogOption(dialogToStart);
 	}
 
 	public void SetQuestProgressionById(int i, QuestState state)

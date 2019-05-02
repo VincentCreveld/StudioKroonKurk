@@ -7,12 +7,14 @@ public class TreeQuest : Quest
     public List<Transform> questMarkerPositions;
     public Transform marker;
     public int questNo;
+    public Transform emptyBucket, waterBucket;
 
     private void Start()
     {
+        questId = questNo;
         gm = GameManager.instance;
-        Initialise(questNo);
         state = QuestState.canAccept;
+        Initialise(questNo);
     }
 
     /*
@@ -33,25 +35,31 @@ public class TreeQuest : Quest
     // Entry 100300
     public override void Initialise(int i)
     {
+        gm.questList.Add(questNo, this);
+
         AddOption(new DialogText(199999, 404, "Je hebt me al geholpen! dankjewel."));
         AddOption(new DialogText(199998, 404, "Ik heb je hulp nog niet nodig."));
+        AddOption(new DialogText(199997, 404, "Bedankt voor de hulp!"));
         QuestProgress0();
         QuestProgress1();
+        QuestProgress2();
+        QuestProgress3();
 
-        AddOption(new QuestGate(100300, 199999, 100400, 100000, 199998, questNo));
-        AddOption(new QuestStepGate(100400, 101000, 100401, 1));
-        AddOption(new QuestStepGate(100401, 102000, 100402, 2));
-        AddOption(new QuestStepGate(100402, 103000, 100403, 3));
-        AddOption(new QuestStepGate(100403, 104000, 100404, 4));
-        AddOption(new QuestStepGate(100404, 105000, 100405, 5));
-        AddOption(new QuestStepGate(100405, 106000, 199997, 6));
-
-        AddOption(new DialogText(199997, 404, "Bedankt voor de hulp!"));
+        AddOption(new QuestGate(100300, 199999, 100400, 100100, 199998, questNo));
+        //SOLVE THESE
+        AddOption(new QuestStepGate(100400, 101200, 100401, questNo, 1));
+        AddOption(new QuestStepGate(100401, 102000, 100402, questNo, 2));
+        AddOption(new QuestStepGate(100402, 103000, 100403, questNo, 3));
+        AddOption(new QuestStepGate(100403, 104000, 100404, questNo, 4));
+        AddOption(new QuestStepGate(100404, 105000, 100405, questNo, 5));
+        AddOption(new QuestStepGate(100405, 106000, 199997, questNo, 6));
 
         gm.dSFuncDict.Add(100600, SetNextQuestMarker);
         gm.dSFuncDict.Add(101600, StartGiveWater);
         gm.dSFuncDict.Add(102600, FlowerGrows);
         gm.dSFuncDict.Add(103600, StartEndScene);
+        gm.dSFuncDict.Add(101697, () => { EnableWaterPickup(); });
+        gm.dSFuncDict.Add(101695, () => state = QuestState.ongoing );
     }
 
     private void AddOption(DialogEntity e)
@@ -61,12 +69,14 @@ public class TreeQuest : Quest
 
     private void QuestProgress0()
     {
-        AddOption(new Choice(100100, 100003, 100000, "Hey, zou je me kunnen helpen?", "Ik heb nu even geen tijd.", "Waar heb je hulp bij nodig?"));
+        AddOption(new Choice(100100, 404, 100000, "Hey, zou je me kunnen helpen?", "Ik heb nu even geen tijd.", "Waar heb je hulp bij nodig?"));
         AddOption(new DialogText(100000, 100101, "Ik ben opzoek naar iemand die \nwat water kan halen."));
-        AddOption(new Choice(100101, 100003, 100003, "Ik probeer deze bloemen te laten groeien \n, maar ze lijken steeds dood te gaan.", "Ik kan wel wat water voor je zoeken", "Geen probleem, maar waar vind ik water?"));
+        AddOption(new Choice(100101, 100002, 100002, "Ik probeer deze bloemen te laten groeien \n, maar ze lijken steeds dood te gaan.", "Ik kan wel wat water voor je zoeken", "Geen probleem, maar waar vind ik water?"));
         AddOption(new DialogText(100001, 100002, "Een stukje verderop in het noorden zag \nik een beekje. Ik moet hier ergens \nin de buurt ook een emmer \nhebben staan."));
-        AddOption(new DialogText(100002, 100500, "Ik zal kijken wat ik voor je kan doen."));
+        AddOption(new DialogText(100002, 100599, "Ik zal kijken wat ik voor je kan doen."));
         AddOption(new Function(100500, 404, 100600));
+        AddOption(new Function(100599, 100598, 100600));
+        AddOption(new Function(100598, 100500, 101695));
     }
 
     private void QuestProgress1()
@@ -134,6 +144,13 @@ public class TreeQuest : Quest
             marker.gameObject.SetActive(false);
             return;
         }
+        else
+            marker.gameObject.SetActive(true);
         marker.position = questMarkerPositions[currentQuestProgress].position;
+    }
+    private void EnableWaterPickup()
+    {
+        emptyBucket.gameObject.SetActive(false);
+        waterBucket.gameObject.SetActive(true);
     }
 }
