@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TreeMeshGroup : MonoBehaviour
 {
-    public List<MeshRenderer> renderers;
-    public List<MeshRenderer> transparentRenderers;
+    public List<MeshRenderer> leaves;
+	public List<MeshRenderer> treeBallsOpaque;
+	public List<MeshRenderer> treeBallsTransparent;
 
 	public Transform opaques, transparents;
 
@@ -20,7 +21,7 @@ public class TreeMeshGroup : MonoBehaviour
 	{
 		if(!isFaded)
 		{
-			if(transparentRenderers != null && transparentRenderers.Count > 0)
+			if(treeBallsTransparent != null && treeBallsTransparent.Count > 0)
 				StartCoroutine(FadeOut());
 		}
 	}
@@ -41,7 +42,7 @@ public class TreeMeshGroup : MonoBehaviour
 
 			curAlpha = Mathf.Lerp(1f, fadedAlpha, curTime / totalTime);
 
-			foreach(Renderer r in transparentRenderers)
+			foreach(Renderer r in treeBallsTransparent)
 			{
 				foreach(Material m in r.materials)
 				{
@@ -62,7 +63,7 @@ public class TreeMeshGroup : MonoBehaviour
 	{
 		if(isFaded)
 		{
-			if(transparentRenderers != null && transparentRenderers.Count > 0)
+			if(treeBallsTransparent != null && treeBallsTransparent.Count > 0)
 				StartCoroutine(FadeIn());
 		}
 	}
@@ -80,7 +81,7 @@ public class TreeMeshGroup : MonoBehaviour
 
 			curAlpha = Mathf.Lerp(fadedAlpha, 1f, curTime / totalTime);
 
-			foreach(Renderer r in transparentRenderers)
+			foreach(Renderer r in treeBallsTransparent)
 			{
 				foreach(Material m in r.materials)
 				{

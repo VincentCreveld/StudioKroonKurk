@@ -279,14 +279,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d21f29006d8a948a7df1e9a1560eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderers:
+  leaves: []
+  treeBallsOpaque:
   - {fileID: 561073446642979454}
   - {fileID: 946369858769644479}
   - {fileID: 3635166502498869842}
   - {fileID: 4576122856504711510}
   - {fileID: 418157938235097775}
   - {fileID: 6627801245163910449}
-  transparentRenderers:
+  treeBallsTransparent:
   - {fileID: 1521175706044882192}
   - {fileID: 4272962399245727320}
   - {fileID: 8380355008410370429}

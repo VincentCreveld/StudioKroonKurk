@@ -80,11 +80,11 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		while(true)
 		{
 			yield return null;
+
+			cam.rotation = Quaternion.Lerp(startRot, movebackRot, curTime / totalTime);
+			cam.position = Vector3.Lerp(startPos, followPos, curTime / totalTime);
+
 			curTime += Time.deltaTime;
-
-			cam.rotation = Quaternion.Slerp(startRot, movebackRot, curTime / totalTime);
-			cam.position = Vector3.Slerp(startPos, followPos, curTime / totalTime);
-
 			if(curTime > totalTime)
 				break;
 		}
@@ -119,11 +119,11 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		while(true)
 		{
 			yield return null;
+
+			cam.rotation = Quaternion.Lerp(startRot, targetRotation, curTime / totalTime);
+			cam.position = Vector3.Lerp(startPos, followPos, curTime / totalTime);
+
 			curTime += Time.deltaTime;
-
-			cam.rotation = Quaternion.Slerp(startRot, targetRotation, curTime / totalTime);
-			cam.position = Vector3.Slerp(startPos, followPos, curTime / totalTime);
-
 			if(curTime > totalTime)
 				break;
 		}
