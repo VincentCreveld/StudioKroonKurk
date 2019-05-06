@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 9f3412d89a7729844a004ad49430b865, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -85,19 +85,19 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _UVScale: 0.1
+    - _UVScale: 0.31
     - _UVSec: 0
-    - _WindSpeed: 0.468
-    - _WindStrength: 0.536
+    - _WindSpeed: 0.306
+    - _WindStrength: 0.34
     - _ZWrite: 1
-    - _glossiness: 0.637
+    - _glossiness: 0
     - _node_5377: 0
     - _node_8227: 0
     - _windLineSize: 0.4749203
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _basecolor: {r: 0.8, g: 0.7847346, b: 0.20784311, a: 1}
+    - _basecolor: {r: 0.5019608, g: 0.5803922, b: 0.16078432, a: 1}
     - _grassOffset: {r: 0, g: 0, b: 0, a: 0}
     - _grassSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _node_2222: {r: 0.47256708, g: 1, b: 0, a: 1}
