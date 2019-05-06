@@ -133,6 +133,8 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 1
     - _GlossyReflections: 1
+    - _LeafWindAmplitude: 0.05
+    - _LeafWindPower: 0.05
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
@@ -157,6 +159,8 @@ Material:
     - _Surface: 1
     - _TERRAIN_INSTANCED_PERPIXEL_NORMAL: 0
     - _Transparency: 0.5
+    - _TrunkWindAmplitude: 0.1
+    - _Trunkwindpower: 0.1
     - _UVSec: 0
     - _UseAoMap: 0
     - _UseColorMap: 0
@@ -182,3 +186,4 @@ Material:
     - _SpecColor: {r: 0.5754717, g: 0.36102706, b: 0.36102706, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _node_280: {r: 1, g: 1, b: 1, a: 0}

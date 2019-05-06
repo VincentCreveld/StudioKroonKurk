@@ -96,6 +96,8 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 1
     - _GlossyReflections: 1
+    - _LeafWindAmplitude: 0.05
+    - _LeafWindPower: 0.05
     - _Metallic: 0
     - _Mode: 1
     - _NormalIntensity: 1
@@ -110,6 +112,8 @@ Material:
     - _SpecularIntensity: 0.2
     - _SrcBlend: 1
     - _Surface: 1
+    - _TrunkWindAmplitude: 0.1
+    - _Trunkwindpower: 0.1
     - _UVSec: 0
     - _WindIntensityPanner: 0.0274
     - _WindIntensityVertex: 0.787
@@ -127,3 +131,4 @@ Material:
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _node_280: {r: 1, g: 1, b: 1, a: 0}
