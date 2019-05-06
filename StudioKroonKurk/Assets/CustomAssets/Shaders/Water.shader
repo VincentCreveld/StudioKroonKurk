@@ -12,6 +12,7 @@ Shader "Shader Forge/Water" {
         _WaterIntensity ("WaterIntensity", Range(0, 1)) = 0.4571758
         _node_7928 ("node_7928", 2D) = "white" {}
         _node_715 ("node_715", Range(0, 1)) = 0.2026581
+		_Color("Color", Color) = (1,1,1,1)
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
@@ -52,6 +53,7 @@ Shader "Shader Forge/Water" {
             uniform float _WaterIntensity;
             uniform sampler2D _node_7928; uniform float4 _node_7928_ST;
             uniform float _node_715;
+			float4 _Color;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -206,7 +208,7 @@ Shader "Shader Forge/Water" {
                 indirectDiffuse += gi.indirect.diffuse;
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 /// Final Color:
-                float3 finalColor = diffuse + specular;
+                float3 finalColor = (diffuse + specular) * 0.5f + (_Color) * 0.5f;
                 fixed4 finalRGBA = fixed4(finalColor,((_node_7928_var.a*_MainTex_var.a)*_node_715));
                 UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
                 return finalRGBA;

@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: roodleave
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 04f3f6c5338d63248819023a27a2e48e, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _SPECULAR_COLOR
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -80,10 +79,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _node_6680:
-        m_Texture: {fileID: 2800000, guid: 05f26bc8534721d4bbc47251cd48bcbd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 0
     - _AlphaClip: 0
@@ -100,7 +95,7 @@ Material:
     - _GlossinessSource: 1
     - _GlossyReflections: 1
     - _LeafWindAmplitude: 0.05
-    - _LeafWindPower: 0.05
+    - _LeafWindPower: 0.005
     - _Metallic: 0
     - _Mode: 1
     - _OcclusionStrength: 1
@@ -115,18 +110,14 @@ Material:
     - _Surface: 0
     - _TrunkWindAmplitude: 0.1
     - _Trunkwindpower: 0.1
-    - _UVScale: 0.1
     - _UVSec: 0
     - _WindIntensityPanner: 0
     - _WindIntensityVertex: 0.2931774
     - _WindQuality: 0
-    - _WindSpeed: 0.2756807
     - _WindSpeedVertex: 0.2665614
-    - _WindStrength: 0.2832751
     - _WindStrengthVertex: 0.2798384
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _glossiness: 0
     - _windSpeedPanner: 0.189949
     m_Colors:
     - _Color: {r: 1, g: 0.054901965, b: 0, a: 1}
@@ -135,6 +126,6 @@ Material:
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
-    - _basecolor: {r: 0.1698369, g: 1, b: 0, a: 1}
+    - _color: {r: 1, g: 0.05490196, b: 0, a: 1}
     - _node_280: {r: 1, g: 1, b: 1, a: 0}
-    - _node_760: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _node_6811: {r: 0.5, g: 0.5, b: 0.5, a: 1}
