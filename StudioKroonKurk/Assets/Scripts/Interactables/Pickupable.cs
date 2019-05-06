@@ -67,7 +67,7 @@ public class Pickupable : Interactable
 
     public void CreatePickupDialog()
     {
-        GameManager.instance.allOptions.Add(new DialogText(pickupDialogToStart, functionToAddPickup, "You Pick up the item."));
+        GameManager.instance.allOptions.Add(new DialogText(pickupDialogToStart, functionToAddPickup, "Je pakt het voorwerp op."));
         GameManager.instance.allOptions.Add(new Function(functionToAddPickup, 404, functionToAdd));
     }
 }
