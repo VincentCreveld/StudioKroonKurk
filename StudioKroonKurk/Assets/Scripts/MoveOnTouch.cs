@@ -47,12 +47,12 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 		if(disToPlayerCursor < 1f || agent.velocity.magnitude <= 0.5f)
 			StopMoving();
 
-		if(agent.velocity.magnitude >= 1.5f)
-			anim.SetBool("IsWalking", true);
-		else
-			anim.SetBool("IsWalking", false);
+        if (agent.velocity.magnitude >= 1.5f)
+            anim.SetBool("IsWalking", true);
+        else
+            anim.SetBool("IsWalking", false);
 
-		if(GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0))
+        if (GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0))
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
