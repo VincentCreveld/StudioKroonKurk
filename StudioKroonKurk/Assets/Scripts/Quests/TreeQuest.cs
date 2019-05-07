@@ -8,6 +8,9 @@ public class TreeQuest : Quest
     public Transform marker;
     public int questNo;
     public Transform emptyBucket, waterBucket;
+    public GameObject jack;
+    public Transform memorialPoint;
+    public GameObject flower;
 
     private void Start()
     {
@@ -65,7 +68,7 @@ public class TreeQuest : Quest
 
         gm.dSFuncDict.Add(100600, SetNextQuestMarker);
         gm.dSFuncDict.Add(102600, StartGiveWater);
-        gm.dSFuncDict.Add(102601, FlowerGrows);
+        gm.dSFuncDict.Add(102601, JackDisappears);
         gm.dSFuncDict.Add(103600, StartEndScene);
         gm.dSFuncDict.Add(101697, () => { EnableWaterPickup(); SetNextQuestMarker(); });
         gm.dSFuncDict.Add(101695, () => state = QuestState.ongoing );
@@ -150,13 +153,13 @@ public class TreeQuest : Quest
     {
 
     }
-    private void FlowerGrows()
+    private void JackDisappears()
     {
-
+        jack.transform.position = memorialPoint.position; 
     }
     private void StartGiveWater()
     {
-
+        flower.SetActive(true);
     }
     private void EnableMarker()
     {
