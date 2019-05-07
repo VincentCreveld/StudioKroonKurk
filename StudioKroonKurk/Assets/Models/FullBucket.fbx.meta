@@ -5,11 +5,34 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Default_Material
+    2100000: blinn7
+    2100002: Default_Material
+    2100004: blinn8
+    2100006: lambert5
     2300000: //RootNode
     3300000: //RootNode
     4300000: pCube4
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: 2100000, guid: 57d35866f5497284cb3f69ac8890b7b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn7
+    second: {fileID: 2100000, guid: d4d1dacab5631e34385dc20c2f5f2ead, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn8
+    second: {fileID: 2100000, guid: c5d2b00eefa42be41b73948c47a3a1b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: 96380d34b65cba64a9cd7c5bda088522, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

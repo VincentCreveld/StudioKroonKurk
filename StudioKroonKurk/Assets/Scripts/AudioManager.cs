@@ -21,8 +21,12 @@ public class AudioManager : MonoBehaviour
 	{
 		backgroundTrack = gameObject.AddComponent<AudioSource>();
 		dialogTrack = gameObject.AddComponent<AudioSource>();
+        backgroundTrack.playOnAwake = false;
+        backgroundTrack.Stop();
+        dialogTrack.playOnAwake = false;
+        dialogTrack.Stop();
 
-		if(instance == null)
+        if (instance == null)
 			instance = this;
 		else
 			Debug.LogError("More than one audiomanager in scene.");
