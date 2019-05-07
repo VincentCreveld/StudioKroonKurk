@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: rood2
-  m_Shader: {fileID: 4800000, guid: 04f3f6c5338d63248819023a27a2e48e, type: 3}
+  m_Shader: {fileID: 4800000, guid: b3a3c4779651eb2409c4817184da6a38, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _SPECULAR_COLOR
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -136,7 +136,7 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 1
     - _GlossyReflections: 1
-    - _LeafWindAmplitude: 0.05
+    - _LeafWindAmplitude: 0.03
     - _LeafWindPower: 0.005
     - _Metallic: 0
     - _Metallic0: 0
@@ -191,5 +191,5 @@ Material:
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
     - _color: {r: 1, g: 0, b: 0, a: 1}
-    - _node_280: {r: 1, g: 1, b: 1, a: 0}
+    - _node_280: {r: 1, g: 1, b: 1, a: 3}
     - _node_6811: {r: 0.5, g: 0.5, b: 0.5, a: 1}

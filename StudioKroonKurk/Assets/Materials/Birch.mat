@@ -60,24 +60,25 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Gloss: 0.8
+    - _Gloss: 0.088
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _LeafWindAmplitude: 0
-    - _LeafWindPower: 0
-    - _Metallic: 0
+    - _LeafWindAmplitude: 0.43
+    - _LeafWindPower: 0.09
+    - _Metallic: 0.1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TrunkWindAmplitude: 0
-    - _Trunkwindpower: 0
+    - _TrunkWindAmplitude: 0.05
+    - _Trunkwindpower: 0.75
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.7830189, g: 0.7061488, b: 0.6463599, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _node_280: {r: 1, g: 5.15, b: 1.4, a: 0}
