@@ -124,12 +124,19 @@ public class GameManager : MonoBehaviour
 	
 	public void SetNewDialogOption(int i)
 	{
+		AudioManager.instance.StopAudioClip();
+
 		// "Crashes" the dialog if a value is called which doesnt exist.
 		// Also throws out if an end leaf is reached.
 		if(!IsIdInRegistry(i) || allEndLeafIDs.Contains(i))
 		{
 			OpenGamestate();
 			return;
+		}
+
+		if(CheckIfAudioShouldBePlayed(i))
+		{
+			AudioManager.instance.PlayDialogClip(i);
 		}
 
 		previousDialog = currentDialog;
@@ -149,6 +156,14 @@ public class GameManager : MonoBehaviour
 			SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId());
 			return;
 		}
+	}
+
+	public bool CheckIfAudioShouldBePlayed(int id)
+	{
+		if(AudioManager.instance.existingAudioClips.Contains(id))
+			return true;
+		else
+			return false;
 	}
 
 	public bool IsGameStateOpen()

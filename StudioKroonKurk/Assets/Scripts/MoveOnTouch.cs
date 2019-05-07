@@ -37,7 +37,7 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 		cursor.transform.position = new Vector3(movePos.x, movePos.y, movePos.z);
 		cursor.gameObject.SetActive(true);
 
-		anim.SetBool("IsWalking", true);
+		//anim.SetBool("IsWalking", true);
 	}
 
     private void Update ()
@@ -46,6 +46,11 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 
 		if(disToPlayerCursor < 1f || agent.velocity.magnitude <= 0.5f)
 			StopMoving();
+
+		if(agent.velocity.magnitude >= 1.5f)
+			anim.SetBool("IsWalking", true);
+		else
+			anim.SetBool("IsWalking", false);
 
 		if(GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0))
 		{
