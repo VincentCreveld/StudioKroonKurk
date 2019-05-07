@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7473232476345418598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7473232476345418600}
+  - component: {fileID: 7473232476345418599}
+  - component: {fileID: 7473232476345418601}
+  - component: {fileID: 7473232476345418602}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7473232476345418600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473232476345418598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.1436777, y: -5.8590717, z: 15.431444}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7473232476345418599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473232476345418598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0a2668c46b673469b6c95a4dd6c4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camManager: {fileID: 0}
+  player: {fileID: 0}
+  allEndLeafIDs: 
+  canvas: {fileID: 0}
+  display: {fileID: 0}
+  button: {fileID: 0}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
+--- !u!114 &7473232476345418601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473232476345418598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847a389a4e3b9094dbd0ef29c0eef97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+--- !u!114 &7473232476345418602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473232476345418598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edf72d9e4b306441afde1da7d4d08ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundTrack: {fileID: 0}
+  dialogTrack: {fileID: 0}
+  bgTrack: {fileID: 8300000, guid: 0940af58a42bc434a88fc466cca1645d, type: 3}
+  dialogEntries:
+  - {fileID: 8300000, guid: 6735083cbe208574c8c6e2ac0776ff38, type: 3}
+  - {fileID: 8300000, guid: 005afe58aff89064683525625c9a4ae0, type: 3}
+  - {fileID: 8300000, guid: 797e217ed1404d44387e6bbb8ec6830b, type: 3}
+  - {fileID: 8300000, guid: 5e12c2110aaa1ce408cafe347f814f17, type: 3}
+  - {fileID: 8300000, guid: b68ed7ca12277a24d8bf3692fe2a78ea, type: 3}
+  - {fileID: 8300000, guid: 85f81360737b24f4b80bc3521cff57f8, type: 3}
+  - {fileID: 8300000, guid: 9208dd86a0137714bbcd453ffe1f4598, type: 3}
+  - {fileID: 8300000, guid: 24b1496d8ba76e24896f0571f16ef882, type: 3}
+  - {fileID: 8300000, guid: 1dd0ae69e2402754cacd0a11feb575e7, type: 3}
+  - {fileID: 8300000, guid: 8ee5cf5fd91adfc479a7120e8c928f2d, type: 3}
+  - {fileID: 8300000, guid: 67655e5db6fcf684aa7f4f21aecc9b1e, type: 3}
+  - {fileID: 8300000, guid: 7cb9558dc070076408831ef0761d7f21, type: 3}
+  - {fileID: 8300000, guid: 35ab0990d430a294d9cc29e2ab0ccdcc, type: 3}
+  - {fileID: 8300000, guid: 4460a31c6da93f141b7a53162ed2a1f5, type: 3}
+  - {fileID: 8300000, guid: add7da0a507a0964ab16c34a6b60d435, type: 3}
+  - {fileID: 8300000, guid: 88f49a1160ae33947923e86ab7bb599f, type: 3}
+  - {fileID: 8300000, guid: 0940af58a42bc434a88fc466cca1645d, type: 3}
+  - {fileID: 8300000, guid: 3d6b31046977e134899276d374f30d42, type: 3}
+  - {fileID: 8300000, guid: 215b92a9579acb143ac421787c301069, type: 3}
+  - {fileID: 8300000, guid: d828c52d085b57f458e9e03289b7a4fe, type: 3}
+  - {fileID: 8300000, guid: 6834cabaeedbafe4b94ed61de45cb148, type: 3}
+  existingAudioClips: 
