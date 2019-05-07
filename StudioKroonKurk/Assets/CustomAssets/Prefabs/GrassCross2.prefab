@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 4576561784125395362}
   - component: {fileID: 4044159146372371161}
   - component: {fileID: 3475820152071024295}
-  - component: {fileID: 4549404117283570994}
-  - component: {fileID: 3568789180123018310}
   m_Layer: 0
-  m_Name: GrassCross2
+  m_Name: GrassCross2 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,28 +77,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &4549404117283570994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3525308674055652798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37df0ec24dc2148458360a07f195a649, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3568789180123018310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3525308674055652798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f33e6720a200d488479adeb270cb7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grass: []
