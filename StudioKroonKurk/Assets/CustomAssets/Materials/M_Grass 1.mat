@@ -8,13 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Grass 1
-  m_Shader: {fileID: 4800000, guid: aaf746663e8fb5c48b6a37d023cb62e9, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: a46733fadc6008a44b19d246e3283a67, type: 3}
+  m_ShaderKeywords: _ALPHATEST_ON _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -70,17 +71,17 @@ Material:
     m_Floats:
     - _AlphaStrength: 1
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _Cutoff: 0.431
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Gloss: 0.8
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _LeafWindAmplitude: 0.03
     - _LeafWindPower: 1.5
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _NormalStrength: 0.124
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -99,7 +100,7 @@ Material:
     - _node_8227: 0
     - _windLineSize: 0.4749203
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.56078434, g: 0.6509804, b: 0.08235294, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _basecolor: {r: 0.65882355, g: 0.7176471, b: 0.1764706, a: 1}
     - _color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
