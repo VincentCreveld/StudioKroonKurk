@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ShaderTests.unity
     guid: 03e05c38fa714bb4e87cd3041c521318
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: e37baab455c92974488d98d39d3e44bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Level2.unity
     guid: 6971c587c8ab12c47a6796f0009961f4
   m_configObjects: {}
