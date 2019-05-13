@@ -140,7 +140,7 @@ public class TreeQuest : Quest
 
     private void QuestProgress3()
     {
-        AddOption(new Choice(103100, 103000, 103000, "Afgelopen zomer kreeg ik het telefoontje...", "Was dat haar op die foto?", "Bijzondere bomen zeg."));
+        AddOption(new Choice(103100, 103000, 103000, "Afgelopen zomer kreeg ik het telefoontje...", "Was dat haar voor die bomen?", "Bijzondere bomen op de foto."));
         AddOption(new DialogText(103000, 103001, "We hadden vroeger drie bomen in de tuin staan en hoewel mijn moeder deze bomen gewoon verzorgde, was ze er ook heel vaak tegen aan het praten."));
         AddOption(new DialogText(103001, 103002, "Maar de bomen waren zo belangrijk voor haar, soms hield ze gewoon volledig eenzijdige gesprekken met de bomen."));
         AddOption(new DialogText(103002, 103003, "En ze gaf de bomen ook namen, we hadden Iris de appelboom, Tom de eikenboom en Vincent de berk."));

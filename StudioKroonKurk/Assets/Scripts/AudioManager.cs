@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public bool playBackGroundTrack = false;
+
 	public AudioSource backgroundTrack;
 	public AudioSource dialogTrack;
 
@@ -21,8 +23,10 @@ public class AudioManager : MonoBehaviour
 	{
 		backgroundTrack = gameObject.AddComponent<AudioSource>();
 		dialogTrack = gameObject.AddComponent<AudioSource>();
-        backgroundTrack.playOnAwake = false;
-        backgroundTrack.Stop();
+        backgroundTrack.clip = bgTrack;
+        backgroundTrack.volume = 0.25f;
+        backgroundTrack.playOnAwake = playBackGroundTrack;
+        backgroundTrack.Play();
         dialogTrack.playOnAwake = false;
         dialogTrack.Stop();
 
