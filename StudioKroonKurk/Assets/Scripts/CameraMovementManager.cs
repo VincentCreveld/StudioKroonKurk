@@ -73,7 +73,6 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 
 	public IEnumerator MoveOutLoop()
 	{
-		Debug.Log(zoom);
 		zoom.ZoomOut();
 		float curTime = 0f;
 		float totalTime = 0.8f;
