@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 	public Dictionary<int, Item> itemList = new Dictionary<int, Item>();
 	public Dictionary<int, Action> dSFuncDict = new Dictionary<int, Action>();
 
+	public List<AnimationElement> animations;
+
 	public GameObject canvas;
 
 	public Text display;
@@ -101,29 +103,26 @@ public class GameManager : MonoBehaviour
 
 	public void CreateItemRelevantDialogs()
 	{
-		allOptions.Add(new DialogText(403, 404, "You don't see a reason to do that yet."));
+		allOptions.Add(new DialogText(403, 404, "Je ziet nog geen reden om hier \niets mee te doen."));
 		//allOptions.Add(new DialogText(402, 9407, "You Pick up the item."));
 		//allOptions.Add(new Function(9407, 404, 6006));
 	}
 
 	public void CreateDebugDialog()
 	{
-		allOptions.Add(new DialogText(1000, 1001, "At the end of this sequence a debug will apear"));
-		allOptions.Add(new DialogText(1001, 1002, "Agree with the following statement"));
-		allOptions.Add(new DialogText(1002, 2000, "Just do it"));
-		allOptions.Add(new Choice(2000, 9003, 9004, "Do you agree?", "Yea sure", "lmao no"));
-		allOptions.Add(new Choice(2001, 1005, 1006, "Do regret what you did?", "Yes?", "lmao no"));
-		allOptions.Add(new Function(9003, 1003, 0));
-		allOptions.Add(new Function(9004, 1004, 1));
-		allOptions.Add(new DialogText(1003, 404, "Good boy"));
-		allOptions.Add(new DialogText(1004, 2001, "Everything blew up"));
-		allOptions.Add(new DialogText(1005, 404, "I hope you've learned from the experience then"));
-		allOptions.Add(new DialogText(1006, 404, "You monster."));
+		allOptions.Add(new DialogText(7777000, 7777001, "Hey there buckaroomatey."));
+		allOptions.Add(new DialogText(7777003, 404, "Skidaddle your skadoodle m8."));
+		allOptions.Add(new Choice(7777001, 7777002, 7777003, "want to test animation?", "ye", "na"));
+		allOptions.Add(new DelayElement(7777002, 7777004, 0));
+		allOptions.Add(new DialogText(7777004, 404, "Come talk to me up here"));
+		allOptions.Add(new DialogText(7777010, 404, "Good job kiddo"));
 		allOptions.Add(new ReturnControl(404));
 	}
 	
 	public void SetNewDialogOption(int i)
 	{
+		canvas.SetActive(true);
+
 		AudioManager.instance.StopAudioClip();
 
 		// "Crashes" the dialog if a value is called which doesnt exist.
@@ -150,12 +149,32 @@ public class GameManager : MonoBehaviour
 		{
 			SetupUI(currentDialog as Choice);
 		}
+		else if(currentDialog is DelayElement)
+		{
+			DoAnimation(currentDialog as DelayElement);
+			canvas.SetActive(false);
+		}
 		else
 		{
 			// If it's not a text oriented option, execute immediately
 			SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId());
 			return;
 		}
+	}
+
+	private void DoAnimation(DelayElement d)
+	{
+		if(animations == null || d.GetAnimId() >= animations.Count)
+			return;
+
+		AnimationElement ae = animations[d.GetAnimId()];
+
+		if(ae == null)
+			return;
+
+		ae.nextId = d.nextId;
+
+		ae.StartAnimation();
 	}
 
 	public bool CheckIfAudioShouldBePlayed(int id)

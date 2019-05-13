@@ -8,6 +8,7 @@ public class Pickupable : Interactable
 	public int functionToAdd = 0;
 	public int functionToAddPickup = 0;
     public int itemToAdd;
+	public string pickupText;
 	public bool checkForActiveQuest = false;
 	public int questToCheck = 0;
 	public bool checkForProgress = false;
@@ -67,7 +68,7 @@ public class Pickupable : Interactable
 
     public void CreatePickupDialog()
     {
-        GameManager.instance.allOptions.Add(new DialogText(pickupDialogToStart, functionToAddPickup, "Je pakt het voorwerp op."));
+        GameManager.instance.allOptions.Add(new DialogText(pickupDialogToStart, functionToAddPickup, pickupText));
         GameManager.instance.allOptions.Add(new Function(functionToAddPickup, 404, functionToAdd));
     }
 }

@@ -7,7 +7,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MoveOnTouch : MonoBehaviour, IInteracter
 {
-
+	public List<Vector3> pathPoints = new List<Vector3>();
+	private List<GameObject> cornerObjects = new List<GameObject>();
 	public float minInteractDistance;
     private NavMeshAgent agent;
 
@@ -19,6 +20,10 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 	private Vector3 movePos;
 
 	public Animator anim;
+
+	public GameObject cornerPrefab;
+
+	public LineRenderer ln;
 
     void Start ()
 	{
@@ -36,12 +41,26 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 		movePos = position;
 		cursor.transform.position = new Vector3(movePos.x, movePos.y, movePos.z);
 		cursor.gameObject.SetActive(true);
-
-		//anim.SetBool("IsWalking", true);
+		ln.enabled = true;
 	}
 
     private void Update ()
 	{
+		if(agent != null)
+		{
+			pathPoints.Clear();
+			pathPoints.AddRange(agent.path.corners);
+
+			ln.positionCount = pathPoints.Count + 1;
+			Vector3 pos = new Vector3(transform.position.x, 0.5f, transform.position.z);
+			ln.SetPosition(0, pos);
+
+			for(int i = 0; i < pathPoints.Count; i++)
+			{
+				ln.SetPosition(i + 1, pathPoints[i] + new Vector3(0,0.2f,0));
+			}
+		}
+
 		float disToPlayerCursor = Vector3.Distance(new Vector3(cursor.position.x, transform.position.y, cursor.position.z), transform.position);
 
 		if(disToPlayerCursor < 1f || agent.velocity.magnitude <= 0.5f)
@@ -52,7 +71,7 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
         else
             anim.SetBool("IsWalking", false);
 
-        if (GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0))
+        if (GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0) && Input.touchCount < 2)
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -87,6 +106,7 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 		if(agent.enabled)
 			agent.isStopped = true;
 		anim.SetBool("IsWalking", false);
+		ln.enabled = false;
 	}
 
 	public Vector3 GetPos()
@@ -106,7 +126,7 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 
 		Quaternion startRot = transform.rotation;
 
-		float totalTime = 0.8f;
+		float totalTime = 0.5f;
 		float curTime = 0;
 		while(true)
 		{

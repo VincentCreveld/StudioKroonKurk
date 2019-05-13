@@ -22,6 +22,8 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	[Range(0,1f)]
 	public float smoothing = 0.5f;
 
+	public PinchZoom zoom;
+
 	private void Awake()
 	{
 		camOffset = cam.position - playerObject.position;
@@ -46,6 +48,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	public IEnumerator MoveInLoop(Transform lookatTarget)
 	{
 		isFollowing = false;
+		zoom.ZoomOut();
 		float curTime = 0f;
 		float totalTime = 0.8f;
 
@@ -70,6 +73,8 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 
 	public IEnumerator MoveOutLoop()
 	{
+		Debug.Log(zoom);
+		zoom.ZoomOut();
 		float curTime = 0f;
 		float totalTime = 0.8f;
 		Vector3 startPos = cam.position;
@@ -109,6 +114,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	private IEnumerator MoveCamToFollowPos(Vector3 moveTarg, Vector3 lookPos, float panTime)
 	{
 		isFollowing = false;
+		zoom.ZoomOut();
 		float curTime = 0f;
 		float totalTime = panTime;
 		Vector3 startPos = cam.position;

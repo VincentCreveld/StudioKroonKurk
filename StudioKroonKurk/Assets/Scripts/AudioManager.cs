@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
         backgroundTrack.clip = bgTrack;
         backgroundTrack.volume = 0.25f;
         backgroundTrack.playOnAwake = playBackGroundTrack;
+		backgroundTrack.loop = true;
         backgroundTrack.Play();
         dialogTrack.playOnAwake = false;
         dialogTrack.Stop();
