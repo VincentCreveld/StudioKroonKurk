@@ -6,9 +6,11 @@ public class Choice : DialogEntity, IDialogText
 {
 	public string text, text0, text1;
 	public int nextId0, nextId1;
+	public bool focusPlayer;
 
-	public Choice(int i, int nId0, int nId1, string t, string t0, string t1)
+	public Choice(int i, int nId0, int nId1, string t, string t0, string t1, bool focus = false)
 	{
+		focusPlayer = focus;
 		id = i;
 		nextId0 = nId0;
 		nextId1 = nId1;
@@ -37,5 +39,10 @@ public class Choice : DialogEntity, IDialogText
 	public string GetText(int i)
 	{
 		return (i == 0) ? text0 : text1;
+	}
+
+	public bool IsFocusPlayer()
+	{
+		return focusPlayer;
 	}
 }

@@ -9,6 +9,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 
 	private Vector3 camOffset;
 	public Transform movePos;
+	public Transform playerHoverPos;
 
 	private bool mngrHasControl = true;
 	private Vector3 followPos;
@@ -45,37 +46,46 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		cam.position = Vector3.Slerp(cam.position, followPos, smoothing);
 	}
 
-	public IEnumerator MoveInLoop(Transform lookatTarget)
+	public void FocusCamOnTarget(Transform target, float panTime = 0.4f, bool isPlayer = false)
+	{
+		StopAllCoroutines();
+		StartCoroutine(MoveInLoop(target, panTime, isPlayer));
+	}
+
+	public IEnumerator MoveInLoop(Transform lookatTarget, float totalTime, bool isPlayer = false)
 	{
 		isFollowing = false;
 		zoom.ZoomOut();
 		float curTime = 0f;
-		float totalTime = 0.8f;
 
 		Vector3 initialPos = cam.position;
 		Quaternion startRot = cam.rotation;
+
+		Vector3 lPos = (isPlayer) ? lookatTarget.position + Vector3.up : lookatTarget.position;
+
+		Transform t = (isPlayer) ? playerHoverPos : movePos;
+
 		while(true)
 		{
 			yield return null;
 			curTime += Time.deltaTime;
 
 			//cam.LookAt(lookatTarget);
-			Vector3 targDir = lookatTarget.position - movePos.position;
+			Vector3 targDir = lPos - t.position;
 			Quaternion targRotation = Quaternion.LookRotation(targDir);
 
 			cam.rotation = Quaternion.Lerp(startRot, targRotation, curTime / totalTime);
-			cam.position = Vector3.Slerp(initialPos, movePos.position, curTime / totalTime);
+			cam.position = Vector3.Slerp(initialPos, t.position, curTime / totalTime);
 
 			if(curTime > totalTime)
 				break;
 		}
 	}
 
-	public IEnumerator MoveOutLoop()
+	public IEnumerator MoveOutLoop(float totalTime)
 	{
 		zoom.ZoomOut();
 		float curTime = 0f;
-		float totalTime = 0.8f;
 		Vector3 startPos = cam.position;
 		Quaternion startRot = cam.rotation;
 
@@ -99,7 +109,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	{
 		mngrHasControl = true;
 		followPos = playerObject.transform.position + camOffset;
-		StartCoroutine(MoveOutLoop());
+		StartCoroutine(MoveOutLoop(0.8f));
 	}
 
 	public void TakeOverCam(Vector3 moveTarg, Vector3 lookPos)

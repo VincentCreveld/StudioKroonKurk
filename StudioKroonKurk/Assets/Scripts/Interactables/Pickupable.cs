@@ -36,7 +36,7 @@ public class Pickupable : Interactable
 				}
 				else
 				{
-					GameManager.instance.StartNoInteractionYetDialog(transform);
+					GameManager.instance.StartNoInteractionYetDialog(this);
 				}
 				return;
 			}
@@ -50,7 +50,7 @@ public class Pickupable : Interactable
 				}
 				else
 				{
-					GameManager.instance.StartNoInteractionYetDialog(transform);
+					GameManager.instance.StartNoInteractionYetDialog(this);
 				}
 				return;
 			}
@@ -62,7 +62,7 @@ public class Pickupable : Interactable
 
 	public void Pickup()
 	{
-		GameManager.instance.StartPickupItemDialog(transform, pickupDialogToStart);
+		GameManager.instance.StartPickupItemDialog(this, pickupDialogToStart);
 		GameManager.instance.PickupItem(itemToAdd);
 	}
 

@@ -90,10 +90,10 @@ public class TreeQuest : Quest
     }
     private void QuestProgress0()
     {
-        AddOption(new DialogText(100004, 100001, "Waar vind ik het water?"));
+        AddOption(new DialogText(100004, 100001, "Waar vind ik het water?", true));
         AddOption(new DialogText(100001, 100002, "Een stukje verderop in het noorden is een vijvertje bij een hele grote boom. Ik denk dat je daar wel water kan halen."));
         AddOption(new DialogText(100002, 100003, "Ik denk dat ik hier ook nog ergens een emmer heb liggen."));
-        AddOption(new DialogText(100003, 100501, "Ik zal kijken wat ik voor je kan doen."));
+        AddOption(new DialogText(100003, 100501, "Ik zal kijken wat ik voor je kan doen.", true));
         AddOption(new Function(100501, 404, 100600));
     }
 
@@ -106,30 +106,30 @@ public class TreeQuest : Quest
         // Is de emmer gevuld met water?
         AddOption(new ItemGate(101201, 404, 101004, 101701));
         // Emmer gevonden, nog geen water
-        AddOption(new DialogText(101004, 101002, "Ik heb de emmer gevonden, waar kan ik water halen?"));
+        AddOption(new DialogText(101004, 101002, "Ik heb de emmer gevonden, waar kan ik water halen?", true));
         AddOption(new DialogText(101002, 101003, "De vijver zou ergens in het noorden moeten zijn, als je de weg volgt dan kom je er vanzelf wel."));
-        AddOption(new DialogText(101003, 404, "Ik zal wel even kijken!"));
+        AddOption(new DialogText(101003, 404, "Ik zal wel even kijken!", true));
 
         // Emmer nog niet gevonden
         AddOption(new DialogText(101000, 101001, "Heb je de emmer al gevonden? \n Ik denk dat hij ergens in de buurt van mijn schuurtje ligt. "));
-        AddOption(new DialogText(101001, 404, "Top, dan zal ik hem wel vinden."));
+        AddOption(new DialogText(101001, 404, "Top, dan zal ik hem wel vinden.", true));
     }
 
     private void QuestProgress2()
     {
         // Water gevonden
-        AddOption(new DialogText(102000, 102001, "Hier is het water, hopelijk helpt het."));
+        AddOption(new DialogText(102000, 102001, "Hier is het water, hopelijk helpt het.", true));
         AddOption(new DialogText(102001, 102011, "Ik zal het even proberen, ik wilde deze bloemen graag zelf groeien om naar mijn moeder te brengen."));
         AddOption(new DialogText(102011, 102500, "*Jack geeft de bloem water en jullie wachten.*"));
         AddOption(new Function(102500, 102501, 102600));
         AddOption(new Function(102501, 102002, 100600));
 
-        AddOption(new DialogText(102002, 102003, "Waarom wil je graag de bloemen naar je moeder brengen?"));
+        AddOption(new DialogText(102002, 102003, "Waarom wil je graag de bloemen naar je moeder brengen?", true));
         AddOption(new DialogText(102003, 102004, "Ja, mijn moeder was altijd een beetje vreemd. Wel ontzettend lief, maar gewoon een beetje vreemd."));
-        AddOption(new DialogText(102004, 102005, "Hmm vreemd? Hoezo vreemd?"));
+        AddOption(new DialogText(102004, 102005, "Hmm vreemd? Hoezo vreemd?", true));
         AddOption(new DialogText(102005, 102006, "Toen ik klein was, bakte ze wel eens koekjes en die gaf ze dan aan mijn vrienden op school en bij elk koekje zat een handgeschreven briefje."));
         AddOption(new DialogText(102006, 102007, "op die briefjes stond dan hoe blij ze was dat ze mijn vrienden waren."));
-        AddOption(new DialogText(102007, 102008, "Heb je haar nooit gevraagd waarom ze dat deed vroeger?"));
+        AddOption(new DialogText(102007, 102008, "Heb je haar nooit gevraagd waarom ze dat deed vroeger?", true));
         AddOption(new DialogText(102008, 102502, "Nee, en nu kan dat ook niet meer."));
         AddOption(new Function(102502, 102009, 102600));
         AddOption(new DialogText(102009, 102010, "Ah de bloem is gegroeid! Nu kan ik hem eindelijk bij mijn moeder neerleggen."));

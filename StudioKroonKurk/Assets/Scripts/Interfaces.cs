@@ -6,6 +6,7 @@ public interface IDialogGate
 
 public interface IDialogText
 {
+	bool IsFocusPlayer();
 	string GetText();
 }
 

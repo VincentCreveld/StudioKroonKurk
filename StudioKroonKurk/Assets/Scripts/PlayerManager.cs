@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class MoveOnTouch : MonoBehaviour, IInteracter
+public class PlayerManager : MonoBehaviour, IInteracter
 {
 	public List<Vector3> pathPoints = new List<Vector3>();
 	private List<GameObject> cornerObjects = new List<GameObject>();
@@ -21,11 +21,9 @@ public class MoveOnTouch : MonoBehaviour, IInteracter
 
 	public Animator anim;
 
-	public GameObject cornerPrefab;
-
 	public LineRenderer ln;
 
-    void Start ()
+    private void Start ()
 	{
         agent = gameObject.GetComponent<NavMeshAgent>();
 		movePos = transform.position;
