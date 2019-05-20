@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
+    - _LightVeinTex:
+        m_Texture: {fileID: 2800000, guid: 05f26bc8534721d4bbc47251cd48bcbd, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 48ccbc7b14a8d5640a94713d291666f2, type: 3}
         m_Scale: {x: 5, y: 5}
@@ -53,6 +57,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PulseTex:
+        m_Texture: {fileID: 2800000, guid: 4c02eee28bd355c488ecfbc9470d4815, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -77,8 +85,10 @@ Material:
     - _Trunkwindpower: 0.75
     - _UVSec: 0
     - _ZWrite: 1
+    - _pulseSpeed: -0.00000008742278
     m_Colors:
     - _Color: {r: 0.7830189, g: 0.7061488, b: 0.6463599, a: 1}
+    - _Color_Lightvein: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _node_280: {r: 1, g: 5.15, b: 1.4, a: 0}

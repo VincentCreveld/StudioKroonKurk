@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 89987c89fe554b1478f3e2ac10a593f8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,14 +39,22 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EdgefoamTexture:
+        m_Texture: {fileID: 2800000, guid: 36dd0b22da8874ed38075789055ca664, type: 3}
+        m_Scale: {x: 6, y: 10}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FoamTexture:
+        m_Texture: {fileID: 2800000, guid: 6f71610ac9a21674298c86ed86b9bc26, type: 3}
+        m_Scale: {x: 50, y: 50}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 598a31a5b05d959479c3e8e32bb9c0e7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 0.2, y: 0.2}
+        m_Offset: {x: 1.94, y: 0.19}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,42 +71,96 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Refraction:
+        m_Texture: {fileID: 2800000, guid: 9e8df2232949dd94c929272015802a43, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0.21, y: 0}
+    - _UndercurrentTexture:
+        m_Texture: {fileID: 2800000, guid: 598a31a5b05d959479c3e8e32bb9c0e7, type: 3}
+        m_Scale: {x: 2.5, y: 9.88}
+        m_Offset: {x: 0, y: 0}
+    - _foam:
+        m_Texture: {fileID: 2800000, guid: 598a31a5b05d959479c3e8e32bb9c0e7, type: 3}
+        m_Scale: {x: 0.02, y: 0.02}
+        m_Offset: {x: 0, y: 0}
     - _node_6065:
         m_Texture: {fileID: 2800000, guid: 1b9543412f1a9d547b95d68928671d8f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _node_7928:
         m_Texture: {fileID: 2800000, guid: cd86e8d770ab23441ba3d6d7d33ee0ff, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.1, y: 0.1}
+        m_Offset: {x: 0, y: 0}
+    - _node_8948:
+        m_Texture: {fileID: 2800000, guid: 598a31a5b05d959479c3e8e32bb9c0e7, type: 3}
+        m_Scale: {x: 2, y: 1}
         m_Offset: {x: 0, y: 0}
     - _node_9206:
         m_Texture: {fileID: 2800000, guid: 598a31a5b05d959479c3e8e32bb9c0e7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _node_9559:
+        m_Texture: {fileID: 2800000, guid: f23e12ea3d5abc14eb64d42cf1acf0dc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _watersurfaceTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _Depth: 1.42
+    - _DepthMax: 0.547
+    - _DepthMin: 0.364
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Gloss: 1
+    - _FoamMax: 0.574
+    - _FoamMin: 0.142
+    - _FoamPower: 7.58
+    - _Gloss: 0.8
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0.512
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0
+    - _Opacity: 0.722
     - _Parallax: 0.02
+    - _Reflection: 0.82
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Thikness: 0.8313457
+    - _TopSpeed: 2.32
     - _UVSec: 0
-    - _WaterIntensity: 1
+    - _UndercurrentSpeed: 2.21
+    - _WaterIntensity: 0.833
+    - _WaterSpeed: 1.46
     - _ZWrite: 1
+    - _node_1361: 10
     - _node_2585: 0.6898746
     - _node_262: 0.612216
-    - _node_715: 0.422
+    - _node_3628: 0.451
+    - _node_512: 1
+    - _node_715: 1
+    - _node_8187: 3.04
+    - _opacity: 0.295
     m_Colors:
-    - _Color: {r: 0.03137237, g: 0.18344982, b: 0.4433962, a: 1}
+    - _Color: {r: 1, g: 0, b: 0.039355278, a: 1}
+    - _EdgefoamColor: {r: 0.2599235, g: 0.61899203, b: 0.9339623, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamColor: {r: 0, g: 0.62534285, b: 1, a: 1}
+    - _WaterColor: {r: 0.2264151, g: 0.15483756, b: 0.10359559, a: 1}
+    - _Watercolor: {r: 0, g: 0.3834776, b: 0.8862745, a: 1}
+    - _color: {r: 0.1740833, g: 0.17952304, b: 0.2264151, a: 1}
+    - _color2: {r: 0, g: 0.45532417, b: 1, a: 1}
+    - _node_1692: {r: 0.7640174, g: 0.8976048, b: 0.9150943, a: 1}
+    - _node_1985: {r: 0.1, g: 0, b: 1, a: 1}
+    - _node_226: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _node_3033: {r: 1, g: 0.6249813, b: 0, a: 1}
+    - _node_4653: {r: 1, g: 0, b: 0, a: 1}
+    - _node_6973: {r: 0.4764151, g: 0.78448063, b: 1, a: 1}
+    - _node_7411: {r: 0, g: 0.1349118, b: 1, a: 1}
+    - _node_9331: {r: 0.5235849, g: 0.62724006, b: 1, a: 1}
+    - _node_9589: {r: 1, g: 0.5205797, b: 0, a: 1}

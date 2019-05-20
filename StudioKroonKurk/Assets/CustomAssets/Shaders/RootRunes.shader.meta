@@ -3,7 +3,8 @@ guid: 1091200b78a84c948b0d7479d5204483
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _node_6680: {fileID: 2800000, guid: 05f26bc8534721d4bbc47251cd48bcbd, type: 3}
+  - _LightVeinTex: {fileID: 2800000, guid: 05f26bc8534721d4bbc47251cd48bcbd, type: 3}
+  - _PulseTex: {fileID: 2800000, guid: 4c02eee28bd355c488ecfbc9470d4815, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 
