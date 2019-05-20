@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-	public Transform interactPos;
+	public Transform interactPos, focusPos;
 	public float interactDistance;
 
 	protected IInteracter curTarget;
@@ -14,6 +14,9 @@ public abstract class Interactable : MonoBehaviour
 
 	private void Start()
 	{
+		if(focusPos == null)
+			focusPos = transform;
+
 		interactDistance = Vector3.Distance(transform.position, interactPos.position) + 0.25f;
 	}
 
@@ -32,6 +35,11 @@ public abstract class Interactable : MonoBehaviour
 	public Vector3 GetInteractPos()
 	{
 		return interactPos.position;
+	}
+
+	public Transform GetFocusTransform()
+	{
+		return focusPos;
 	}
 
 	public virtual void Interact(IInteracter t)
