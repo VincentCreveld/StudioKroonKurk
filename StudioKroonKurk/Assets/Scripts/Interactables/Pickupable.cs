@@ -16,8 +16,9 @@ public class Pickupable : Interactable
 	public bool executeFuntion = false;
 	public int functionToExecute = 0;
 
-	private void Start()
+	protected override void Start()
 	{
+		base.Start();
 		GameManager.instance.dSFuncDict.Add(functionToAdd, () => Destroy(gameObject));
         CreatePickupDialog();
     }

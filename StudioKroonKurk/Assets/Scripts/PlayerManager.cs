@@ -49,13 +49,13 @@ public class PlayerManager : MonoBehaviour, IInteracter
 			pathPoints.Clear();
 			pathPoints.AddRange(agent.path.corners);
 
-			ln.positionCount = pathPoints.Count + 1;
-			Vector3 pos = new Vector3(transform.position.x, 0.5f, transform.position.z);
-			ln.SetPosition(0, pos);
+			ln.positionCount = pathPoints.Count;
+			//Vector3 pos = transform.position + Vector3.up;
+			//ln.SetPosition(0, pos);
 
 			for(int i = 0; i < pathPoints.Count; i++)
 			{
-				ln.SetPosition(i + 1, pathPoints[i] + new Vector3(0,0.2f,0));
+				ln.SetPosition(i, pathPoints[i] + Vector3.up);
 			}
 		}
 

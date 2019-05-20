@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour
 
 	public List<AnimationElement> animations;
 
-	public GameObject canvas;
+	public GameObject mainCanvas, dialogCanvas, inspectCanvas;
 
 	public Text display;
 
-	public Button button, button1, button2;
+	public Button button, leftButton, rightButton, inspectButton, xButton;
 
 	public DialogEntity currentDialog, previousDialog;
 
@@ -55,9 +55,12 @@ public class GameManager : MonoBehaviour
 
 	public void Initialise()
 	{
-		//CreateDebugDialog();
 		CreateItemRelevantDialogs();
 		CreateQuestNotReadyDialog();
+
+		xButton.onClick.AddListener(() => SetNewDialogOption(404));
+
+		allOptions.Add(new InspectElement(405, 404));
 
 		foreach(DialogEntity e in allOptions)
 		{
@@ -79,7 +82,9 @@ public class GameManager : MonoBehaviour
 	// Probably the most important video.
 	public void SetNewDialogOption(int i)
 	{
-		canvas.SetActive(true);
+		mainCanvas.SetActive(true);
+		inspectCanvas.SetActive(false);
+		dialogCanvas.SetActive(false);
 
 		AudioManager.instance.StopAudioClip();
 
@@ -99,7 +104,11 @@ public class GameManager : MonoBehaviour
 		previousDialog = currentDialog;
 		currentDialog = GetEntityById(i);
 
-		if(currentDialog is DialogText)
+		if(currentDialog is InspectElement)
+		{
+			SetupUI(currentDialog as InspectElement);
+		}
+		else if(currentDialog is DialogText)
 		{
 			FlipCameraFocus((currentDialog as DialogText).IsFocusPlayer());
 				
@@ -114,7 +123,7 @@ public class GameManager : MonoBehaviour
 		else if(currentDialog is DelayElement)
 		{
 			DoAnimation(currentDialog as DelayElement);
-			canvas.SetActive(false);
+			mainCanvas.SetActive(false);
 		}
 		else
 		{
@@ -154,9 +163,11 @@ public class GameManager : MonoBehaviour
 
 	public void SetupUI(DialogText option)
 	{
+		dialogCanvas.SetActive(true);
+
 		button.gameObject.SetActive(true);
-		button1.gameObject.SetActive(false);
-		button2.gameObject.SetActive(false);
+		leftButton.gameObject.SetActive(false);
+		rightButton.gameObject.SetActive(false);
 
 		display.text = option.text;
 		button.onClick.RemoveAllListeners();
@@ -164,22 +175,36 @@ public class GameManager : MonoBehaviour
 		button.GetComponentInChildren<Text>().text = "Next";
 	}
 
+	public void SetupUI(InspectElement option)
+	{
+		inspectCanvas.SetActive(true);
+		inspectButton.onClick.RemoveAllListeners();
+		inspectButton.onClick.AddListener
+			(() => 
+				{
+					camManager.ReturnCamControl();
+					SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId());
+				}
+			);
+	}
+
 	public void SetupUI(Choice choice)
 	{
-		button.gameObject.SetActive(false);
-		button1.gameObject.SetActive(true);
-		button2.gameObject.SetActive(true);
+		dialogCanvas.SetActive(true);
 
+		button.gameObject.SetActive(false);
+		leftButton.gameObject.SetActive(true);
+		rightButton.gameObject.SetActive(true);
 
 		display.text = choice.text;
-		button1.GetComponentInChildren<Text>().text = choice.GetText(0);
-		button2.GetComponentInChildren<Text>().text = choice.GetText(1);
+		leftButton.GetComponentInChildren<Text>().text = choice.GetText(0);
+		rightButton.GetComponentInChildren<Text>().text = choice.GetText(1);
 
-		button1.onClick.RemoveAllListeners();
-		button1.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(0)));
+		leftButton.onClick.RemoveAllListeners();
+		leftButton.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(0)));
 
-		button2.onClick.RemoveAllListeners();
-		button2.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(1)));
+		rightButton.onClick.RemoveAllListeners();
+		rightButton.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(1)));
 	}
 
 	public void EndLeafFunction()
@@ -196,6 +221,14 @@ public class GameManager : MonoBehaviour
 		StartCoroutine(CloseGame(focus));
 	}
 
+	public void CloseGameWithoutAnim(Interactable focus)
+	{
+		currentInteractable = focus;
+		isFocusingPlayer = false;
+		isGameStateOpen = false;
+		mainCanvas.SetActive(true);
+	}
+
 	public IEnumerator CloseGame(Interactable focus)
 	{
 		currentInteractable = focus;
@@ -203,7 +236,7 @@ public class GameManager : MonoBehaviour
 
 		isGameStateOpen = false;
 		yield return StartCoroutine(camManager.MoveInLoop(focus.GetFocusTransform(), 0.8f));
-		canvas.SetActive(true);
+		mainCanvas.SetActive(true);
 	}
 
 	public void OpenGamestate()
@@ -218,7 +251,7 @@ public class GameManager : MonoBehaviour
 		currentInteractable = null;
 		isFocusingPlayer = true;
 
-		canvas.SetActive(false);
+		mainCanvas.SetActive(false);
 		yield return StartCoroutine(camManager.MoveOutLoop(0.8f));
 		isGameStateOpen = true;
 	}

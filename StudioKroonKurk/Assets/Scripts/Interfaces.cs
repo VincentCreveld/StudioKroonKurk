@@ -20,6 +20,6 @@ public interface IInteracter
 
 public interface ICamControl
 {
-	void TakeOverCam(Vector3 moveTarg, Vector3 lookPos);
+	void TakeOverCam(Vector3 moveTarg, Vector3 lookPos, float speed = 3f);
 	void ReturnCamControl();
 }

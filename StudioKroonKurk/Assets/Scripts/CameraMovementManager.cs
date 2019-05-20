@@ -109,15 +109,16 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	{
 		mngrHasControl = true;
 		followPos = playerObject.transform.position + camOffset;
+		StopAllCoroutines();
 		StartCoroutine(MoveOutLoop(0.8f));
 	}
 
-	public void TakeOverCam(Vector3 moveTarg, Vector3 lookPos)
+	public void TakeOverCam(Vector3 moveTarg, Vector3 lookPos, float speed = 3f)
 	{
 		mngrHasControl = false;
 		followPos = moveTarg;
 		StopAllCoroutines();
-		StartCoroutine(MoveCamToFollowPos(moveTarg, lookPos, 3f));
+		StartCoroutine(MoveCamToFollowPos(moveTarg, lookPos, speed));
 	}
 
 	private IEnumerator MoveCamToFollowPos(Vector3 moveTarg, Vector3 lookPos, float panTime)

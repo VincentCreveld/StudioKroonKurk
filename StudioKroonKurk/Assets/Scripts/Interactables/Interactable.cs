@@ -12,7 +12,7 @@ public abstract class Interactable : MonoBehaviour
 
 	private float dis;
 
-	private void Start()
+	protected virtual void Start()
 	{
 		if(focusPos == null)
 			focusPos = transform;
