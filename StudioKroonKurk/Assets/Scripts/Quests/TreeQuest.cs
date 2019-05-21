@@ -12,6 +12,10 @@ public class TreeQuest : Quest
     public Transform memorialPoint;
     public GameObject flower;
 
+	public List<string> progressTexts = new List<string>();
+
+	
+
     private void Start()
     {
         questId = questNo;
