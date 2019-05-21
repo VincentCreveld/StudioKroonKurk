@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4192800340368136575}
+  - component: {fileID: 6965492988102813110}
   m_Layer: 0
   m_Name: GrassClump
   m_TagString: Untagged
@@ -41,6 +42,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6965492988102813110
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192800340368136574}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3323821c84470e248a077a9539bebebf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4192800338426378005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,7 +623,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 30da85ee86d120149af36f412ae1b337, type: 3}
       propertyPath: m_Name
-      value: GrassCross2 (1)
+      value: GrassCross2 (11)
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 30da85ee86d120149af36f412ae1b337, type: 3}
       propertyPath: m_LocalPosition.x
@@ -769,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 30da85ee86d120149af36f412ae1b337, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0011712313
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 30da85ee86d120149af36f412ae1b337, type: 3}
       propertyPath: m_LocalPosition.z
