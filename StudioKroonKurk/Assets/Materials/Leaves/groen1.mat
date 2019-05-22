@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: groen1
-  m_Shader: {fileID: 4800000, guid: a46733fadc6008a44b19d246e3283a67, type: 3}
+  m_Shader: {fileID: 4800000, guid: 04f3f6c5338d63248819023a27a2e48e, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _GLOSSYREFLECTIONS_OFF _SPECULAR_COLOR
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - SHADOWCASTER
   m_SavedProperties:
@@ -96,8 +95,8 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 1
     - _GlossyReflections: 0
-    - _LeafWindAmplitude: 0.01
-    - _LeafWindPower: 1
+    - _LeafWindAmplitude: 0.005
+    - _LeafWindPower: 0.5
     - _Metallic: 0
     - _Mode: 1
     - _NormalIntensity: 1
@@ -112,8 +111,8 @@ Material:
     - _SpecularIntensity: 0.2
     - _SrcBlend: 1
     - _Surface: 1
-    - _TrunkWindAmplitude: 0.01
-    - _Trunkwindpower: 0.01
+    - _TrunkWindAmplitude: 0
+    - _Trunkwindpower: 0
     - _UVSec: 0
     - _WindIntensityPanner: 0.0274
     - _WindIntensityVertex: 0.819
@@ -132,4 +131,4 @@ Material:
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _node_280: {r: 0, g: 1, b: 30, a: 0}
+    - _node_280: {r: 0, g: 1, b: 30, a: 1}
