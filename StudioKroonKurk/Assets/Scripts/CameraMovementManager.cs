@@ -13,11 +13,11 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	public Transform playerHoverPos;
 
 	private bool mngrHasControl = true;
-	private Vector3 followPos;
+	private Vector3 followPos, prevFollowPos;
 
-	private Quaternion camRotation;
+	private Quaternion defaultRotation;
 
-	private Quaternion targetRotation;
+	private Quaternion targetRotation, prevTargetRotation;
 
 	private bool isFollowing = true;
 	
@@ -26,17 +26,21 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 
 	public PinchZoom zoom;
 
+	public Vector3 FollowPos { get => followPos; set { prevFollowPos = followPos; followPos = value; } }
+
+	public Quaternion TargetRotation { get => targetRotation; set { prevTargetRotation = targetRotation; targetRotation = value; } }
+
 	private void Awake()
 	{
 		camOffset = cam.position - playerObject.position;
-		camRotation = cam.rotation;
-		followPos = playerObject.transform.position + camOffset;
+		defaultRotation = cam.rotation;
+		FollowPos = playerObject.transform.position + camOffset;
 	}
 
 	private void Update()
     {
 		if(mngrHasControl)
-			followPos = playerObject.transform.position + camOffset;
+			FollowPos = playerObject.transform.position + camOffset;
 
 		if(isFollowing)
 			SmoothCamFollow();
@@ -44,7 +48,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 
 	private void SmoothCamFollow()
 	{
-		cam.position = Vector3.Slerp(cam.position, followPos, smoothing);
+		cam.position = Vector3.Slerp(cam.position, FollowPos, smoothing);
 	}
 
 	public void FocusCamOnTarget(Transform target, float panTime = 0.4f, bool isPlayer = false)
@@ -90,14 +94,14 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		Vector3 startPos = cam.position;
 		Quaternion startRot = cam.rotation;
 
-		Quaternion movebackRot = (mngrHasControl) ? camRotation : targetRotation;
+		Quaternion movebackRot = (mngrHasControl) ? defaultRotation : TargetRotation;
 
 		while(true)
 		{
 			yield return null;
 
 			cam.rotation = Quaternion.Lerp(startRot, movebackRot, curTime / totalTime);
-			cam.position = Vector3.Lerp(startPos, followPos, curTime / totalTime);
+			cam.position = Vector3.Lerp(startPos, FollowPos, curTime / totalTime);
 
 			curTime += Time.deltaTime;
 			if(curTime > totalTime)
@@ -109,7 +113,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	public void ReturnCamControl()
 	{
 		mngrHasControl = true;
-		followPos = playerObject.transform.position + camOffset;
+		FollowPos = playerObject.transform.position + camOffset;
 		StopAllCoroutines();
 		StartCoroutine(MoveOutLoop(0.8f));
 	}
@@ -117,7 +121,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	public void TakeOverCam(Vector3 moveTarg, Vector3 lookPos, float speed = 3f)
 	{
 		mngrHasControl = false;
-		followPos = moveTarg;
+		FollowPos = moveTarg;
 		StopAllCoroutines();
 		StartCoroutine(MoveCamToFollowPos(moveTarg, lookPos, speed));
 	}
@@ -132,14 +136,14 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		Quaternion startRot = cam.rotation;
 
 		Vector3 targDir = lookPos - moveTarg;
-		targetRotation = Quaternion.LookRotation(targDir);
+		TargetRotation = Quaternion.LookRotation(targDir);
 
 		while(true)
 		{
 			yield return null;
 
-			cam.rotation = Quaternion.Lerp(startRot, targetRotation, curTime / totalTime);
-			cam.position = Vector3.Lerp(startPos, followPos, curTime / totalTime);
+			cam.rotation = Quaternion.Lerp(startRot, TargetRotation, curTime / totalTime);
+			cam.position = Vector3.Lerp(startPos, FollowPos, curTime / totalTime);
 
 			curTime += Time.deltaTime;
 			if(curTime > totalTime)
@@ -147,5 +151,39 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		}
 	}
 
-	
+	public void MoveCamAmbi()
+	{
+		StopAllCoroutines();
+		Vector3 p = prevFollowPos;
+		Quaternion t = prevTargetRotation;
+		FollowPos = p;
+		TargetRotation = t;
+		StartCoroutine(MoveCamAmbiguous(0.8f));
+	}
+
+	private IEnumerator MoveCamAmbiguous(float panTime)
+	{
+		zoom.ZoomOut();
+		float curTime = 0f;
+		float totalTime = panTime;
+		Vector3 startPos = cam.position;
+		Quaternion startRot = cam.rotation;
+
+		while(true)
+		{
+			yield return null;
+
+			cam.rotation = Quaternion.Lerp(startRot, TargetRotation, curTime / totalTime);
+			cam.position = Vector3.Lerp(startPos, FollowPos, curTime / totalTime);
+
+			curTime += Time.deltaTime;
+			if(curTime > totalTime)
+				break;
+		}
+	}
+
+	public bool GetMngrHasControl()
+	{
+		return mngrHasControl;
+	}
 }
