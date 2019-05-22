@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour, IInteracter
 		movePos = position;
 		cursor.transform.position = new Vector3(movePos.x, movePos.y, movePos.z);
 		cursor.gameObject.SetActive(true);
-		ln.enabled = true;
+		//ln.enabled = true;
 	}
 
     private void Update ()
@@ -114,7 +114,7 @@ public class PlayerManager : MonoBehaviour, IInteracter
 		if(agent.enabled)
 			agent.isStopped = true;
 		anim.SetBool("IsWalking", false);
-		ln.enabled = false;
+		//ln.enabled = false;
 	}
 
 	public Vector3 GetPos()
