@@ -32,7 +32,7 @@ public abstract class Interactable : MonoBehaviour
 		}
 	}
 
-	public Vector3 GetInteractPos()
+	public virtual Vector3 GetInteractPos()
 	{
 		return interactPos.position;
 	}

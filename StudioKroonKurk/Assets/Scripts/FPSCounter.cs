@@ -5,12 +5,10 @@ using System.Collections;
 public class FPSCounter : MonoBehaviour
 {
 	private float deltaTime = 0.0f;
-	public Text text;
 
 	private void Update()
 	{
 		deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-		text.text = Mathf.Ceil(1.0f / deltaTime).ToString();
 	}
 
 	private void OnGUI()

@@ -12,4 +12,9 @@ public class DialogNPC : Interactable
 		GameManager.instance.CloseGameState(this);
 		GameManager.instance.SetNewDialogOption(dialogToStart);
 	}
+
+	public override Vector3 GetInteractPos()
+	{
+		return interactPos.position + Vector3.up;
+	}
 }
