@@ -67,11 +67,11 @@ public class TreeQuest : Quest
         AddOption(new QuestStepGate(100403, entryQP3, 100404, questNo, 3));
         AddOption(new QuestStepGate(100404, entryQP4, 199997, questNo, 4));
 
-        gm.dSFuncDict.Add(100600, SetNextQuestMarker);
+        gm.dSFuncDict.Add(100600, IncrementQuestProgress);
         gm.dSFuncDict.Add(102600, StartGiveWater);
         gm.dSFuncDict.Add(102601, JackDisappears);
         gm.dSFuncDict.Add(103600, StartEndScene);
-        gm.dSFuncDict.Add(101697, () => { EnableWaterPickup(); SetNextQuestMarker(); });
+        gm.dSFuncDict.Add(101697, () => { EnableWaterPickup(); IncrementQuestProgress(); });
         gm.dSFuncDict.Add(101695, () => state = QuestState.ongoing );
         gm.dSFuncDict.Add(101694, () => state = QuestState.closed );
     }
@@ -166,7 +166,7 @@ public class TreeQuest : Quest
     {
         marker.gameObject.SetActive(true);
     }
-    private void SetNextQuestMarker()
+    private void IncrementQuestProgress()
     {
 		if(currentQuestProgress >= 0 && currentQuestProgress < textPerProgressionDone.Count && !(textPerProgressionDone[currentQuestProgress] == string.Empty))
 			GameManager.instance.SetNewQuestProgress(textPerProgressionDone[currentQuestProgress]);
