@@ -8,7 +8,8 @@ public class Pickupable : Interactable
 	public int functionToAdd = 0;
 	public int functionToAddPickup = 0;
     public int itemToAdd;
-	public string pickupText;
+	public string pickupText, textForProgress;
+	public bool pushTextToProgress = false;
 	public bool checkForActiveQuest = false;
 	public int questToCheck = 0;
 	public bool checkForProgress = false;
@@ -31,9 +32,9 @@ public class Pickupable : Interactable
 			{
 				if(GameManager.instance.questList[questToCheck].GetCurrentQuestProgress() == questProgressToMatch)
 				{
+					Pickup();
 					if(executeFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
 						GameManager.instance.dSFuncDict[functionToExecute].Invoke();
-					Pickup();
 				}
 				else
 				{
@@ -45,9 +46,9 @@ public class Pickupable : Interactable
 			{
 				if(GameManager.instance.questList[questToCheck].GetQuestState() == QuestState.ongoing)
 				{
+					Pickup();
 					if(executeFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
 						GameManager.instance.dSFuncDict[functionToExecute].Invoke();
-					Pickup();
 				}
 				else
 				{
@@ -56,13 +57,15 @@ public class Pickupable : Interactable
 				return;
 			}
 		}
+		Pickup();
 		if(executeFuntion && GameManager.instance.dSFuncDict.ContainsKey(functionToExecute))
 			GameManager.instance.dSFuncDict[functionToExecute].Invoke();
-		Pickup();
 	}
 
 	public void Pickup()
 	{
+		if(pushTextToProgress)
+			GameManager.instance.SetNewQuestProgress(textForProgress);
 		GameManager.instance.StartPickupItemDialog(this, pickupDialogToStart);
 		GameManager.instance.PickupItem(itemToAdd);
 	}

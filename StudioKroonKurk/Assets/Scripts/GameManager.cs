@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 	private Interactable currentInteractable = null;
 	private bool isFocusingPlayer = true;
 
+	public QuestProgressUIManager qpUImanager;
+
 	public void Awake()
 	{
 		Application.targetFrameRate = 60;
@@ -67,6 +69,12 @@ public class GameManager : MonoBehaviour
 			if(e is ReturnControl)
 				allEndLeafIDs.Add(e.id);
 		}
+	}
+
+	public void SetNewQuestProgress(string text)
+	{
+		string t = text.Replace("<br>", "\n");
+		qpUImanager.CreateNewElement(t);
 	}
 
 	public void CreateQuestNotReadyDialog()

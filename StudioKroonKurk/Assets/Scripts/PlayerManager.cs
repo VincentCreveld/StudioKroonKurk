@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
+
 
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -22,6 +24,8 @@ public class PlayerManager : MonoBehaviour, IInteracter
 	public Animator anim;
 
 	public LineRenderer ln;
+
+	private bool mouseDownOverUI = false;
 
     private void Start ()
 	{
@@ -69,7 +73,13 @@ public class PlayerManager : MonoBehaviour, IInteracter
         else
             anim.SetBool("IsWalking", false);
 
-        if (GameManager.instance.IsGameStateOpen() && Input.GetMouseButton(0) && Input.touchCount < 2)
+		// Prevents movement if started click on UI
+		if(Input.GetMouseButtonDown(0))
+			mouseDownOverUI = IsPointerOverUIObject();
+		if(Input.GetMouseButtonUp(0))
+			mouseDownOverUI = false;
+
+		if (GameManager.instance.IsGameStateOpen() && !mouseDownOverUI && Input.GetMouseButton(0) && Input.touchCount < 2)
 		{
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -152,5 +162,15 @@ public class PlayerManager : MonoBehaviour, IInteracter
 		transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.eulerAngles.y, 0));
 		yield return new WaitForEndOfFrame();
 		agent.updateRotation = true;
+	}
+
+	// using UnityEngine.EventSystems;
+	private bool IsPointerOverUIObject()
+	{
+		PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+		eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+		List<RaycastResult> results = new List<RaycastResult>();
+		EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+		return results.Count > 0;
 	}
 }

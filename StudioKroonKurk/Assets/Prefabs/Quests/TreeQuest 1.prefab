@@ -140,6 +140,9 @@ MonoBehaviour:
   functionToAddPickup: 101692
   itemToAdd: 101701
   pickupText: Je vult de emmer met water.
+  textForProgress: Je hebt de emmer geevuld met water<br>wat je gevonden hebt bij
+    de grote boom op de berg.
+  pushTextToProgress: 1
   checkForActiveQuest: 1
   questToCheck: 1
   checkForProgress: 1
@@ -239,6 +242,8 @@ MonoBehaviour:
   functionToAddPickup: 654321
   itemToAdd: 101700
   pickupText: Je pakt de emmer op.
+  textForProgress: Je hebt een emmer gevonden en opgepakt.
+  pushTextToProgress: 1
   checkForActiveQuest: 1
   questToCheck: 1
   checkForProgress: 1
@@ -503,6 +508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4aaaddbfcbbf44b94f9d5f5e0eb789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textPerProgressionToDo: []
+  textPerProgressionDone: []
   questMarkerPositions:
   - {fileID: 6893483386246882043}
   - {fileID: 6044440835399556974}

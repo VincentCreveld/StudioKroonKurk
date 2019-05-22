@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraMovementManager : MonoBehaviour, ICamControl
 {
 	public Transform cam;
@@ -145,4 +146,6 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 				break;
 		}
 	}
+
+	
 }

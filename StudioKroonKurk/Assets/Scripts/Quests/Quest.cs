@@ -7,6 +7,8 @@ public abstract class Quest : MonoBehaviour
 	protected GameManager gm;
 	protected int currentQuestProgress = -1;
 	protected int questId;
+	public List<string> textPerProgressionToDo = new List<string>();
+	public List<string> textPerProgressionDone = new List<string>();
 
 	protected QuestState state = QuestState.closed;
 

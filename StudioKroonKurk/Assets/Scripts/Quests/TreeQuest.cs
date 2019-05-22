@@ -12,17 +12,14 @@ public class TreeQuest : Quest
     public Transform memorialPoint;
     public GameObject flower;
 
-	public List<string> progressTexts = new List<string>();
-
-	
-
     private void Start()
     {
         questId = questNo;
         gm = GameManager.instance;
         state = QuestState.canAccept;
         Initialise(questNo);
-    }
+		GameManager.instance.SetNewQuestProgress("Vind Jack in het bos");
+	}
 
     /*
         QuestNo - Progress - Type - id
@@ -155,7 +152,7 @@ public class TreeQuest : Quest
 
     private void StartEndScene()
     {
-
+		// TODO
     }
     private void JackDisappears()
     {
@@ -171,7 +168,14 @@ public class TreeQuest : Quest
     }
     private void SetNextQuestMarker()
     {
+		if(currentQuestProgress >= 0 && currentQuestProgress < textPerProgressionDone.Count && !(textPerProgressionDone[currentQuestProgress] == string.Empty))
+			GameManager.instance.SetNewQuestProgress(textPerProgressionDone[currentQuestProgress]);
+
         currentQuestProgress++;
+
+		if(currentQuestProgress < textPerProgressionToDo.Count && !(textPerProgressionToDo[currentQuestProgress] == string.Empty))
+			GameManager.instance.SetNewQuestProgress(textPerProgressionToDo[currentQuestProgress]);
+
         if (currentQuestProgress > questMarkerPositions.Count - 1)
         {
             marker.gameObject.SetActive(false);
