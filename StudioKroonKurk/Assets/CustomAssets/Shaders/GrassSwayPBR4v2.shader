@@ -20,7 +20,7 @@ Shader "Shader Forge/GrassSwayPBR2" {
         Tags {
             "Queue"="AlphaTest"
             "RenderType"="TransparentCutout"
-            "DisableBatching"="True"
+            "DisableBatching"="False"
         }
         Pass {
             Name "FORWARD"

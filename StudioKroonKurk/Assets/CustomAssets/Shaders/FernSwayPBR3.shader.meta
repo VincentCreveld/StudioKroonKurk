@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dc789993770001a409449d2d8eb94bf2
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {fileID: 2800000, guid: 34a33bb960d573b4994de5bbcff55d63, type: 3}
+  - _BumpMap: {fileID: 2800000, guid: 6ae9770376d8d8c4984a30cfcf2b0265, type: 3}
+  - _MiddleStatic: {fileID: 2800000, guid: 9ec42946bd73e7a4b821349f78d09d08, type: 3}
+  - _MiddleStaticNml: {fileID: 2800000, guid: 9ec42946bd73e7a4b821349f78d09d08, type: 3}
+  - _WindTexture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

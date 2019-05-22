@@ -1,7 +1,7 @@
 // Shader created with Shader Forge v1.38 
 // Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-6343-OUT,spec-358-OUT,gloss-1813-OUT,normal-5964-RGB,emission-4863-OUT;n:type:ShaderForge.SFN_Multiply,id:6343,x:32114,y:32712,varname:node_6343,prsc:2|A-7736-RGB,B-6665-RGB;n:type:ShaderForge.SFN_Color,id:6665,x:31861,y:32821,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5019608,c2:0.5019608,c3:0.5019608,c4:1;n:type:ShaderForge.SFN_Tex2d,id:7736,x:31921,y:32620,ptovrint:True,ptlb:Base Color,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False|UVIN-2058-UVOUT;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32407,y:32978,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True|UVIN-2058-UVOUT;n:type:ShaderForge.SFN_Slider,id:358,x:32250,y:32780,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32250,y:32882,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.8,max:1;n:type:ShaderForge.SFN_Tex2d,id:6680,x:32185,y:33253,ptovrint:False,ptlb:node_6680,ptin:_node_6680,varname:node_6680,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:05f26bc8534721d4bbc47251cd48bcbd,ntxv:3,isnm:False|UVIN-2058-UVOUT;n:type:ShaderForge.SFN_Panner,id:2058,x:31665,y:33058,varname:node_2058,prsc:2,spu:-0.005,spv:0|UVIN-9313-UVOUT,DIST-8859-OUT;n:type:ShaderForge.SFN_TexCoord,id:9313,x:31198,y:32859,varname:node_9313,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Sin,id:9203,x:31389,y:33453,varname:node_9203,prsc:2|IN-8462-OUT;n:type:ShaderForge.SFN_Time,id:4562,x:30982,y:33198,varname:node_4562,prsc:2;n:type:ShaderForge.SFN_Vector1,id:4409,x:30970,y:33357,varname:node_4409,prsc:2,v1:1;n:type:ShaderForge.SFN_Multiply,id:3699,x:31167,y:33232,varname:node_3699,prsc:2|A-4562-T,B-4409-OUT;n:type:ShaderForge.SFN_Cos,id:4661,x:31377,y:33232,varname:node_4661,prsc:2|IN-3699-OUT;n:type:ShaderForge.SFN_Multiply,id:8462,x:31180,y:33466,varname:node_8462,prsc:2|A-6098-T,B-9239-OUT;n:type:ShaderForge.SFN_Time,id:6098,x:30970,y:33466,varname:node_6098,prsc:2;n:type:ShaderForge.SFN_Vector1,id:9239,x:30970,y:33627,varname:node_9239,prsc:2,v1:1;n:type:ShaderForge.SFN_Multiply,id:8859,x:31539,y:33331,varname:node_8859,prsc:2|A-4661-OUT,B-9203-OUT;n:type:ShaderForge.SFN_Color,id:760,x:32185,y:33469,ptovrint:False,ptlb:node_760,ptin:_node_760,varname:node_760,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5,c2:0.5,c3:0.5,c4:1;n:type:ShaderForge.SFN_Multiply,id:4863,x:32419,y:33268,varname:node_4863,prsc:2|A-6680-A,B-760-RGB;proporder:5964-6665-7736-358-1813-6680-760;pass:END;sub:END;*/
+/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:33027,y:32723,varname:node_2865,prsc:2|diff-6343-OUT,spec-358-OUT,gloss-1813-OUT,normal-5964-RGB,emission-6250-OUT;n:type:ShaderForge.SFN_Multiply,id:6343,x:32114,y:32712,varname:node_6343,prsc:2|A-7736-RGB,B-6665-RGB;n:type:ShaderForge.SFN_Color,id:6665,x:31861,y:32821,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5019608,c2:0.5019608,c3:0.5019608,c4:1;n:type:ShaderForge.SFN_Tex2d,id:7736,x:31921,y:32620,ptovrint:True,ptlb:Base Color,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32299,y:32992,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:358,x:32250,y:32780,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32250,y:32882,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.8,max:1;n:type:ShaderForge.SFN_Tex2d,id:6680,x:31852,y:33111,ptovrint:False,ptlb:LightVeinTex,ptin:_LightVeinTex,varname:node_6680,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:05f26bc8534721d4bbc47251cd48bcbd,ntxv:3,isnm:False;n:type:ShaderForge.SFN_TexCoord,id:9313,x:31225,y:33443,varname:node_9313,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Color,id:760,x:31852,y:33328,ptovrint:False,ptlb:Color_Lightvein,ptin:_Color_Lightvein,varname:node_760,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5,c2:0.5,c3:0.5,c4:1;n:type:ShaderForge.SFN_Multiply,id:4672,x:32226,y:33431,varname:node_4672,prsc:2|A-5024-RGB,B-1143-OUT;n:type:ShaderForge.SFN_Tex2d,id:5024,x:31852,y:33517,ptovrint:False,ptlb:PulseTex,ptin:_PulseTex,varname:node_5024,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:4c02eee28bd355c488ecfbc9470d4815,ntxv:0,isnm:False|UVIN-7423-UVOUT;n:type:ShaderForge.SFN_Panner,id:7423,x:31639,y:33551,varname:node_7423,prsc:2,spu:0,spv:1|UVIN-9313-UVOUT,DIST-8162-OUT;n:type:ShaderForge.SFN_Time,id:544,x:31225,y:33603,varname:node_544,prsc:2;n:type:ShaderForge.SFN_Multiply,id:8162,x:31404,y:33642,varname:node_8162,prsc:2|A-544-T,B-7011-OUT;n:type:ShaderForge.SFN_ValueProperty,id:1143,x:32026,y:33585,ptovrint:False,ptlb:pulseSpeed,ptin:_pulseSpeed,varname:node_1143,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;n:type:ShaderForge.SFN_Vector1,id:7011,x:31225,y:33741,varname:node_7011,prsc:2,v1:1.346;n:type:ShaderForge.SFN_Blend,id:6250,x:32674,y:33290,varname:node_6250,prsc:2,blmd:14,clmp:True|SRC-8400-OUT,DST-4672-OUT;n:type:ShaderForge.SFN_Multiply,id:8400,x:32142,y:33281,varname:node_8400,prsc:2|A-6680-A,B-760-RGB;proporder:5964-6665-7736-358-1813-6680-760-5024-1143;pass:END;sub:END;*/
 
 Shader "Shader Forge/RootRunes" {
     Properties {
@@ -10,8 +10,10 @@ Shader "Shader Forge/RootRunes" {
         _MainTex ("Base Color", 2D) = "white" {}
         _Metallic ("Metallic", Range(0, 1)) = 0
         _Gloss ("Gloss", Range(0, 1)) = 0.8
-        _node_6680 ("node_6680", 2D) = "bump" {}
-        _node_760 ("node_760", Color) = (0.5,0.5,0.5,1)
+        _LightVeinTex ("LightVeinTex", 2D) = "bump" {}
+        _Color_Lightvein ("Color_Lightvein", Color) = (0.5,0.5,0.5,1)
+        _PulseTex ("PulseTex", 2D) = "white" {}
+        _pulseSpeed ("pulseSpeed", Float ) = 1
     }
     SubShader {
         Tags {
@@ -40,15 +42,17 @@ Shader "Shader Forge/RootRunes" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 d3d11_9x 
             #pragma target 3.0
             uniform float4 _Color;
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             uniform sampler2D _BumpMap; uniform float4 _BumpMap_ST;
             uniform float _Metallic;
             uniform float _Gloss;
-            uniform sampler2D _node_6680; uniform float4 _node_6680_ST;
-            uniform float4 _node_760;
+            uniform sampler2D _LightVeinTex; uniform float4 _LightVeinTex_ST;
+            uniform float4 _Color_Lightvein;
+            uniform sampler2D _PulseTex; uniform float4 _PulseTex_ST;
+            uniform float _pulseSpeed;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -99,10 +103,7 @@ Shader "Shader Forge/RootRunes" {
                 i.normalDir = normalize(i.normalDir);
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float4 node_4562 = _Time;
-                float4 node_6098 = _Time;
-                float2 node_2058 = (i.uv0+(cos((node_4562.g*1.0))*sin((node_6098.g*1.0)))*float2(-0.005,0));
-                float3 _BumpMap_var = UnpackNormal(tex2D(_BumpMap,TRANSFORM_TEX(node_2058, _BumpMap)));
+                float3 _BumpMap_var = UnpackNormal(tex2D(_BumpMap,TRANSFORM_TEX(i.uv0, _BumpMap)));
                 float3 normalLocal = _BumpMap_var.rgb;
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 viewReflectDirection = reflect( -viewDirection, normalDirection );
@@ -164,7 +165,7 @@ Shader "Shader Forge/RootRunes" {
                 float LdotH = saturate(dot(lightDirection, halfDirection));
                 float3 specularColor = _Metallic;
                 float specularMonochrome;
-                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(node_2058, _MainTex));
+                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
                 float3 diffuseColor = (_MainTex_var.rgb*_Color.rgb); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
@@ -204,8 +205,11 @@ Shader "Shader Forge/RootRunes" {
                 indirectDiffuse += gi.indirect.diffuse;
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 ////// Emissive:
-                float4 _node_6680_var = tex2D(_node_6680,TRANSFORM_TEX(node_2058, _node_6680));
-                float3 emissive = (_node_6680_var.a*_node_760.rgb);
+                float4 _LightVeinTex_var = tex2D(_LightVeinTex,TRANSFORM_TEX(i.uv0, _LightVeinTex));
+                float4 node_544 = _Time;
+                float2 node_7423 = (i.uv0+(node_544.g*1.346)*float2(0,1));
+                float4 _PulseTex_var = tex2D(_PulseTex,TRANSFORM_TEX(node_7423, _PulseTex));
+                float3 emissive = saturate(( (_LightVeinTex_var.a*_Color_Lightvein.rgb) > 0.5 ? ((_PulseTex_var.rgb*_pulseSpeed) + 2.0*(_LightVeinTex_var.a*_Color_Lightvein.rgb) -1.0) : ((_PulseTex_var.rgb*_pulseSpeed) + 2.0*((_LightVeinTex_var.a*_Color_Lightvein.rgb)-0.5))));
 /// Final Color:
                 float3 finalColor = diffuse + specular + emissive;
                 fixed4 finalRGBA = fixed4(finalColor,1);
@@ -238,15 +242,17 @@ Shader "Shader Forge/RootRunes" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 d3d11_9x 
             #pragma target 3.0
             uniform float4 _Color;
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             uniform sampler2D _BumpMap; uniform float4 _BumpMap_ST;
             uniform float _Metallic;
             uniform float _Gloss;
-            uniform sampler2D _node_6680; uniform float4 _node_6680_ST;
-            uniform float4 _node_760;
+            uniform sampler2D _LightVeinTex; uniform float4 _LightVeinTex_ST;
+            uniform float4 _Color_Lightvein;
+            uniform sampler2D _PulseTex; uniform float4 _PulseTex_ST;
+            uniform float _pulseSpeed;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -286,10 +292,7 @@ Shader "Shader Forge/RootRunes" {
                 i.normalDir = normalize(i.normalDir);
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float4 node_4562 = _Time;
-                float4 node_6098 = _Time;
-                float2 node_2058 = (i.uv0+(cos((node_4562.g*1.0))*sin((node_6098.g*1.0)))*float2(-0.005,0));
-                float3 _BumpMap_var = UnpackNormal(tex2D(_BumpMap,TRANSFORM_TEX(node_2058, _BumpMap)));
+                float3 _BumpMap_var = UnpackNormal(tex2D(_BumpMap,TRANSFORM_TEX(i.uv0, _BumpMap)));
                 float3 normalLocal = _BumpMap_var.rgb;
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
@@ -310,7 +313,7 @@ Shader "Shader Forge/RootRunes" {
                 float LdotH = saturate(dot(lightDirection, halfDirection));
                 float3 specularColor = _Metallic;
                 float specularMonochrome;
-                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(node_2058, _MainTex));
+                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
                 float3 diffuseColor = (_MainTex_var.rgb*_Color.rgb); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
@@ -369,14 +372,16 @@ Shader "Shader Forge/RootRunes" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 d3d11_9x 
             #pragma target 3.0
             uniform float4 _Color;
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             uniform float _Metallic;
             uniform float _Gloss;
-            uniform sampler2D _node_6680; uniform float4 _node_6680_ST;
-            uniform float4 _node_760;
+            uniform sampler2D _LightVeinTex; uniform float4 _LightVeinTex_ST;
+            uniform float4 _Color_Lightvein;
+            uniform sampler2D _PulseTex; uniform float4 _PulseTex_ST;
+            uniform float _pulseSpeed;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
@@ -404,13 +409,13 @@ Shader "Shader Forge/RootRunes" {
                 UnityMetaInput o;
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
-                float4 node_4562 = _Time;
-                float4 node_6098 = _Time;
-                float2 node_2058 = (i.uv0+(cos((node_4562.g*1.0))*sin((node_6098.g*1.0)))*float2(-0.005,0));
-                float4 _node_6680_var = tex2D(_node_6680,TRANSFORM_TEX(node_2058, _node_6680));
-                o.Emission = (_node_6680_var.a*_node_760.rgb);
+                float4 _LightVeinTex_var = tex2D(_LightVeinTex,TRANSFORM_TEX(i.uv0, _LightVeinTex));
+                float4 node_544 = _Time;
+                float2 node_7423 = (i.uv0+(node_544.g*1.346)*float2(0,1));
+                float4 _PulseTex_var = tex2D(_PulseTex,TRANSFORM_TEX(node_7423, _PulseTex));
+                o.Emission = saturate(( (_LightVeinTex_var.a*_Color_Lightvein.rgb) > 0.5 ? ((_PulseTex_var.rgb*_pulseSpeed) + 2.0*(_LightVeinTex_var.a*_Color_Lightvein.rgb) -1.0) : ((_PulseTex_var.rgb*_pulseSpeed) + 2.0*((_LightVeinTex_var.a*_Color_Lightvein.rgb)-0.5))));
                 
-                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(node_2058, _MainTex));
+                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
                 float3 diffColor = (_MainTex_var.rgb*_Color.rgb);
                 float specularMonochrome;
                 float3 specColor;

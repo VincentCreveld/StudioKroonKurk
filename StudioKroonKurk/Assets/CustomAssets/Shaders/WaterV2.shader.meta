@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 89987c89fe554b1478f3e2ac10a593f8
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _EdgefoamTexture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+  - _Refraction: {fileID: 2800000, guid: 1b9543412f1a9d547b95d68928671d8f, type: 3}
+  - _UndercurrentTexture: {fileID: 2800000, guid: 598a31a5b05d959479c3e8e32bb9c0e7,
+      type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
