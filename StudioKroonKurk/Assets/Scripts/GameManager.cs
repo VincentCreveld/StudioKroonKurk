@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
 		inspectButton.onClick.AddListener
 			(() => 
 				{
-					camManager.ReturnCamControl();
+					camManager.MoveCamAmbi();
 					SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId());
 				}
 			);
@@ -245,6 +245,13 @@ public class GameManager : MonoBehaviour
 		isGameStateOpen = false;
 		yield return StartCoroutine(camManager.MoveInLoop(focus.GetFocusTransform(), 0.8f));
 		mainCanvas.SetActive(true);
+	}
+
+	public void OpenGameWithoutAnim()
+	{
+		currentInteractable = null;
+		mainCanvas.SetActive(false);
+		isGameStateOpen = true;
 	}
 
 	public void OpenGamestate()
