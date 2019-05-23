@@ -139,16 +139,19 @@ MonoBehaviour:
   functionToAdd: 101698
   functionToAddPickup: 101692
   itemToAdd: 101701
+  itemName: Emmer met water
   pickupText: Je vult de emmer met water.
-  textForProgress: Je hebt de emmer geevuld met water<br>wat je gevonden hebt bij
-    de grote boom op de berg.
+  textForProgress: Je hebt de emmer gevuld met water<br>wat je gevonden hebt bij de
+    grote boom op de berg.
   pushTextToProgress: 1
   checkForActiveQuest: 1
   questToCheck: 1
   checkForProgress: 1
-  questProgressToMatch: 1
+  questProgressToMatch: 0
   executeFuntion: 1
   functionToExecute: 100600
+  checkForOtherItem: 1
+  itemToCheckId: 101700
 --- !u!135 &1381271767961756228
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -241,15 +244,19 @@ MonoBehaviour:
   functionToAdd: 101699
   functionToAddPickup: 654321
   itemToAdd: 101700
+  itemName: Emmer
   pickupText: Je pakt de emmer op.
-  textForProgress: Je hebt een emmer gevonden en opgepakt.
+  textForProgress: Je hebt een emmer gevonden en opgepakt.<br>Misschien is het een
+    idee om aan Jack te vragen waar ik de emmer kan vullen.
   pushTextToProgress: 1
   checkForActiveQuest: 1
   questToCheck: 1
   checkForProgress: 1
-  questProgressToMatch: 1
+  questProgressToMatch: 0
   executeFuntion: 1
   functionToExecute: 654321
+  checkForOtherItem: 0
+  itemToCheckId: 0
 --- !u!135 &2428418681235070862
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -445,6 +452,8 @@ MonoBehaviour:
   jack: {fileID: 7246032298481678202}
   memorialPoint: {fileID: 5330287456007677769}
   flower: {fileID: 7275274098955898309}
+  foundJackText: Je hebt Jack gevonden. Hij heeft je om hulp gevraagd.<br>Hij wilt
+    dat je water zoekt om zijn bloemen water te geven.
 --- !u!1 &1135151693859809320
 GameObject:
   m_ObjectHideFlags: 0

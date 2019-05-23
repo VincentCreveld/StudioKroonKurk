@@ -8,6 +8,7 @@ public class Pickupable : Interactable
 	public int functionToAdd = 0;
 	public int functionToAddPickup = 0;
     public int itemToAdd;
+	public string itemName;
 	public string pickupText, textForProgress;
 	public bool pushTextToProgress = false;
 	public bool checkForActiveQuest = false;
@@ -17,15 +18,26 @@ public class Pickupable : Interactable
 	public bool executeFuntion = false;
 	public int functionToExecute = 0;
 
+	public bool checkForOtherItem = false;
+	public int itemToCheckId = 0;
+
 	protected override void Start()
 	{
 		base.Start();
 		GameManager.instance.dSFuncDict.Add(functionToAdd, () => Destroy(gameObject));
         CreatePickupDialog();
+
+		GameManager.instance.itemList.Add(itemToAdd, new Item(itemToAdd, itemName));
     }
 
 	public override void Execute()
 	{
+		if(checkForOtherItem && GameManager.instance.IsItemUnlocked(itemToCheckId) != ItemState.has)
+		{
+			GameManager.instance.SetNewDialogOption(678678678);
+			return;
+		}
+
 		if(checkForActiveQuest)
 		{
 			if(checkForProgress)
@@ -74,5 +86,6 @@ public class Pickupable : Interactable
     {
         GameManager.instance.allOptions.Add(new DialogText(pickupDialogToStart, functionToAddPickup, pickupText));
         GameManager.instance.allOptions.Add(new Function(functionToAddPickup, 404, functionToAdd));
+		GameManager.instance.allOptions.Add(new DialogText(678678678, 404, "Je hebt hier een ander voorwerp voor nodig."));
     }
 }

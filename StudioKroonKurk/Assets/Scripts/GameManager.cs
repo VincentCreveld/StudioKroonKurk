@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
 	public QuestProgressUIManager qpUImanager;
 
+	public bool skipAnimations = false;
+
 	public void Awake()
 	{
 		Application.targetFrameRate = 60;
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
 
 			SetupUI(currentDialog as Choice);
 		}
-		else if(currentDialog is DelayElement)
+		else if(!skipAnimations && currentDialog is DelayElement)
 		{
 			DoAnimation(currentDialog as DelayElement);
 			mainCanvas.SetActive(false);
