@@ -60,7 +60,7 @@ public partial class TreeQuest : Quest
 		AddOption(new DialogText(PN1_D5, AddProg, "Dankjewel! Er staat volgens mij ergens naast mijn schuurtje een emmer."));
 		AddOption(new DialogText(PN1_D6, PN1_C2, "Als ze in de zon staan is het goed.\nGeef je ze ook water?"));
 		AddOption(new Choice(PN1_C0, PN1_D1, SetToInProgress, "Het is echt heel belangrijk.\nZou je me kunnen helpen?", "Ik heb nu even geen tijd.", "Ja, tuurlijk kan ik helpen."));
-		AddOption(new Choice(PN1_C1, PN1_C2, PN1_D2, "Ik weet niet goed wat ik moet doen om\nde bloemen in leven te houden.", "Heb je de bloemen al water gegeven?", "Hebben de bloemen wel genoeg zonlicht?"));
+		AddOption(new Choice(PN1_C1, PN1_C2, PN1_D2, "Ik weet niet goed wat ik moet doen om\nde bloemen in leven te houden.", "Heb je de bloemen al water gegeven?", "Krijgen de bloemen wel genoeg zonlicht?"));
 		AddOption(new Choice(PN1_C2, PN1_D5, PN1_C3, "Oh, water geven, inderdaad!\nKun je water voor mij zoeken?", "Ik zal wel op zoek gaan naar wat water voor je.", "Waarom kan je het niet zelf halen?"));
 		AddOption(new Choice(PN1_C3, PN1_D3, PN1_D4, "Ik kan daar nog niet heen, niet voordat ik de bloemen heb.", "Ah oké, ik zal wel even op zoek gaan naar wat water.", "Oh, wat is er gebeurt dan?"));
 	}
@@ -262,8 +262,8 @@ public partial class TreeQuest : Quest
         }
         else
             marker.gameObject.SetActive(true);
-		if(questMarkerPositions[currentQuestProgress].position != null)
-			marker.position = questMarkerPositions[currentQuestProgress].position;
+		//if(questMarkerPositions[currentQuestProgress].position != null)
+		//	marker.position = questMarkerPositions[currentQuestProgress].position;
     }
     private void EnableWaterPickup()
     {
