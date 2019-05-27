@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class QuestProgressUIManager : MonoBehaviour
 {
 	[Header("Prefab fields")]
-	public List<GameObject> currentUIElements;
-	public GameObject uiElementPrefab;
+	public ProgressUIElement uiElementPrefab;
+	private ProgressUIElement newestElement, prevElement;
+	private List<ProgressUIElement> allElements = new List<ProgressUIElement>();
 	public float uiElementOffset;
 	public float objectMargin;
 	Event e;
@@ -17,12 +18,11 @@ public class QuestProgressUIManager : MonoBehaviour
 	[Header("General references")]
 	public RectTransform contentField;
 
-	public string t;
-
 	public GameObject notificationObj;
 	public float bigScale, smallScale;
 	public Transform animTarget;
 	public GameObject openButton, closeButton;
+	public Animator openButtonAnim;
 
 	public void Start()
 	{
@@ -53,46 +53,39 @@ public class QuestProgressUIManager : MonoBehaviour
 	private void SetContentField()
 	{
 		ResetContentFieldPos();
-		contentField.sizeDelta = new Vector2(contentField.sizeDelta.x, currentUIElements.Count * (uiElementOffset + objectMargin));
+		contentField.sizeDelta = new Vector2(contentField.sizeDelta.x, allElements.Count * (uiElementOffset + objectMargin));
 	}
 
 	public void CreateNewElement(string text)
 	{
 		ResetContentFieldPos();
 
-		// Instance new obj
-		GameObject go = Instantiate(uiElementPrefab, contentField.transform);
-
-		currentUIElements.Add(go);
-
-		// Set text of content
-		if(go.GetComponentInChildren<Text>() == null)
-			return;
-		go.GetComponentInChildren<Text>().text = text;
-
-		// Place obj to bottom obj pos + offset
-		go.transform.localPosition = currentUIElements[currentUIElements.Count - 1].transform.localPosition - new Vector3(0, (uiElementOffset + objectMargin) * (currentUIElements.Count - 1), 0);
-
-
-		if(currentUIElements.Count > 1)
+		foreach(ProgressUIElement g in allElements)
 		{
-			Color c = currentUIElements[currentUIElements.Count - 2].GetComponent<Image>().color;
-			currentUIElements[currentUIElements.Count - 2].GetComponentInChildren<Image>().color = new Color(c.r, c.g, c.b, 0.7f);
-			try
-			{
-				currentUIElements[currentUIElements.Count - 3].GetComponentInChildren<Image>().color = new Color(c.r, c.g, c.b, 0.25f);
-			}
-			catch { /* Leave it */ }
+			g.SetDone();
 		}
 
-		// Set contentfield height
-		notificationObj.SetActive(true);
+		// Instance new obj
+		ProgressUIElement go = Instantiate(uiElementPrefab.gameObject, contentField.transform).GetComponent<ProgressUIElement>();
+
+		go.Init(text);
+
+		allElements.Add(go);
+
+		go.GetComponentInChildren<Text>().text = text;
+
 		SetContentField();
+		// Place obj to bottom obj pos + offset
+		go.transform.localPosition = allElements[allElements.Count - 1].transform.localPosition - new Vector3(0, (uiElementOffset + objectMargin) * (allElements.Count - 1), 0);
+
+		openButtonAnim.SetBool("IsOpen", true);
+
+		// Set contentfield height
 	}
 
 	public void ResetContentFieldPos()
 	{
-		contentField.transform.localPosition = new Vector3(objectMargin, objectMargin + (currentUIElements.Count * (uiElementOffset + objectMargin)), 0);
+		contentField.transform.localPosition = new Vector3(contentField.transform.localPosition.x, objectMargin + (allElements.Count * (uiElementOffset + objectMargin)), 0);
 	}
 
 	private IEnumerator ScaleUI(bool scaleDown = true, float animTime = 0.8f)
@@ -137,6 +130,13 @@ public class QuestProgressUIManager : MonoBehaviour
 		}
 
 		if(scaleDown)
+		{
 			animTarget.gameObject.SetActive(false);
+			foreach(ProgressUIElement go in allElements)
+			{
+				go.SetSeen();
+			}
+			openButtonAnim.SetBool("IsOpen", false);
+		}
 	}
 }

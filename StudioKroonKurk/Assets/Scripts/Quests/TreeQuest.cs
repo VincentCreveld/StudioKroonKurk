@@ -255,16 +255,16 @@ public partial class TreeQuest : Quest
 		if(currentQuestProgress < textPerProgressionToDo.Count && textPerProgressionToDo[currentQuestProgress] != string.Empty)
 			GameManager.instance.SetNewQuestProgress(textPerProgressionToDo[currentQuestProgress]);
 
-        if (currentQuestProgress > questMarkerPositions.Count - 1)
-        {
-            marker.gameObject.SetActive(false);
-            return;
-        }
-        else
-            marker.gameObject.SetActive(true);
-		if(questMarkerPositions[currentQuestProgress].position != null)
-			marker.position = questMarkerPositions[currentQuestProgress].position;
-    }
+		//if(currentQuestProgress > questMarkerPositions.Count - 1)
+		//{
+		//	marker.gameObject.SetActive(false);
+		//	return;
+		//}
+		//else
+		//	marker.gameObject.SetActive(true);
+		//if(questMarkerPositions[currentQuestProgress].position != null)
+		//	marker.position = questMarkerPositions[currentQuestProgress].position;
+	}
     private void EnableWaterPickup()
     {
         emptyBucket.gameObject.SetActive(false);
