@@ -19,7 +19,7 @@ QualitySettings:
     shadowCascade4Split: {x: 0.07493113, y: 0.11942148, z: 0.14848486}
     shadowmaskMode: 1
     blendWeights: 1
-    textureQuality: 1
+    textureQuality: 0
     anisotropicTextures: 0
     antiAliasing: 0
     softParticles: 0
