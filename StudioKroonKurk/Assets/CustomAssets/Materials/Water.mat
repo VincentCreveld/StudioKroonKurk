@@ -127,16 +127,16 @@ Material:
     - _OcclusionStrength: 1
     - _Opacity: 0.722
     - _Parallax: 0.02
-    - _Reflection: 0.82
+    - _Reflection: 0.701
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Thikness: 0.8313457
     - _TopSpeed: 2.32
     - _UVSec: 0
-    - _UndercurrentSpeed: 2.21
+    - _UndercurrentSpeed: 0.77
     - _WaterIntensity: 0.833
-    - _WaterSpeed: 1.46
+    - _WaterSpeed: 4.13
     - _ZWrite: 1
     - _node_1361: 10
     - _node_2585: 0.6898746
@@ -145,7 +145,7 @@ Material:
     - _node_512: 1
     - _node_715: 1
     - _node_8187: 3.04
-    - _opacity: 0.295
+    - _opacity: 0.364
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0.039355278, a: 1}
     - _EdgefoamColor: {r: 0.2599235, g: 0.61899203, b: 0.9339623, a: 1}
