@@ -106,15 +106,15 @@ Material:
     - _UVScale: 0.05
     - _UVSec: 0
     - _WindIntensity: 0.0164
-    - _WindIntensityPanner: 0.01201
-    - _WindIntensityVertex: 0.096
+    - _WindIntensityPanner: 0.018
+    - _WindIntensityVertex: 0.765
     - _WindIntensity_copy: 0.0364
     - _WindIntensity_copy_copy: 0.0364
     - _WindSpeed: 0.138
-    - _WindSpeedVertex: 0.072
+    - _WindSpeedVertex: 0.012
     - _WindSpeed_copy: 0.5
     - _WindStrength: 0.09
-    - _WindStrengthVertex: 0.089
+    - _WindStrengthVertex: 0.625
     - _ZWrite: 1
     - _node_2254: 0.288
     - _node_3279: 0.236
