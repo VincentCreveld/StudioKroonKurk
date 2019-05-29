@@ -1,7 +1,7 @@
 // Shader created with Shader Forge v1.38 
 // Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-4156-OUT,spec-358-OUT,gloss-1813-OUT,normal-108-OUT;n:type:ShaderForge.SFN_Slider,id:358,x:32351,y:32376,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32325,y:32477,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.3846154,max:1;n:type:ShaderForge.SFN_Slider,id:9766,x:30695,y:32925,ptovrint:False,ptlb:UpNode,ptin:_UpNode,varname:node_9766,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1,max:1;n:type:ShaderForge.SFN_Vector1,id:5675,x:30828,y:32807,varname:node_5675,prsc:2,v1:0;n:type:ShaderForge.SFN_Append,id:8091,x:31028,y:32842,varname:node_8091,prsc:2|A-5675-OUT,B-9766-OUT,C-5675-OUT;n:type:ShaderForge.SFN_Dot,id:8016,x:31266,y:32826,varname:node_8016,prsc:2,dt:1|A-8091-OUT,B-1697-OUT;n:type:ShaderForge.SFN_NormalVector,id:1697,x:31028,y:33027,prsc:2,pt:False;n:type:ShaderForge.SFN_Multiply,id:1732,x:31460,y:32826,varname:node_1732,prsc:2|A-8016-OUT,B-1315-OUT;n:type:ShaderForge.SFN_Slider,id:1315,x:30851,y:33245,ptovrint:False,ptlb:Level,ptin:_Level,varname:node_1315,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1.176861,max:10;n:type:ShaderForge.SFN_Slider,id:2366,x:30880,y:33422,ptovrint:False,ptlb:Contrast,ptin:_Contrast,varname:node_2366,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0.1,cur:17.67514,max:25;n:type:ShaderForge.SFN_Power,id:4298,x:31663,y:32826,varname:node_4298,prsc:2|VAL-1732-OUT,EXP-2366-OUT;n:type:ShaderForge.SFN_Clamp01,id:3225,x:31863,y:32826,varname:node_3225,prsc:2|IN-4298-OUT;n:type:ShaderForge.SFN_Lerp,id:4156,x:32213,y:32674,varname:node_4156,prsc:2|A-4426-RGB,B-1011-RGB,T-3225-OUT;n:type:ShaderForge.SFN_Lerp,id:108,x:32213,y:33103,varname:node_108,prsc:2|A-7842-RGB,B-6862-RGB,T-3225-OUT;n:type:ShaderForge.SFN_Tex2d,id:4426,x:31875,y:32260,ptovrint:False,ptlb:RockDiffuse,ptin:_RockDiffuse,varname:node_4426,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:1011,x:31638,y:32377,ptovrint:False,ptlb:MossDiffuse,ptin:_MossDiffuse,varname:node_1011,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:7842,x:31934,y:33109,ptovrint:False,ptlb:RockNormal,ptin:_RockNormal,varname:node_7842,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Tex2d,id:6862,x:31934,y:33299,ptovrint:False,ptlb:MossNormal,ptin:_MossNormal,varname:node_6862,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_FragmentPosition,id:1276,x:30851,y:33027,varname:node_1276,prsc:2;n:type:ShaderForge.SFN_ObjectPosition,id:648,x:30667,y:33027,varname:node_648,prsc:2;proporder:358-1813-9766-1315-2366-4426-1011-7842-6862;pass:END;sub:END;*/
+/*SF_DATA;ver:1.38;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-4156-OUT,spec-358-OUT,gloss-1813-OUT,normal-108-OUT;n:type:ShaderForge.SFN_Slider,id:358,x:32351,y:32376,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:32325,y:32477,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.3846154,max:1;n:type:ShaderForge.SFN_Slider,id:9766,x:30694,y:32925,ptovrint:False,ptlb:UpNode,ptin:_UpNode,varname:node_9766,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1,max:1;n:type:ShaderForge.SFN_Vector1,id:5675,x:30828,y:32807,varname:node_5675,prsc:2,v1:0;n:type:ShaderForge.SFN_Append,id:8091,x:31028,y:32842,varname:node_8091,prsc:2|A-5675-OUT,B-9766-OUT,C-5675-OUT;n:type:ShaderForge.SFN_Dot,id:8016,x:31266,y:32826,varname:node_8016,prsc:2,dt:1|A-8091-OUT,B-1697-OUT;n:type:ShaderForge.SFN_NormalVector,id:1697,x:31028,y:33027,prsc:2,pt:False;n:type:ShaderForge.SFN_Multiply,id:1732,x:31460,y:32826,varname:node_1732,prsc:2|A-8016-OUT,B-1315-OUT;n:type:ShaderForge.SFN_Slider,id:1315,x:30851,y:33245,ptovrint:False,ptlb:Level,ptin:_Level,varname:node_1315,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1.176861,max:10;n:type:ShaderForge.SFN_Slider,id:2366,x:30880,y:33422,ptovrint:False,ptlb:Contrast,ptin:_Contrast,varname:node_2366,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0.1,cur:17.67514,max:25;n:type:ShaderForge.SFN_Power,id:4298,x:31663,y:32826,varname:node_4298,prsc:2|VAL-1732-OUT,EXP-2366-OUT;n:type:ShaderForge.SFN_Clamp01,id:3225,x:31863,y:32826,varname:node_3225,prsc:2|IN-4298-OUT;n:type:ShaderForge.SFN_Lerp,id:4156,x:32213,y:32674,varname:node_4156,prsc:2|A-4426-RGB,B-878-OUT,T-3225-OUT;n:type:ShaderForge.SFN_Lerp,id:108,x:32213,y:33103,varname:node_108,prsc:2|A-7842-RGB,B-6862-RGB,T-3225-OUT;n:type:ShaderForge.SFN_Tex2d,id:4426,x:31875,y:32260,ptovrint:False,ptlb:RockDiffuse,ptin:_RockDiffuse,varname:node_4426,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:1011,x:31601,y:32377,ptovrint:False,ptlb:MossDiffuse,ptin:_MossDiffuse,varname:node_1011,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:7842,x:31934,y:33109,ptovrint:False,ptlb:RockNormal,ptin:_RockNormal,varname:node_7842,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Tex2d,id:6862,x:31934,y:33299,ptovrint:False,ptlb:MossNormal,ptin:_MossNormal,varname:node_6862,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_FragmentPosition,id:1276,x:30851,y:33027,varname:node_1276,prsc:2;n:type:ShaderForge.SFN_ObjectPosition,id:648,x:30667,y:33027,varname:node_648,prsc:2;n:type:ShaderForge.SFN_Tex2d,id:7410,x:32431,y:33135,ptovrint:False,ptlb:Ambient_occl,ptin:_Ambient_occl,varname:node_7410,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:1,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:6477,x:31172,y:32415,ptovrint:False,ptlb:node_6477,ptin:_node_6477,varname:node_6477,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Fresnel,id:3416,x:31356,y:33076,varname:node_3416,prsc:2|NRM-1697-OUT;n:type:ShaderForge.SFN_Tangent,id:2360,x:31046,y:32662,varname:node_2360,prsc:2;n:type:ShaderForge.SFN_Multiply,id:878,x:31949,y:32499,varname:node_878,prsc:2|A-1011-RGB,B-3175-RGB;n:type:ShaderForge.SFN_Color,id:3175,x:31702,y:32570,ptovrint:False,ptlb:MossColour,ptin:_MossColour,varname:node_3175,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:0.9320468,c3:0,c4:1;proporder:358-1813-9766-1315-2366-4426-1011-7842-6862-3175;pass:END;sub:END;*/
 
 Shader "Shader Forge/moss2" {
     Properties {
@@ -14,6 +14,7 @@ Shader "Shader Forge/moss2" {
         _MossDiffuse ("MossDiffuse", 2D) = "white" {}
         _RockNormal ("RockNormal", 2D) = "bump" {}
         _MossNormal ("MossNormal", 2D) = "bump" {}
+        _MossColour ("MossColour", Color) = (1,0.9320468,0,1)
     }
     SubShader {
         Tags {
@@ -42,7 +43,7 @@ Shader "Shader Forge/moss2" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 d3d11_9x 
             #pragma target 3.0
             uniform float _Metallic;
             uniform float _Gloss;
@@ -53,6 +54,7 @@ Shader "Shader Forge/moss2" {
             uniform sampler2D _MossDiffuse; uniform float4 _MossDiffuse_ST;
             uniform sampler2D _RockNormal; uniform float4 _RockNormal_ST;
             uniform sampler2D _MossNormal; uniform float4 _MossNormal_ST;
+            uniform float4 _MossColour;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -106,7 +108,8 @@ Shader "Shader Forge/moss2" {
                 float3 _RockNormal_var = UnpackNormal(tex2D(_RockNormal,TRANSFORM_TEX(i.uv0, _RockNormal)));
                 float3 _MossNormal_var = UnpackNormal(tex2D(_MossNormal,TRANSFORM_TEX(i.uv0, _MossNormal)));
                 float node_5675 = 0.0;
-                float node_3225 = saturate(pow((max(0,dot(float3(node_5675,_UpNode,node_5675),i.normalDir))*_Level),_Contrast));
+                float node_8016 = max(0,dot(float3(node_5675,_UpNode,node_5675),i.normalDir));
+                float node_3225 = saturate(pow((node_8016*_Level),_Contrast));
                 float3 normalLocal = lerp(_RockNormal_var.rgb,_MossNormal_var.rgb,node_3225);
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 viewReflectDirection = reflect( -viewDirection, normalDirection );
@@ -170,7 +173,7 @@ Shader "Shader Forge/moss2" {
                 float specularMonochrome;
                 float4 _RockDiffuse_var = tex2D(_RockDiffuse,TRANSFORM_TEX(i.uv0, _RockDiffuse));
                 float4 _MossDiffuse_var = tex2D(_MossDiffuse,TRANSFORM_TEX(i.uv0, _MossDiffuse));
-                float3 diffuseColor = lerp(_RockDiffuse_var.rgb,_MossDiffuse_var.rgb,node_3225); // Need this for specular when using metallic
+                float3 diffuseColor = lerp(_RockDiffuse_var.rgb,(_MossDiffuse_var.rgb*_MossColour.rgb),node_3225); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -240,7 +243,7 @@ Shader "Shader Forge/moss2" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 d3d11_9x 
             #pragma target 3.0
             uniform float _Metallic;
             uniform float _Gloss;
@@ -251,6 +254,7 @@ Shader "Shader Forge/moss2" {
             uniform sampler2D _MossDiffuse; uniform float4 _MossDiffuse_ST;
             uniform sampler2D _RockNormal; uniform float4 _RockNormal_ST;
             uniform sampler2D _MossNormal; uniform float4 _MossNormal_ST;
+            uniform float4 _MossColour;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -293,7 +297,8 @@ Shader "Shader Forge/moss2" {
                 float3 _RockNormal_var = UnpackNormal(tex2D(_RockNormal,TRANSFORM_TEX(i.uv0, _RockNormal)));
                 float3 _MossNormal_var = UnpackNormal(tex2D(_MossNormal,TRANSFORM_TEX(i.uv0, _MossNormal)));
                 float node_5675 = 0.0;
-                float node_3225 = saturate(pow((max(0,dot(float3(node_5675,_UpNode,node_5675),i.normalDir))*_Level),_Contrast));
+                float node_8016 = max(0,dot(float3(node_5675,_UpNode,node_5675),i.normalDir));
+                float node_3225 = saturate(pow((node_8016*_Level),_Contrast));
                 float3 normalLocal = lerp(_RockNormal_var.rgb,_MossNormal_var.rgb,node_3225);
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
@@ -316,7 +321,7 @@ Shader "Shader Forge/moss2" {
                 float specularMonochrome;
                 float4 _RockDiffuse_var = tex2D(_RockDiffuse,TRANSFORM_TEX(i.uv0, _RockDiffuse));
                 float4 _MossDiffuse_var = tex2D(_MossDiffuse,TRANSFORM_TEX(i.uv0, _MossDiffuse));
-                float3 diffuseColor = lerp(_RockDiffuse_var.rgb,_MossDiffuse_var.rgb,node_3225); // Need this for specular when using metallic
+                float3 diffuseColor = lerp(_RockDiffuse_var.rgb,(_MossDiffuse_var.rgb*_MossColour.rgb),node_3225); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -374,7 +379,7 @@ Shader "Shader Forge/moss2" {
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles gles3 d3d11_9x 
             #pragma target 3.0
             uniform float _Metallic;
             uniform float _Gloss;
@@ -383,6 +388,7 @@ Shader "Shader Forge/moss2" {
             uniform float _Contrast;
             uniform sampler2D _RockDiffuse; uniform float4 _RockDiffuse_ST;
             uniform sampler2D _MossDiffuse; uniform float4 _MossDiffuse_ST;
+            uniform float4 _MossColour;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -420,8 +426,9 @@ Shader "Shader Forge/moss2" {
                 float4 _RockDiffuse_var = tex2D(_RockDiffuse,TRANSFORM_TEX(i.uv0, _RockDiffuse));
                 float4 _MossDiffuse_var = tex2D(_MossDiffuse,TRANSFORM_TEX(i.uv0, _MossDiffuse));
                 float node_5675 = 0.0;
-                float node_3225 = saturate(pow((max(0,dot(float3(node_5675,_UpNode,node_5675),i.normalDir))*_Level),_Contrast));
-                float3 diffColor = lerp(_RockDiffuse_var.rgb,_MossDiffuse_var.rgb,node_3225);
+                float node_8016 = max(0,dot(float3(node_5675,_UpNode,node_5675),i.normalDir));
+                float node_3225 = saturate(pow((node_8016*_Level),_Contrast));
+                float3 diffColor = lerp(_RockDiffuse_var.rgb,(_MossDiffuse_var.rgb*_MossColour.rgb),node_3225);
                 float specularMonochrome;
                 float3 specColor;
                 diffColor = DiffuseAndSpecularFromMetallic( diffColor, _Metallic, specColor, specularMonochrome );
