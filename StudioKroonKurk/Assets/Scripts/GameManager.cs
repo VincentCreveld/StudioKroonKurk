@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 	private Interactable currentInteractable = null;
 	private bool isFocusingPlayer = true;
 
+
+
 	public QuestProgressUIManager qpUImanager;
 
 	public bool skipAnimations = false;

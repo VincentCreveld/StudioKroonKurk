@@ -21,30 +21,40 @@ public class QuestProgressUIManager : MonoBehaviour
 	public GameObject notificationObj;
 	public float bigScale, smallScale;
 	public Transform animTarget;
-	public GameObject openButton, closeButton;
-	public Animator openButtonAnim;
+	public Button uiButton;
+	public Text uiButtonText;
+	public Animator uiButtonAnim;
 
 	public void Start()
 	{
 		SetContentField();
 		animTarget.localScale = new Vector3(smallScale, smallScale, smallScale);
 		animTarget.gameObject.SetActive(false);
+
+		uiButton.onClick.RemoveAllListeners();
+		uiButton.onClick.AddListener(OpenUI);
+		uiButton.onClick.AddListener(ResetContentFieldPos);
 	}
 
 	public void OpenUI()
 	{
 		notificationObj.SetActive(false);
-		openButton.SetActive(false);
-		closeButton.SetActive(true);
+		uiButton.onClick.RemoveAllListeners();
+		uiButton.onClick.AddListener(CloseUI);
 
+		uiButtonAnim.SetTrigger("ShrinkBack");
+		uiButtonText.text = "Sluiten";
+		Debug.Log("opening");
 		StopAllCoroutines();
 		StartCoroutine(ScaleUI(false));
 	}
 
 	public void CloseUI()
 	{
-		openButton.SetActive(true);
-		closeButton.SetActive(false);
+		uiButton.onClick.RemoveAllListeners();
+		uiButton.onClick.AddListener(OpenUI);
+		uiButton.onClick.AddListener(ResetContentFieldPos);
+		uiButtonText.text = "Taken";
 
 		StopAllCoroutines();
 		StartCoroutine(ScaleUI(true));
@@ -78,9 +88,8 @@ public class QuestProgressUIManager : MonoBehaviour
 		// Place obj to bottom obj pos + offset
 		go.transform.localPosition = allElements[allElements.Count - 1].transform.localPosition - new Vector3(0, (uiElementOffset + objectMargin) * (allElements.Count - 1), 0);
 
-		openButtonAnim.SetBool("IsOpen", true);
-
-		// Set contentfield height
+		notificationObj.SetActive(true);
+		uiButtonAnim.SetTrigger("OpenNotif");
 	}
 
 	public void ResetContentFieldPos()
@@ -136,7 +145,6 @@ public class QuestProgressUIManager : MonoBehaviour
 			{
 				go.SetSeen();
 			}
-			openButtonAnim.SetBool("IsOpen", false);
 		}
 	}
 }
