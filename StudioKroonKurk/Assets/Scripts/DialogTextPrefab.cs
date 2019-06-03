@@ -81,43 +81,43 @@ public class DialogTextPrefab : MonoBehaviour
 		}
 		else
 		{
-			
+
 		}
 	}
 
 	public void FadeInElement()
 	{
-		StartCoroutine(FadeInSelection());
+		StartCoroutine(FadeInSelection(0.5f));
 	}
 
 	public void FadeInMainText()
 	{
-		StartCoroutine(FadeInTextElement(backdrop, mainText, 0.8f));
+		StartCoroutine(FadeTextElement(backdrop, mainText, 0.8f, 0, 1));
 	}
 
 	public void FadeInLeft()
 	{
-		StartCoroutine(FadeInTextElement(leftButtonBackdrop, leftButtonText, 0.8f));
+		StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.8f, 0, 1));
 	}
 
 	public void FadeInRight()
 	{
-		StartCoroutine(FadeInTextElement(rightButtonBackdrop, rightButtonText, 0.8f));
+		StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.8f, 0, 1));
 	}
 
 	public void FadeInMid()
 	{
-		StartCoroutine(FadeInTextElement(midButtonBackdrop, midButtonText, 0.8f));
+		StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.8f, 0, 1));
 	}
 
-	private IEnumerator FadeInTextElement(Image img, Text t, float panTime)
+	private IEnumerator FadeTextElement(Image img, Text t, float panTime, float fromAlpha, float toAlpha)
 	{
 		float curTime = 0;
 
 		Color startColor = img.color;
 
-		t.color = new Color(t.color.r, t.color.g, t.color.b, 0);
-		img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
+		t.color = new Color(t.color.r, t.color.g, t.color.b, fromAlpha);
+		img.color = new Color(img.color.r, img.color.g, img.color.b, fromAlpha);
 
 		img.gameObject.SetActive(true);
 		t.gameObject.SetActive(true);
@@ -130,7 +130,7 @@ public class DialogTextPrefab : MonoBehaviour
 
 			Color c = Color.Lerp(hiddenButtonColor, idleButtonColor, curTime / panTime);
 
-			float a = Mathf.Lerp(0, 1, curTime / panTime);
+			float a = Mathf.Lerp(fromAlpha, toAlpha, curTime / panTime);
 			c.a = a;
 			img.color = c;
 			t.color = new Color(t.color.r, t.color.g, t.color.b, a);
@@ -138,23 +138,28 @@ public class DialogTextPrefab : MonoBehaviour
 			if(curTime > panTime)
 				break;
 		}
-		t.color = new Color(t.color.r, t.color.g, t.color.b, 1f);
+		t.color = new Color(t.color.r, t.color.g, t.color.b, toAlpha);
 		img.color = idleButtonColor;
 	}
 
 	private IEnumerator FadeInSelection(float timeBetweenElements)
 	{
-		yield return StartCoroutine(FadeInTextElement(backdrop, mainText, 0.8f));
+		yield return StartCoroutine(FadeTextElement(backdrop, mainText, 0.8f, 0, 1));
 
 		yield return new WaitForSeconds(timeBetweenElements);
 
 		if(type == UITypes.singleButton)
-			yield return StartCoroutine(FadeInTextElement(midButtonBackdrop, midButtonText, 0.8f));
+			yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.8f, 0, 1));
 		else
 		{
-			yield return StartCoroutine(FadeInTextElement(leftButtonBackdrop, leftButtonText, 0.5f));
+			yield return StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.5f, 0, 1));
 			yield return new WaitForSeconds(timeBetweenElements);
-			yield return StartCoroutine(FadeInTextElement(rightButtonBackdrop, rightButtonText, 0.5f));
+			yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.5f, 0, 1));
 		}
+	}
+
+	private IEnumerator FadeSelectionToSmall(bool isLeft)
+	{
+		yield return null;
 	}
 }
