@@ -23,6 +23,12 @@ public class MainMenuManager : MonoBehaviour
 		PlayerPrefs.DeleteAll();
 	}
 
+	private void Start()
+	{
+		if(Application.isEditor)
+			ResetPrefs();
+	}
+
 	public void OnGUI()
 	{
 		string tx = input.text;
