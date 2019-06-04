@@ -530,6 +530,7 @@ MonoBehaviour:
   rightButton: {fileID: 5283948513019017901}
   highPos: {fileID: 2473338140085962267}
   idleButtonColor: {r: 0.76862746, g: 0.7607843, b: 0.7607843, a: 0.8}
+  fadedTextElement: {r: 0.7686275, g: 0.7607844, b: 0.7607844, a: 0.4}
   selectedButtonColor: {r: 0.1882353, g: 0.5882353, b: 0.49803922, a: 1}
   hiddenButtonColor: {r: 0.12156863, g: 0.8352941, b: 0.6745098, a: 0.4}
   playerBackdrop: {r: 0.1882353, g: 0.5882353, b: 0.49803925, a: 1}
@@ -680,7 +681,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: dc64147b70a9cb14d8b308420ce525b8, type: 3}
-    m_FontSize: 100
+    m_FontSize: 66
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -693,7 +694,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'New Text
 
-    r2
+    r2\
+
+    rfkhwercbwejcrmnew
 
 '
 --- !u!1 &8172782281173554876
@@ -811,7 +814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -616, y: -207.99998}
+  m_AnchoredPosition: {x: 61, y: -109}
   m_SizeDelta: {x: 532.2, y: 99.79999}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &130964989682085340

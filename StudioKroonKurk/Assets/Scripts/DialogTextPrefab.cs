@@ -11,10 +11,18 @@ public class DialogTextPrefab : MonoBehaviour
 	public Button mainButton, leftButton, rightButton;
 	private UITypes type;
 	public Transform highPos;
-	public Color idleButtonColor, selectedButtonColor, hiddenButtonColor, playerBackdrop, mainBackdrop;
+	public Color idleButtonColor, fadedTextElement, selectedButtonColor, hiddenButtonColor, playerBackdrop, mainBackdrop;
 
-	public enum DialogButtonState { none, left, right }
-	private DialogButtonState buttonState = DialogButtonState.none;
+	private bool isPlayer = false;
+
+	public bool isLeft = false;
+
+	public bool IsLeft { get => isLeft; set => isLeft = value; }
+
+	public void SetIsLeft(bool isL)
+	{
+		IsLeft = isL;
+	}
 
 	public void Start()
 	{
@@ -44,6 +52,8 @@ public class DialogTextPrefab : MonoBehaviour
 		else
 			backdrop.color = mainBackdrop;
 
+		this.isPlayer = isPlayer;
+
 		midButtonObj.SetActive(true);
 		leftButtonObj.SetActive(false);
 		rightButtonObj.SetActive(false);
@@ -57,6 +67,8 @@ public class DialogTextPrefab : MonoBehaviour
 		mainText.text = t;
 		leftButtonText.text = left;
 		rightButtonText.text = right;
+
+		
 
 		if(isPlayer)
 			backdrop.color = playerBackdrop;
@@ -80,69 +92,15 @@ public class DialogTextPrefab : MonoBehaviour
 		rightButton.interactable = false;
 	}
 
-	public void SetPrevious(bool isLeft)
+	public void FadeInElement(float timeBetweenElements, bool useDelay = false)
 	{
-		transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-		if(type == UITypes.singleButton)
-		{
-			midButtonBackdrop.color = selectedButtonColor;
-		}
-		else
-		{
-			buttonState = (isLeft) ? DialogButtonState.left : DialogButtonState.right;
-			SetButtons(isLeft);
-			leftButtonObj.SetActive(isLeft);
-			rightButtonObj.SetActive(!isLeft);
-		}
+		StartCoroutine(FadeInSelection(timeBetweenElements, useDelay));
 	}
 
-	public void SetButtons(bool isLeft)
+	private IEnumerator FadeTextElement(Image img, Text t, float panTime, Color targCol, float toAlphaText = 1f, bool useDelay = false)
 	{
-		if(isLeft)
-		{
-			leftButtonBackdrop.color = selectedButtonColor;
-			rightButtonBackdrop.color = hiddenButtonColor;
-		}
-		else
-		{
-			rightButtonBackdrop.color = selectedButtonColor;
-			leftButtonBackdrop.color = hiddenButtonColor;
-		}
-	}
-
-	public void FadeInElement(float timeBetweenElements)
-	{
-		StartCoroutine(FadeInSelection(timeBetweenElements));
-	}
-
-	public void FadeInMainText()
-	{
-		//StartCoroutine(FadeTextElement(backdrop, mainText, 0.8f, 0, 1, mainBackdrop));
-		StartCoroutine(FadeTextElement(backdrop, mainText, 0.8f, mainBackdrop));
-	}
-
-	public void FadeInLeft()
-	{
-		//StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.8f, 0, 1, selectedButtonColor));
-		StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.8f, selectedButtonColor));
-	}
-
-	public void FadeInRight()
-	{
-		//StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.8f, 0, 1, selectedButtonColor));
-		StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.8f, selectedButtonColor));
-	}
-
-	public void FadeInMid()
-	{
-		//StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.8f, 0, 1, selectedButtonColor));
-		StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.8f, selectedButtonColor));
-	}
-
-	private IEnumerator FadeTextElement(Image img, Text t, float panTime, Color targCol, float toAlphaText = 1f)
-	{
-		// Initial delay
-		yield return new WaitForSeconds(0.3f);
+		if(useDelay)
+			yield return new WaitForSeconds(0.15f);
 		float curTime = 0;
 
 		float fromAlpha = img.color.a;
@@ -167,7 +125,6 @@ public class DialogTextPrefab : MonoBehaviour
 
 			float a = Mathf.Lerp(fromAlpha, toAlpha, curTime / panTime);
 			float at = Mathf.Lerp(fromAlphaText, toAlphaText, curTime / panTime);
-			//c.a = a;
 			img.color = c;
 			t.color = new Color(t.color.r, t.color.g, t.color.b, at);
 
@@ -178,55 +135,47 @@ public class DialogTextPrefab : MonoBehaviour
 		img.color = targCol;
 	}
 
-	private IEnumerator FadeInSelection(float timeBetweenElements)
+	private IEnumerator FadeInSelection(float timeBetweenElements, bool useDelay)
 	{
-		//yield return StartCoroutine(FadeTextElement(backdrop, mainText, 0.4f, 0, 1, hiddenButtonColor));
-		yield return StartCoroutine(FadeTextElement(backdrop, mainText, 0.4f, mainBackdrop, 1f));
-
-		//yield return new WaitForSeconds(timeBetweenElements);
+		yield return StartCoroutine(FadeTextElement(backdrop, mainText, 0.3f, (isPlayer) ? selectedButtonColor : mainBackdrop, 1f, useDelay));
+		GameManager.instance.FlipCameraFocus(isPlayer);
 
 		if(type == UITypes.singleButton)
-			yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.4f, selectedButtonColor));
-			//yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.4f, 0, 1, selectedButtonColor));
+			yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.3f, selectedButtonColor));
 		else
 		{
-			yield return StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.1f, selectedButtonColor));
-			//yield return StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.1f, 0, 1, selectedButtonColor));
-			//yield return new WaitForSeconds(timeBetweenElements);
-			yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.1f, selectedButtonColor));
-			//yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.1f, 0, 1, selectedButtonColor));
+			yield return StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.3f, selectedButtonColor));
+			yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.3f, selectedButtonColor));
 		}
 
 		EnableButtonFunctionality();
 	}
 
-	public void FadeToSmall(float t)
+	public void FadeToSmall(float t, bool isLeft = false)
 	{
 		DisableButtonFunctionality();
-		StartCoroutine(FadeSelectionToSmall(t));
+		StartCoroutine(FadeSelectionToSmall(t));//, isLeft));
 	}
 
-	public IEnumerator FadeSelectionToSmall(float timeBetweenElements)
+	public IEnumerator FadeSelectionToSmall(float timeBetweenElements)//, bool isLeft = false)
 	{
-		bool isLeft = (buttonState == DialogButtonState.left);
+		//isLeft = (buttonState == DialogButtonState.left);
 
-		StartCoroutine(FadeTextElement(backdrop, mainText, 0.5f, idleButtonColor, idleButtonColor.a));
-		//StartCoroutine(FadeTextElement(backdrop, mainText, 0.4f, 1, 0.5f, idleButtonColor));
+		yield return null;
+
+		StartCoroutine(FadeTextElement(backdrop, mainText, timeBetweenElements, (isPlayer) ? hiddenButtonColor : fadedTextElement, idleButtonColor.a));
 
 		if(type == UITypes.singleButton)
-			yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.5f, new Color(0,0,0,0), 0));
-			//yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.4f, 1, 0.5f, selectedButtonColor));
+			StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, timeBetweenElements, new Color(0,0,0,0), 0));
 		else
 		{
-			StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, (isLeft) ? 0.5f : 0, (isLeft) ? selectedButtonColor : hiddenButtonColor, (isLeft) ? selectedButtonColor.a : hiddenButtonColor.a));
-			//StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.2f, 1, (isLeft) ? 0.5f : 0, (isLeft) ? selectedButtonColor : hiddenButtonColor));
-			yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, (!isLeft) ? 0.5f : 0, (!isLeft) ? selectedButtonColor : hiddenButtonColor, (!isLeft) ? selectedButtonColor.a : hiddenButtonColor.a));
-			//yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.2f, 1, (!isLeft) ? 0.5f : 0, (!isLeft) ? selectedButtonColor : hiddenButtonColor));
+			StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, (IsLeft) ? timeBetweenElements : 0, (IsLeft) ? selectedButtonColor : hiddenButtonColor, (IsLeft) ? selectedButtonColor.a : hiddenButtonColor.a));
+			yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, (!IsLeft) ? timeBetweenElements : 0, (!IsLeft) ? selectedButtonColor : hiddenButtonColor, (!IsLeft) ? selectedButtonColor.a : hiddenButtonColor.a));
 
-			leftButtonObj.SetActive(isLeft);
-			rightButtonObj.SetActive(!isLeft);
+			leftButtonObj.SetActive(IsLeft);
+			rightButtonObj.SetActive(!IsLeft);
 
-			if(!isLeft)
+			if(!IsLeft)
 			{
 				float curTime = 0f;
 				float panTime = 0.3f;

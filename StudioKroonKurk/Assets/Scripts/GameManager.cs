@@ -134,13 +134,13 @@ public class GameManager : MonoBehaviour
 		}
 		else if(currentDialog is DialogText)
 		{
-			FlipCameraFocus((currentDialog as DialogText).IsFocusPlayer());
+			//FlipCameraFocus((currentDialog as DialogText).IsFocusPlayer());
 				
 			SetupUI(currentDialog as DialogText);
 		}
 		else if(currentDialog is Choice)
 		{
-			FlipCameraFocus((currentDialog as Choice).IsFocusPlayer());
+			//FlipCameraFocus((currentDialog as Choice).IsFocusPlayer());
 
 			SetupUI(currentDialog as Choice);
 		}
@@ -189,17 +189,8 @@ public class GameManager : MonoBehaviour
 	{
 		dialogCanvas.SetActive(true);
 
-		diaManager.CreateNewOption(option.text);
+		diaManager.CreateNewOption(option.text, option.IsFocusPlayer());
 		diaManager.SetButtonFunctions(() => SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId()));
-		
-		// Deprecated
-		//button.gameObject.SetActive(true);
-		//leftButton.gameObject.SetActive(false);
-		//rightButton.gameObject.SetActive(false);
-		//display.text = option.text;
-		//button.onClick.RemoveAllListeners();
-		//button.onClick.AddListener(() => SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId()));
-		//button.GetComponentInChildren<Text>().text = "Next";
 	}
 
 	public void SetupUI(InspectElement option)
@@ -219,22 +210,8 @@ public class GameManager : MonoBehaviour
 	{
 		dialogCanvas.SetActive(true);
 
-		diaManager.CreateNewOption(choice.text, choice.GetText(0), choice.GetText(1));
+		diaManager.CreateNewOption(choice.text, choice.GetText(0), choice.GetText(1), choice.IsFocusPlayer());
 		diaManager.SetButtonFunctions(() => SetNewDialogOption(choice.GetNextId(0)), () => SetNewDialogOption(choice.GetNextId(1)));
-
-		//button.gameObject.SetActive(false);
-		//leftButton.gameObject.SetActive(true);
-		//rightButton.gameObject.SetActive(true);
-
-		//display.text = choice.text;
-		//leftButton.GetComponentInChildren<Text>().text = choice.GetText(0);
-		//rightButton.GetComponentInChildren<Text>().text = choice.GetText(1);
-
-		//leftButton.onClick.RemoveAllListeners();
-		//leftButton.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(0)));
-
-		//rightButton.onClick.RemoveAllListeners();
-		//rightButton.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(1)));
 	}
 
 	public void EndLeafFunction()

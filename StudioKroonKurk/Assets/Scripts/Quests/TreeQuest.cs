@@ -52,10 +52,10 @@ public partial class TreeQuest : Quest
 		AddOption(new DialogText(PN1_D0, PN1_C0, "Het lukt me maar niet om mijn bloemen te laten groeien."));
 		AddOption(new DialogText(PN1_D1, CloseDialog, "Oké, geen probleem. Sorry."));
 		AddOption(new DialogText(PN1_D2, PN1_D6, "Ja ze staan de hele dag in de zon.\nDat zou toch goed moeten zijn?"));
-		AddOption(new DialogText(PN1_D3, PN1_D5, "Ah oké, ik zal wel even op zoek gaan naar wat water."));
+		AddOption(new DialogText(PN1_D3, PN1_D5, "Ah oké, ik zal wel even op zoek gaan naar wat water.", true));
 		AddOption(new DialogText(PN1_D4, PN1_D3, "Nou, ik heb er spijt van dat ik niet veel tijd met mijn moeder heb doorgebracht.\nDus ik wil haar bloemen brengen."));
 		AddOption(new DialogText(PN1_D5, AddProg, "Dankjewel! Er staat volgens mij ergens naast mijn schuurtje een emmer."));
-		AddOption(new DialogText(PN1_D6, PN1_C2, "Als ze in de zon staan is het goed.\nGeef je ze ook water?"));
+		AddOption(new DialogText(PN1_D6, PN1_C2, "Als ze in de zon staan is het goed.\nGeef je ze ook water?", true));
 		AddOption(new Choice(PN1_C0, PN1_D1, SetToInProgress, "Het is echt heel belangrijk.\nZou je me kunnnen helpen?", "Ik heb nu even geen tijd.", "Ja, tuurlijk kan ik helpen."));
 		AddOption(new Choice(PN1_C1, PN1_C2, PN1_D2, "Ik weet niet goed wat ik moet doen om\nde bloemen in leven te houden.", "Heb je de bloemen al water gegeven?", "Hebben de bloemen wel genoeg zonlicht?"));
 		AddOption(new Choice(PN1_C2, PN1_D5, PN1_C3, "Oh, water geven, inderdaad!\nKun je water voor mij zoeken?", "Ik zal wel op zoek gaan naar wat water voor je.", "Waarom kan je het niet zelf halen?"));
@@ -72,10 +72,10 @@ public partial class TreeQuest : Quest
 		AddOption(new DelayElement(P0_A2, AddProg, P0_AI2));
 
 		AddOption(new DialogText(P0_D0, P0_D1,"Heb je de emmer al gevonden? Hij zou ergens naast\nmijn schuurtje moeten staan."));
-		AddOption(new DialogText(P0_D1, CloseDialog, "Top, ik zie hem al staan."));
+		AddOption(new DialogText(P0_D1, CloseDialog, "Top, ik zie hem al staan.", true));
 		AddOption(new DialogText(P0_D2, P0_D3, "Het beekje zou ergens ten westen moeten zijn. Volg het pad\n en je vindt het wel."));
-		AddOption(new DialogText(P0_D3, CloseDialog, "Ik zal wel even kijken!"));
-		AddOption(new DialogText(P0_D4, P0_A0, "Hier is wat water, geef je ze water?"));
+		AddOption(new DialogText(P0_D3, CloseDialog, "Ik zal wel even kijken!", true));
+		AddOption(new DialogText(P0_D4, P0_A0, "Hier is wat water, geef je ze water?", true));
 		AddOption(new DialogText(P0_D5, P0_C1, "Nee, maar nu ze er niet meer is heb ik heel erg spijt \ndat ik niet veel tijd met haar heb doorgebracht."));
 		AddOption(new DialogText(P0_D6, P0_D7, "Toen ik klein was, bate ze koekjes voor mijn vrienden op school en die\ngaf ze dan aan mijn vrienden met een handgeschreven briefje erbij."));
 		AddOption(new DialogText(P0_D7, P0_D8, "Daar schreef ze dan op dat ze zo blij is dat ze mijn vrienden waren."));
