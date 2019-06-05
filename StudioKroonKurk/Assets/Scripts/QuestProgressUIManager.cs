@@ -14,21 +14,29 @@ public class QuestProgressUIManager : MonoBehaviour
 	Event e;
 	bool keydown;
 
+	private string targetText;
+	private string defaultText = "Taken";
+
+	public GameObject vObj, xObj, expandButtonObj, eVDownObj, eVUpObj;
+
+
 
 	[Header("General references")]
-	public RectTransform contentField;
+	public RectTransform contentField, bottomPos;
 
 	public GameObject notificationObj;
-	public float bigScale, smallScale;
-	public Transform animTarget;
-	public Button uiButton;
-	public Text uiButtonText;
+	public float smallScale, mediumScale, bigScale;
+	public RectTransform animTarget;
+	public Button uiButton, expandButton;
+	public Text uiButtonText, expandButtonText;
 	public Animator uiButtonAnim;
+
+	public bool isUIBig = false;
 
 	public void Start()
 	{
 		SetContentField();
-		animTarget.localScale = new Vector3(smallScale, smallScale, smallScale);
+		animTarget.sizeDelta = new Vector3(animTarget.sizeDelta.x, smallScale, 1);
 		animTarget.gameObject.SetActive(false);
 
 		uiButton.onClick.RemoveAllListeners();
@@ -36,17 +44,65 @@ public class QuestProgressUIManager : MonoBehaviour
 		uiButton.onClick.AddListener(ResetContentFieldPos);
 	}
 
+	private void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.LeftShift))
+			CreateNewElement("Test");
+		if(Input.GetKeyDown(KeyCode.LeftControl))
+			ResetContentFieldPos();
+	}
+
 	public void OpenUI()
 	{
 		notificationObj.SetActive(false);
 		uiButton.onClick.RemoveAllListeners();
 		uiButton.onClick.AddListener(CloseUI);
-
-		uiButtonAnim.SetTrigger("ShrinkBack");
 		uiButtonText.text = "Sluiten";
-		Debug.Log("opening");
 		StopAllCoroutines();
-		StartCoroutine(ScaleUI(false));
+		StartCoroutine(ScaleUI(animTarget.sizeDelta.y, mediumScale, false));
+
+		expandButton.onClick.RemoveAllListeners();
+		expandButton.onClick.AddListener(ExpandUI);
+		expandButtonText.text = "Meer laden";
+
+		eVDownObj.SetActive(true);
+		eVUpObj.SetActive(false);
+
+		expandButtonObj.SetActive(true);
+		vObj.SetActive(false);
+		xObj.SetActive(true);
+	}
+
+	public void ExpandUI()
+	{
+		expandButton.onClick.RemoveAllListeners();
+		expandButton.onClick.AddListener(UnexpandUI);
+		expandButtonText.text = "Invouwen";
+
+		eVDownObj.SetActive(false);
+		eVUpObj.SetActive(true);
+
+		expandButtonObj.gameObject.SetActive(false);
+		StopAllCoroutines();
+		StartCoroutine(ScaleUI(animTarget.sizeDelta.y, bigScale, false));
+
+		isUIBig = true;
+	}
+
+	public void UnexpandUI()
+	{
+		expandButton.onClick.RemoveAllListeners();
+		expandButton.onClick.AddListener(ExpandUI);
+		expandButtonText.text = "Meer laden";
+
+		eVDownObj.SetActive(true);
+		eVUpObj.SetActive(false);
+
+		expandButtonObj.gameObject.SetActive(false);
+		StopAllCoroutines();
+		StartCoroutine(ScaleUI(animTarget.sizeDelta.y, mediumScale, false));
+
+		isUIBig = false;
 	}
 
 	public void CloseUI()
@@ -54,10 +110,15 @@ public class QuestProgressUIManager : MonoBehaviour
 		uiButton.onClick.RemoveAllListeners();
 		uiButton.onClick.AddListener(OpenUI);
 		uiButton.onClick.AddListener(ResetContentFieldPos);
-		uiButtonText.text = "Taken";
+		uiButtonText.text = defaultText;
 
+		//(isUIBig) ? bigScale : mediumScale
 		StopAllCoroutines();
-		StartCoroutine(ScaleUI(true));
+		StartCoroutine(ScaleUI(animTarget.sizeDelta.y, smallScale, true));
+
+		expandButtonObj.SetActive(false);
+		vObj.SetActive(true);
+		xObj.SetActive(false);
 	}
 
 	private void SetContentField()
@@ -90,14 +151,16 @@ public class QuestProgressUIManager : MonoBehaviour
 
 		notificationObj.SetActive(true);
 		uiButtonAnim.SetTrigger("OpenNotif");
+		targetText = text;
+		uiButtonText.text = targetText;
 	}
 
 	public void ResetContentFieldPos()
 	{
-		contentField.transform.localPosition = new Vector3(contentField.transform.localPosition.x, objectMargin + (allElements.Count * (uiElementOffset + objectMargin)), 0);
+		contentField.transform.position = new Vector3(contentField.transform.position.x, bottomPos.position.y, 0);
 	}
 
-	private IEnumerator ScaleUI(bool scaleDown = true, float animTime = 0.8f)
+	private IEnumerator ScaleUI(float startVal, float targVal, bool scaleDown = true, float animTime = 0.8f)
 	{
 		float curTime = 0;
 
@@ -105,24 +168,14 @@ public class QuestProgressUIManager : MonoBehaviour
 
 		float fromVal, toVal;
 
-		if(!scaleDown)
-		{
-			fromVal = smallScale;
-			toVal = bigScale;
-		}
-		else
-		{
-			fromVal = bigScale;
-			toVal = smallScale;
-		}
+		fromVal = startVal;
+		toVal = targVal;
+	
 
-		Vector3 bigVal = Vector3.one * toVal;
-		Vector3 smallVal = Vector3.one * fromVal;
+		Vector3 bigVal = new Vector3(animTarget.sizeDelta.x, toVal, 1);
+		Vector3 smallVal = new Vector3(animTarget.sizeDelta.x, fromVal, 1);
 
-		curTime = Mathf.Lerp(0, totalTime, Mathf.InverseLerp(fromVal, toVal, animTarget.localScale.z));
-
-		float startScaleX = animTarget.localScale.x;
-		float startScaleY = animTarget.localScale.y;
+		curTime = Mathf.Lerp(0, totalTime, Mathf.InverseLerp(fromVal, toVal, animTarget.sizeDelta.y));
 
 		if(!scaleDown)
 			animTarget.gameObject.SetActive(true);
@@ -132,10 +185,13 @@ public class QuestProgressUIManager : MonoBehaviour
 			yield return null;
 			curTime += Time.deltaTime;
 
-			animTarget.localScale = Vector3.Slerp(smallVal, bigVal, curTime / totalTime);
+			animTarget.sizeDelta = Vector3.Lerp(smallVal, bigVal, curTime / totalTime);
 
 			if(curTime > totalTime)
+			{
+				animTarget.sizeDelta = bigVal;
 				break;
+			}
 		}
 
 		if(scaleDown)
@@ -145,6 +201,10 @@ public class QuestProgressUIManager : MonoBehaviour
 			{
 				go.SetSeen();
 			}
+		}
+		else
+		{
+			expandButtonObj.SetActive(true);
 		}
 	}
 }

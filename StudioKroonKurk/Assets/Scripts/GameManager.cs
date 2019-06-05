@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
 
 	public bool skipAnimations = false;
 
+	// Hacky component for making talking gestures.
+	public Animator jackAnimator, playerAnimator;
+
 	public void Awake()
 	{
 		Application.targetFrameRate = 60;

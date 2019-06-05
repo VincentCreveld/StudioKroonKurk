@@ -87,16 +87,19 @@ public class DialogueCanvasManager : MonoBehaviour
 	public void SetButtonFunctions(UnityAction mainButton)
 	{
 		currentElement.mainButton.onClick.RemoveAllListeners();
+		currentElement.mainButton.onClick.AddListener(() => currentElement.DisableButtonFunctionality());
 		currentElement.mainButton.onClick.AddListener(mainButton);
 	}
 
 	public void SetButtonFunctions(UnityAction leftButton, UnityAction rightButton)
 	{
 		currentElement.leftButton.onClick.RemoveAllListeners();
+		currentElement.leftButton.onClick.AddListener(() => currentElement.DisableButtonFunctionality());
 		currentElement.leftButton.onClick.AddListener(() => currentElement.SetIsLeft(true));
 		currentElement.leftButton.onClick.AddListener(leftButton);
 
 		currentElement.rightButton.onClick.RemoveAllListeners();
+		currentElement.rightButton.onClick.AddListener(() => currentElement.DisableButtonFunctionality());
 		currentElement.rightButton.onClick.AddListener(() => currentElement.SetIsLeft(false));
 		currentElement.rightButton.onClick.AddListener(rightButton);
 	}

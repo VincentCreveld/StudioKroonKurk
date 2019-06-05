@@ -13,12 +13,14 @@ public class MainMenuManager : MonoBehaviour
 	public string defaultName = "Alex";
 	private bool nameIsSet = false;
 
+	public string levelToLoad;
+
 	public GameObject setNameInterface;
 	public GameObject nameWarning;
 	public GameObject mainMenu;
 
 	[ContextMenu("ResetPrefs")]
-	private void ResetPrefs()
+	public void ResetPrefs()
 	{
 		PlayerPrefs.DeleteAll();
 	}
@@ -75,7 +77,7 @@ public class MainMenuManager : MonoBehaviour
 	{
 		if(nameIsSet)
 		{
-			SceneManager.LoadScene("HubLevel");
+			SceneManager.LoadScene(levelToLoad);
 		}
 		else if(!PlayerPrefs.HasKey("PlayerName") ||
 			PlayerPrefs.GetString("PlayerName") == string.Empty ||
