@@ -36,9 +36,14 @@ public class GameManager : MonoBehaviour
 	private Interactable currentInteractable = null;
 	private bool isFocusingPlayer = true;
 
+	public DialogueCanvasManager diaManager;
+
 	public QuestProgressUIManager qpUImanager;
 
 	public bool skipAnimations = false;
+
+	// Hacky component for making talking gestures.
+	public Animator jackAnimator, playerAnimator;
 
 	public void Awake()
 	{
@@ -61,15 +66,19 @@ public class GameManager : MonoBehaviour
 	{
 		CreateItemRelevantDialogs();
 		CreateQuestNotReadyDialog();
-
-		xButton.onClick.AddListener(() => SetNewDialogOption(404));
+		allOptions.Add(new ReturnControl(404));
 
 		allOptions.Add(new InspectElement(405, 404));
+		CheckForEndLeafs();
+	}
 
+	public void CheckForEndLeafs()
+	{
 		foreach(DialogEntity e in allOptions)
 		{
 			if(e is ReturnControl)
-				allEndLeafIDs.Add(e.id);
+				if(!allEndLeafIDs.Contains(e.id))
+					allEndLeafIDs.Add(e.id);
 		}
 	}
 
@@ -96,6 +105,7 @@ public class GameManager : MonoBehaviour
 		inspectCanvas.SetActive(false);
 		dialogCanvas.SetActive(false);
 
+		// Stops previous voice line
 		AudioManager.instance.StopAudioClip();
 
 		// "Crashes" the dialog if a value is called which doesnt exist.
@@ -114,19 +124,26 @@ public class GameManager : MonoBehaviour
 		previousDialog = currentDialog;
 		currentDialog = GetEntityById(i);
 
+		// Failsafe
+		if(currentDialog is ReturnControl)
+		{
+			OpenGamestate();
+			return;
+		}
+
 		if(currentDialog is InspectElement)
 		{
 			SetupUI(currentDialog as InspectElement);
 		}
 		else if(currentDialog is DialogText)
 		{
-			FlipCameraFocus((currentDialog as DialogText).IsFocusPlayer());
+			//FlipCameraFocus((currentDialog as DialogText).IsFocusPlayer());
 				
 			SetupUI(currentDialog as DialogText);
 		}
 		else if(currentDialog is Choice)
 		{
-			FlipCameraFocus((currentDialog as Choice).IsFocusPlayer());
+			//FlipCameraFocus((currentDialog as Choice).IsFocusPlayer());
 
 			SetupUI(currentDialog as Choice);
 		}
@@ -175,14 +192,8 @@ public class GameManager : MonoBehaviour
 	{
 		dialogCanvas.SetActive(true);
 
-		button.gameObject.SetActive(true);
-		leftButton.gameObject.SetActive(false);
-		rightButton.gameObject.SetActive(false);
-
-		display.text = option.text;
-		button.onClick.RemoveAllListeners();
-		button.onClick.AddListener(() => SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId()));
-		button.GetComponentInChildren<Text>().text = "Next";
+		diaManager.CreateNewOption(option.text, option.IsFocusPlayer());
+		diaManager.SetButtonFunctions(() => SetNewDialogOption(currentDialog.ExecuteNodeAndGetNextId()));
 	}
 
 	public void SetupUI(InspectElement option)
@@ -202,19 +213,8 @@ public class GameManager : MonoBehaviour
 	{
 		dialogCanvas.SetActive(true);
 
-		button.gameObject.SetActive(false);
-		leftButton.gameObject.SetActive(true);
-		rightButton.gameObject.SetActive(true);
-
-		display.text = choice.text;
-		leftButton.GetComponentInChildren<Text>().text = choice.GetText(0);
-		rightButton.GetComponentInChildren<Text>().text = choice.GetText(1);
-
-		leftButton.onClick.RemoveAllListeners();
-		leftButton.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(0)));
-
-		rightButton.onClick.RemoveAllListeners();
-		rightButton.onClick.AddListener(() => SetNewDialogOption(choice.GetNextId(1)));
+		diaManager.CreateNewOption(choice.text, choice.GetText(0), choice.GetText(1), choice.IsFocusPlayer());
+		diaManager.SetButtonFunctions(() => SetNewDialogOption(choice.GetNextId(0)), () => SetNewDialogOption(choice.GetNextId(1)));
 	}
 
 	public void EndLeafFunction()
@@ -251,6 +251,7 @@ public class GameManager : MonoBehaviour
 
 	public void OpenGameWithoutAnim()
 	{
+		diaManager.ResetOptions();
 		currentInteractable = null;
 		mainCanvas.SetActive(false);
 		isGameStateOpen = true;
@@ -260,6 +261,7 @@ public class GameManager : MonoBehaviour
 	{
 		// Finish up dialog as far as that is needed
 		// Re-enable player movement
+		diaManager.ResetOptions();
 		StartCoroutine(OpenGame());
 	}
 
@@ -329,47 +331,6 @@ public class GameManager : MonoBehaviour
 	#endregion
 
 	#region Misc
-	public void CreateDebugDialog()
-	{
-		allOptions.Add(new DialogText(1337, 404, "Just asserting my dominance. \nMove along."));
-
-		allOptions.Add(new DialogText(0, 1, "dialog1 reached"));
-		allOptions.Add(new DialogText(1, 2, "dialog2 reached"));
-		allOptions.Add(new DialogText(3, 4, "gate1 passed"));
-		allOptions.Add(new DialogText(4, 5, "dialog4 reached"));
-
-		allOptions.Add(new ItemGate(2, 3, 199, 0));
-		allOptions.Add(new ItemGate(5, 8, 199, 1));
-
-		allOptions.Add(new DialogText(199, 200, "Item missing"));
-		allOptions.Add(new ReturnControl(200));
-
-		allOptions.Add(new DialogText(10, 11, "dialog11 reached"));
-		allOptions.Add(new DialogText(11, 12, "dialog12 reached"));
-		allOptions.Add(new DialogText(13, 14, "gate11 passed"));
-		allOptions.Add(new DialogText(14, 35, "dialog14 reached"));
-
-		allOptions.Add(new ItemGate(12, 13, 199, 10));
-
-		allOptions.Add(new Choice(35, 36, 21, "Go left?", "yes", "no"));
-		allOptions.Add(new Choice(36, 20, 21, "Go right?", "no", "yes"));
-
-		allOptions.Add(new DialogText(21, 200, "You went the wrong way and died."));
-		allOptions.Add(new DialogText(20, 200, "You got out safely."));
-
-		itemList.Add(0, new Item(0, "item0"));
-		itemList.Add(1, new Item(1, "item1"));
-
-		itemList.Add(10, new Item(10, "Item10"));
-
-		allOptions.Add(new DialogText(7777000, 7777001, "Hey there buckaroomatey."));
-		allOptions.Add(new DialogText(7777003, 404, "Skidaddle your skadoodle m8."));
-		allOptions.Add(new Choice(7777001, 7777002, 7777003, "want to test animation?", "ye", "na"));
-		allOptions.Add(new DelayElement(7777002, 7777004, 0));
-		allOptions.Add(new DialogText(7777004, 404, "Come talk to me up here"));
-		allOptions.Add(new DialogText(7777010, 404, "Good job kiddo"));
-		allOptions.Add(new ReturnControl(404));
-	}
 
 	public void ExecuteFunctionById(int i)
 	{
