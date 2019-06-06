@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: a46733fadc6008a44b19d246e3283a67, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _NORMALMAP
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2450
   stringTagMap:
@@ -60,6 +60,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WindTexture:
         m_Texture: {fileID: 2800000, guid: 606a2d01cecb38047bdf905c3ff510ad, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -85,15 +89,19 @@ Material:
     - _NormalStrength: 0.124
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Rigidness: 26.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Speed: 23.6
     - _SrcBlend: 1
+    - _SwayMax: 0.0212
     - _TrunkWindAmplitude: 1
     - _Trunkwindpower: 0.5
     - _UVScale: 0.31
     - _UVSec: 0
     - _WindSpeed: 0.306
     - _WindStrength: 0.34
+    - _YOffset: 0.5
     - _ZWrite: 1
     - _glossiness: 0
     - _node_5377: 0

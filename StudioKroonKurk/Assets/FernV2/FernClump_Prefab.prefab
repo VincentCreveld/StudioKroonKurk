@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4294023418462264468}
   m_Layer: 0
-  m_Name: FernClump
+  m_Name: FernClump_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,6 +317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fern 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597500615597710031, guid: c7e12b28a26f8194fb6ac07a499d2202,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1959228434802385399, guid: c7e12b28a26f8194fb6ac07a499d2202,
         type: 3}
