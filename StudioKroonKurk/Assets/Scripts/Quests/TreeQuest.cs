@@ -76,7 +76,7 @@ public partial class TreeQuest : Quest
 		AddOption(new DialogText(P0_D2, P0_D3, "Het beekje zou ergens ten westen moeten zijn. Volg het pad\n en je vindt het wel."));
 		AddOption(new DialogText(P0_D3, CloseDialog, "Ik zal wel even kijken!", true));
 		AddOption(new DialogText(P0_D4, P0_A0, "Hier is wat water, geef je ze water?", true));
-		AddOption(new DialogText(P0_D5, P0_C1, "Nee, maar nu ze er niet meer is heb ik heel erg spijt \ndat ik niet veel tijd met haar heb doorgebracht."));
+		AddOption(new DialogText(P0_D5, P0_C1, "Nee, maar nu ze er niet meer is heb ik heel \n erg spijt dat ik niet veel tijd met haar heb doorgebracht."));
 		AddOption(new DialogText(P0_D6, P0_D7, "Toen ik klein was, bate ze koekjes voor mijn vrienden op school en die\ngaf ze dan aan mijn vrienden met een handgeschreven briefje erbij."));
 		AddOption(new DialogText(P0_D7, P0_D8, "Daar schreef ze dan op dat ze zo blij is dat ze mijn vrienden waren."));
 		AddOption(new DialogText(P0_D8, P0_D9, "En ik wil eigenlijk graag bloemen brengen omdat ze heel erg hield van planten en bomen."));

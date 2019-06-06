@@ -25,9 +25,7 @@ public class GameManager : MonoBehaviour
 
 	public GameObject mainCanvas, dialogCanvas, inspectCanvas;
 
-	public Text display;
-
-	public Button button, leftButton, rightButton, inspectButton, xButton;
+	public Button inspectButton;
 
 	public DialogEntity currentDialog, previousDialog;
 
