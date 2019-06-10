@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
 	// Hacky component for making talking gestures.
 	public Animator jackAnimator, playerAnimator;
 
+	// Hacky bucket interfaces
+	public GameObject waterBucketCanvas, emptyBucketCanvas;
+
 	public void Awake()
 	{
 		Application.targetFrameRate = 60;
@@ -356,10 +359,16 @@ public class GameManager : MonoBehaviour
 		SetNewDialogOption(403);
 	}
 
-	public void StartPickupItemDialog(Interactable focus, int dialogToStart)
+	public void StartPickupItemDialog(Interactable focus, bool isWaterBucket = false)
 	{
-		CloseGameState(focus);
-		SetNewDialogOption(dialogToStart);
+		//CloseGameState(focus);
+		CloseGameWithoutAnim(focus);
+		if(isWaterBucket)
+			waterBucketCanvas.SetActive(true);
+		else
+			emptyBucketCanvas.SetActive(true);
+
+		//SetNewDialogOption(dialogToStart);
 	}
 
 	public void FlipCameraFocus(bool b)

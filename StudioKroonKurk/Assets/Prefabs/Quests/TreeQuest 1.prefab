@@ -236,6 +236,7 @@ MonoBehaviour:
   functionToExecute: 100600
   checkForOtherItem: 1
   itemToCheckId: 101700
+  isWater: 1
 --- !u!135 &1381271767961756228
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -371,6 +372,7 @@ MonoBehaviour:
   functionToExecute: 654321
   checkForOtherItem: 0
   itemToCheckId: 0
+  isWater: 0
 --- !u!135 &2428418681235070862
 SphereCollider:
   m_ObjectHideFlags: 0

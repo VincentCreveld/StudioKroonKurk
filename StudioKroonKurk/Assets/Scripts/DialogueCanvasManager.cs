@@ -109,30 +109,34 @@ public class DialogueCanvasManager : MonoBehaviour
 		float curTime = 0f;
 		float panTime = 0.3f;
 
-		if(elementToDelete != null)
-		{
-			elementToDelete.FadeToSmall(0.3f);
+		//if(elementToDelete != null)
+		//{
+		//	elementToDelete.FadeToSmall(0.3f);
 
-			while(true)
-			{
-				yield return null;
-				curTime += Time.deltaTime;
+		//	while(true)
+		//	{
+		//		yield return null;
+		//		curTime += Time.deltaTime;
 
-				elementToDelete.transform.localPosition = Vector3.Lerp(highPos.localPosition, higherPos.localPosition, curTime / panTime);
-				elementToDelete.transform.localScale = Vector3.Lerp(Vector3.one * 0.5f, Vector3.zero, curTime / panTime);
+		//		elementToDelete.transform.localPosition = Vector3.Lerp(highPos.localPosition, higherPos.localPosition, curTime / panTime);
+		//		elementToDelete.transform.localScale = Vector3.Lerp(Vector3.one * 0.5f, Vector3.zero, curTime / panTime);
 
-				if(curTime > panTime)
-				{
-					break;
-				}
-			}
-			Destroy(elementToDelete.gameObject);
-		}
+		//		if(curTime > panTime)
+		//		{
+		//			break;
+		//		}
+		//	}
+		//	Destroy(elementToDelete.gameObject);
+		//}
 
 
-		yield return new WaitForSeconds(0.5f);
+		//yield return new WaitForSeconds(0.5f);
 
 		curTime = 0f;
+
+		if(elementToDelete != null)
+			Destroy(elementToDelete.gameObject);
+
 
 		if(previousElement != null)
 			previousElement.FadeToSmall(0.3f);//, isLeft);
@@ -142,8 +146,8 @@ public class DialogueCanvasManager : MonoBehaviour
 			yield return null;
 			curTime += Time.deltaTime;
 
-			previousElement.transform.localPosition = Vector3.Lerp(lowPos.localPosition, highPos.localPosition, curTime / panTime);
-			previousElement.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.5f, curTime / panTime);
+			previousElement.transform.localPosition = Vector3.Lerp(lowPos.localPosition, higherPos.localPosition, curTime / panTime);
+			previousElement.transform.localScale = Vector3.Lerp(Vector3.one, /*Vector3.one * 0.5f*/ Vector3.zero, curTime / panTime);
 
 			if(curTime > panTime)
 			{

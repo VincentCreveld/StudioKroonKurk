@@ -57,9 +57,13 @@ public class QuestProgressUIManager : MonoBehaviour
 		notificationObj.SetActive(false);
 		uiButton.onClick.RemoveAllListeners();
 		uiButton.onClick.AddListener(CloseUI);
-		uiButtonText.text = "Sluiten";
+		//uiButtonText.text = "Sluiten";
+
 		StopAllCoroutines();
-		StartCoroutine(ScaleUI(animTarget.sizeDelta.y, mediumScale, false));
+		if(allElements.Count > 1)
+			StartCoroutine(ScaleUI(animTarget.sizeDelta.y, mediumScale, false));
+		else
+			StartCoroutine(ScaleUI(animTarget.sizeDelta.y, 290, false));
 
 		expandButton.onClick.RemoveAllListeners();
 		expandButton.onClick.AddListener(ExpandUI);
@@ -68,7 +72,11 @@ public class QuestProgressUIManager : MonoBehaviour
 		eVDownObj.SetActive(true);
 		eVUpObj.SetActive(false);
 
-		expandButtonObj.SetActive(true);
+		if(allElements.Count > 1)
+			expandButtonObj.SetActive(true);
+		else
+			expandButtonObj.SetActive(false);
+
 		vObj.SetActive(false);
 		xObj.SetActive(true);
 	}
@@ -110,7 +118,7 @@ public class QuestProgressUIManager : MonoBehaviour
 		uiButton.onClick.RemoveAllListeners();
 		uiButton.onClick.AddListener(OpenUI);
 		uiButton.onClick.AddListener(ResetContentFieldPos);
-		uiButtonText.text = defaultText;
+		//uiButtonText.text = defaultText;
 
 		//(isUIBig) ? bigScale : mediumScale
 		StopAllCoroutines();
@@ -123,8 +131,8 @@ public class QuestProgressUIManager : MonoBehaviour
 
 	private void SetContentField()
 	{
-		ResetContentFieldPos();
 		contentField.sizeDelta = new Vector2(contentField.sizeDelta.x, allElements.Count * (uiElementOffset + objectMargin));
+		ResetContentFieldPos();
 	}
 
 	public void CreateNewElement(string text)
@@ -147,17 +155,19 @@ public class QuestProgressUIManager : MonoBehaviour
 
 		SetContentField();
 		// Place obj to bottom obj pos + offset
-		go.transform.localPosition = allElements[allElements.Count - 1].transform.localPosition - new Vector3(0, (uiElementOffset + objectMargin) * (allElements.Count - 1), 0);
+		go.transform.localPosition = allElements[0].transform.localPosition + new Vector3(0, -30 -(uiElementOffset + objectMargin) * -(allElements.Count - 1), 0);
 
 		notificationObj.SetActive(true);
 		uiButtonAnim.SetTrigger("OpenNotif");
 		targetText = text;
 		uiButtonText.text = targetText;
+
+		CloseUI();
 	}
 
 	public void ResetContentFieldPos()
 	{
-		contentField.transform.position = new Vector3(contentField.transform.position.x, bottomPos.position.y, 0);
+		contentField.transform.localPosition = new Vector3(0, (uiElementOffset + objectMargin) * -(allElements.Count - 1), 0);
 	}
 
 	private IEnumerator ScaleUI(float startVal, float targVal, bool scaleDown = true, float animTime = 0.8f)
@@ -171,7 +181,6 @@ public class QuestProgressUIManager : MonoBehaviour
 		fromVal = startVal;
 		toVal = targVal;
 	
-
 		Vector3 bigVal = new Vector3(animTarget.sizeDelta.x, toVal, 1);
 		Vector3 smallVal = new Vector3(animTarget.sizeDelta.x, fromVal, 1);
 
@@ -204,7 +213,10 @@ public class QuestProgressUIManager : MonoBehaviour
 		}
 		else
 		{
-			expandButtonObj.SetActive(true);
+			if(allElements.Count > 1)
+				expandButtonObj.SetActive(true);
+			else
+				expandButtonObj.SetActive(false);
 		}
 	}
 }

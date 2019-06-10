@@ -21,6 +21,9 @@ public class Pickupable : Interactable
 	public bool checkForOtherItem = false;
 	public int itemToCheckId = 0;
 
+	// hacky bool.inc
+	public bool isWater;
+
 	protected override void Start()
 	{
 		base.Start();
@@ -78,8 +81,9 @@ public class Pickupable : Interactable
 	{
 		if(pushTextToProgress)
 			GameManager.instance.SetNewQuestProgress(textForProgress);
-		GameManager.instance.StartPickupItemDialog(this, pickupDialogToStart);
+		GameManager.instance.StartPickupItemDialog(this, isWater);
 		GameManager.instance.PickupItem(itemToAdd);
+		Destroy(gameObject);
 	}
 
     public void CreatePickupDialog()
