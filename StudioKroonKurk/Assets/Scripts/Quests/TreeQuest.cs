@@ -145,7 +145,7 @@ public partial class TreeQuest : Quest
 		if(currentQuestProgress < textPerProgressionToDo.Count && textPerProgressionToDo[currentQuestProgress] != string.Empty)
 			GameManager.instance.SetNewQuestProgress(textPerProgressionToDo[currentQuestProgress]);
 
-		IncrementMarkerPos();
+		IncrementQuestMarkerPos();
 	}
     private void EnableWaterPickup()
     {
@@ -153,7 +153,7 @@ public partial class TreeQuest : Quest
         waterBucket.gameObject.SetActive(true);
     }
 
-	public void IncrementQuestMarkerPos()
+	public override void IncrementQuestMarkerPos()
 	{
 		markerPosIncrement++;
 
