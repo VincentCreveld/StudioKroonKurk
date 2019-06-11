@@ -5,10 +5,37 @@ using UnityEngine;
 public class RuneRootController : MonoBehaviour
 {
 	public Material rootMat;
-	private Shader rootShader;
+	public string rootDirVarName = "_PulseDirection", rootTextureVarName = "_LightVeinTex";
+	public float positiveVal = 1.346f, negativeVal = -1.346f;
+	
+	public Color color1, color2;
 
-	private void Awake()
+	[ContextMenu("SetFwd")]
+	public void SetFwd()
 	{
-		rootShader = rootMat.shader;
+		SetRootDir(true);
+	}
+
+	[ContextMenu("SetBwd")]
+	public void SetBwd()
+	{
+		SetRootDir(false);
+	}
+
+	public void SetRootDir(bool isFwd)
+	{
+		rootMat.SetFloat(rootDirVarName, (isFwd) ? positiveVal : negativeVal);
+	}
+
+	[ContextMenu("Disable")]
+	public void DisableRoots()
+	{
+		rootMat.SetTextureScale(rootTextureVarName, Vector2.zero);
+	}
+
+	[ContextMenu("Enable")]
+	public void EnableRoots()
+	{
+		rootMat.SetTextureScale(rootTextureVarName, Vector2.one);
 	}
 }
