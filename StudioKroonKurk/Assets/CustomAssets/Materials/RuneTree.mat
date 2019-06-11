@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RuneRoot
+  m_Name: RuneTree
   m_Shader: {fileID: 4800000, guid: 1091200b78a84c948b0d7479d5204483, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
