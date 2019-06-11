@@ -11,7 +11,7 @@ public partial class TreeQuest : Quest
     public GameObject jack;
     public Transform memorialPoint;
     public GameObject flower;
-
+    public string characterName;
     private void Start()
     {
         questId = questNo;
@@ -35,6 +35,7 @@ public partial class TreeQuest : Quest
 		AddOption(new QuestGate(EntryId, QuestComp, Progress0, PN1_Entry, QuestClosed, questNo));
 		AddOption(new QuestStepGate(Progress0, P0_Entry, Progress1, questNo, 0));
 		AddOption(new QuestStepGate(Progress1, P1_Entry, QuestComp, questNo, 1));
+        AddOption(new QuestStepGate(Progress2, P2_Entry, QuestComp, questNo, 2));
 
 		AddOption(new ReturnControl(CloseDialog));
 		AddOption(new Function(AddProg, CloseDialog, CloseDiaFunc));
@@ -56,7 +57,7 @@ public partial class TreeQuest : Quest
 		AddOption(new DialogText(PN1_D4, PN1_D3, "Nou, ik heb er spijt van dat ik niet veel tijd met mijn moeder heb doorgebracht.\nDus ik wil haar bloemen brengen."));
 		AddOption(new DialogText(PN1_D5, AddProg, "Dankjewel! Er staat volgens mij ergens naast mijn schuurtje een emmer."));
 		AddOption(new DialogText(PN1_D6, PN1_C2, "Als ze in de zon staan is het goed.\nGeef je ze ook water?", true));
-		AddOption(new Choice(PN1_C0, PN1_D1, SetToInProgress, "Het is echt heel belangrijk.\nZou je me kunnnen helpen?", "Ik heb nu even geen tijd.", "Ja, tuurlijk kan ik helpen."));
+		AddOption(new Choice(PN1_C0, PN1_D1, SetToInProgress, "Het is echt heel belangrijk.\nZou je me kunnen helpen?", "Ik heb nu even geen tijd.", "Ja, tuurlijk kan ik helpen."));
 		AddOption(new Choice(PN1_C1, PN1_C2, PN1_D2, "Ik weet niet goed wat ik moet doen om\nde bloemen in leven te houden.", "Heb je de bloemen al water gegeven?", "Hebben de bloemen wel genoeg zonlicht?"));
 		AddOption(new Choice(PN1_C2, PN1_D5, PN1_C3, "Oh, water geven, inderdaad!\nKun je water voor mij zoeken?", "Ik zal wel op zoek gaan naar wat water voor je.", "Waarom kan je het niet zelf halen?"));
 		AddOption(new Choice(PN1_C3, PN1_D3, PN1_D4, "Ik kan daar nog niet heen, niet voordat ik de bloemen heb.", "Ah oké, ik zal wel even op zoek gaan naar wat water.", "Oh, wat is er gebeurt dan?"));
@@ -94,7 +95,7 @@ public partial class TreeQuest : Quest
 	public void CreateQP1()
 	{
 		AddOption(new DelayElement(P1_A0, P1_C0, P1_AI0));
-		AddOption(new DelayElement(P1_A1, AddProg, P1_AI1));
+		AddOption(new DelayElement(P1_A1, P1_D8, P1_AI1));
 
 		AddOption(new Choice(P1_C0, P1_D0, P1_D1, "", "Is dit het graf van je moeder?", "Zijn dit de bomen uit je achtertuin?"));
 
@@ -106,9 +107,35 @@ public partial class TreeQuest : Quest
 		AddOption(new DialogText(P1_D5, P1_D6, "Ik weet ook gewoon niet wat ik zou zeggen."));
 		AddOption(new DialogText(P1_D6, P1_D7, "\"Hey Tom, hoe gaat het\"?"));
 		AddOption(new DialogText(P1_D7, P1_A1, "Nou laat maar. Ik weet het ook niet meer."));
-	}
+        AddOption(new DialogText(P1_D8, AddProg, "Tegen bomen praten? Hmm... Zouden ze dan ook antwoorden?",true));
+    }
 
-	private void AddOption(DialogEntity e)
+    public void CreateQP2()
+    {
+        AddOption(new DelayElement(P2_A0, P2_D0, P2_AI0));
+        //AddOption(new DelayElement(P2_A1, , P2_AI1));
+        AddOption(new DialogText(P2_D0, P2_D1, "Uhm... Hallo?",true));
+        AddOption(new DialogText(P2_D1, P2_D2, "..."));
+        AddOption(new DialogText(P2_D2, P2_D3, "Ja, oké... Ik ben " + characterName + ".",true));
+        AddOption(new DialogText(P2_D3, P2_D4, "Heb jij ook een naam?",true));
+        AddOption(new DialogText(P2_D4, P2_D5, "Woooooooosh..."));
+
+        AddOption(new Choice(P2_C0, P2_D6, P2_D7, "", "Wat is je naam?", "Heet jij Daphne?"));
+        AddOption(new DialogText(P2_D6, P2_D9, "..."));
+        AddOption(new DialogText(P2_D9, P2_C1, "Oké, geen antwoord... Dat werkt dus niet.",true));
+        AddOption(new Choice(P2_C1, P2_D11, P2_D8, "", "Is het Tom?", "Is het Daphne?"));
+        AddOption(new DialogText(P2_D11, P2_C2, "Woosh.. Woosh.."));
+        AddOption(new Choice(P2_C2, P2_D8, P2_D12, "", "Daphne, dan?", "Zeg het gewoon."));
+        AddOption(new DialogText(P2_D12, P2_D13, "..."));
+        AddOption(new DialogText(P2_D13, P2_C2, "Oké, geen antwoord... Dat werkt dus niet.", true));
+        AddOption(new DialogText(P2_D7, P2_D8, "Jack zei eerder dat je Daphne heet, is dat jou naam?",true));
+        AddOption(new DialogText(P2_D8, P2_D10, "Woooooooosh..."));
+
+
+    }
+
+
+    private void AddOption(DialogEntity e)
     {
         gm.allOptions.Add(e);
     }

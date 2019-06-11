@@ -109,12 +109,88 @@ public partial class TreeQuest
 	private int P1_D4 = 102004;
 	private int P1_D5 = 102005;
 	private int P1_D6 = 102006;
-	private int P1_D7 = 102007;
-	#endregion
+    private int P1_D7 = 102007;
+    private int P1_D8 = 102008;
+    #endregion
 
-	#region Progress2
-	#endregion
+    #region Progress2
+    private int P2_Entry = 103900;
 
-	#region Progress3
-	#endregion
+    private int P2_A0 = 103900;
+    private int P2_A1 = 103901;
+    private int P2_AI0 = 5;
+    private int P2_AI1 = 6;
+
+    private int P2_C0 = 103100;
+    private int P2_C1 = 103101;
+    private int P2_C2 = 103102;
+    private int P2_C3 = 103103;
+    private int P2_C4 = 103104;
+    private int P2_C5 = 103105;
+    private int P2_C6 = 103106;
+    private int P2_C7 = 103107;
+    private int P2_C8 = 103108;
+    private int P2_C9 = 103109;
+
+
+    private int P2_D0 = 103000;
+    private int P2_D1 = 103001;
+    private int P2_D2 = 103002;
+    private int P2_D3 = 103003;
+    private int P2_D4 = 103004;
+    private int P2_D5 = 103005;
+    private int P2_D6 = 103006;
+    private int P2_D7 = 103007;
+    private int P2_D8 = 103008;
+    private int P2_D9 = 103009;
+    private int P2_D10 = 103010;
+    private int P2_D11 = 103011;
+    private int P2_D12 = 103012;
+    private int P2_D13 = 103013;
+    private int P2_D14 = 103014;
+    private int P2_D15 = 103015;
+    private int P2_D16 = 103016;
+    private int P2_D17 = 103017;
+    private int P2_D18 = 103018;
+    private int P2_D19 = 103019;
+    private int P2_D20 = 103020;
+    private int P2_D21 = 103021;
+    private int P2_D22 = 103022;
+    private int P2_D23 = 103023;
+    private int P2_D24 = 103024;
+    private int P2_D25 = 103025;
+    private int P2_D26 = 103026;
+    private int P2_D27 = 103027;
+    private int P2_D28 = 103028;
+    private int P2_D29 = 103029;
+    private int P2_D30 = 103030;
+    private int P2_D31 = 103031;
+    private int P2_D32 = 103032;
+    private int P2_D33 = 103033;
+    private int P2_D34 = 103034;
+    private int P2_D35 = 103035;
+    private int P2_D36 = 103036;
+    private int P2_D37 = 103037;
+    private int P2_D38 = 103038;
+    private int P2_D39 = 103039;
+    private int P2_D40 = 103040;
+    private int P2_D41 = 103041;
+    private int P2_D42 = 103042;
+    private int P2_D43 = 103043;
+    private int P2_D44 = 103044;
+    private int P2_D45 = 103045;
+    private int P2_D46 = 103046;
+    private int P2_D47 = 103047;
+    private int P2_D48 = 103048;
+    private int P2_D49 = 103049;
+    private int P2_D50 = 103050;
+    private int P2_D51 = 103051;
+    private int P2_D52 = 103052;
+    private int P2_D53 = 103053;
+
+
+    #endregion
+
+    #region Progress3
+    #endregion
 }
