@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
 	// Hacky bucket interfaces
 	public GameObject waterBucketCanvas, emptyBucketCanvas;
+    public GameObject rootsToDisable;
 
 	public void Awake()
 	{
@@ -224,8 +225,21 @@ public class GameManager : MonoBehaviour
 		OpenGamestate();
 	}
 
-	#region GameStateRelated
-	public void CloseGameState(Interactable focus)
+    [ContextMenu("OpenArea")]
+    public void OpenArea()
+    {
+        player.areaMask = NavMesh.AllAreas;
+        rootsToDisable.SetActive(false);
+    }
+
+    [ContextMenu("CloseDialogue")]
+    public void CloseDia()
+    {
+        SetNewDialogOption(404);
+    }
+
+    #region GameStateRelated
+    public void CloseGameState(Interactable focus)
 	{
 		// Requires reference to player controls (pathfinding component)
 		// Shut off player controls here

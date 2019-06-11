@@ -180,7 +180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -598, y: -202.09998}
+  m_AnchoredPosition: {x: -657, y: -202.09998}
   m_SizeDelta: {x: 532.2, y: 99.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5437860650168302801
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 3330837679443958362}
   - component: {fileID: 2207582353759896464}
   m_Layer: 5
-  m_Name: Left
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: -202.09991}
+  m_AnchoredPosition: {x: -659, y: -202.09991}
   m_SizeDelta: {x: 532.2, y: 99.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8049382362120700378
@@ -447,7 +447,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: dc64147b70a9cb14d8b308420ce525b8, type: 3}
-    m_FontSize: 40
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -526,8 +526,8 @@ MonoBehaviour:
   rightButtonText: {fileID: 894219996403827440}
   midButtonText: {fileID: 5499541596693118007}
   mainButton: {fileID: 5024114644639491215}
-  leftButton: {fileID: 2207582353759896464}
-  rightButton: {fileID: 5283948513019017901}
+  leftButton: {fileID: 5283948513019017901}
+  rightButton: {fileID: 2207582353759896464}
   highPos: {fileID: 2473338140085962267}
   idleButtonColor: {r: 0.76862746, g: 0.7607843, b: 0.7607843, a: 0.8}
   fadedTextElement: {r: 0.7686275, g: 0.7607844, b: 0.7607844, a: 0.4}
@@ -603,7 +603,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: dc64147b70a9cb14d8b308420ce525b8, type: 3}
-    m_FontSize: 40
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -767,7 +767,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: dc64147b70a9cb14d8b308420ce525b8, type: 3}
-    m_FontSize: 40
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 6414207242642043906}
   - component: {fileID: 5283948513019017901}
   m_Layer: 5
-  m_Name: Right
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -815,7 +815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77, y: -203.09998}
+  m_AnchoredPosition: {x: 18, y: -203.09998}
   m_SizeDelta: {x: 532.2, y: 99.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &130964989682085340

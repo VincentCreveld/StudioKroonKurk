@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8408435732685163252}
   - component: {fileID: 8408435732685163256}
-  - component: {fileID: 8408435732685163257}
   - component: {fileID: 8408435732685163259}
   - component: {fileID: 8408435732685163258}
   m_Layer: 9
@@ -44,22 +43,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8408435732685163253}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!208 &8408435732685163257
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408435732685163253}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!135 &8408435732685163259
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -86,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactPos: {fileID: 8408435733554837269}
+  focusPos: {fileID: 0}
   interactDistance: 0
   dialogToStart: 66666
 --- !u!1 &8408435733554837270
