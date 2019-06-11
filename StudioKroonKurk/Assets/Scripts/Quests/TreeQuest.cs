@@ -12,8 +12,11 @@ public partial class TreeQuest : Quest
     public Transform memorialPoint;
     public GameObject flower;
 
+	private int markerPosIncrement;
+
     private void Start()
     {
+		markerPosIncrement = currentQuestProgress;
         questId = questNo;
 		gm = GameManager.instance;
         state = QuestState.canAccept;
@@ -142,19 +145,27 @@ public partial class TreeQuest : Quest
 		if(currentQuestProgress < textPerProgressionToDo.Count && textPerProgressionToDo[currentQuestProgress] != string.Empty)
 			GameManager.instance.SetNewQuestProgress(textPerProgressionToDo[currentQuestProgress]);
 
-		//if(currentQuestProgress > questMarkerPositions.Count - 1)
-		//{
-		//	marker.gameObject.SetActive(false);
-		//	return;
-		//}
-		//else
-		//	marker.gameObject.SetActive(true);
-		//if(questMarkerPositions[currentQuestProgress].position != null)
-		//	marker.position = questMarkerPositions[currentQuestProgress].position;
+		IncrementMarkerPos();
 	}
     private void EnableWaterPickup()
     {
         emptyBucket.gameObject.SetActive(false);
         waterBucket.gameObject.SetActive(true);
     }
+
+	public void IncrementQuestMarkerPos()
+	{
+		markerPosIncrement++;
+
+		if(markerPosIncrement > questMarkerPositions.Count - 1)
+		{
+			marker.gameObject.SetActive(false);
+			return;
+		}
+		else
+			marker.gameObject.SetActive(true);
+
+		if(questMarkerPositions[markerPosIncrement].position != null)
+			marker.position = questMarkerPositions[markerPosIncrement].position;
+	}
 }

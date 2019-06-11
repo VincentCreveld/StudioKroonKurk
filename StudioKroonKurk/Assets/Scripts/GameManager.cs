@@ -426,4 +426,10 @@ public class GameManager : MonoBehaviour
 		isFocusingPlayer = b;
 	}
 	#endregion
+
+	public void IncrementMarkerPos(int questNo)
+	{
+		if(questList.ContainsKey(questNo))
+			questList[questNo].IncrementQuestMarkerPos();
+	}
 }

@@ -28,4 +28,6 @@ public abstract class Quest : MonoBehaviour
 	}
 
 	public abstract void Initialise(int i);
+
+	public abstract void IncrementQuestMarkerPos();
 }
