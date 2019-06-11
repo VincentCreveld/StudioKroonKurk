@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
 	// Hacky component for making talking gestures.
 	public Animator jackAnimator, playerAnimator;
 
+	// Hacky bucket interfaces
+	public GameObject waterBucketCanvas, emptyBucketCanvas;
+    public GameObject rootsToDisable;
+
 	public void Awake()
 	{
 		Application.targetFrameRate = 60;
@@ -221,8 +225,21 @@ public class GameManager : MonoBehaviour
 		OpenGamestate();
 	}
 
-	#region GameStateRelated
-	public void CloseGameState(Interactable focus)
+    [ContextMenu("OpenArea")]
+    public void OpenArea()
+    {
+        player.areaMask = NavMesh.AllAreas;
+        rootsToDisable.SetActive(false);
+    }
+
+    [ContextMenu("CloseDialogue")]
+    public void CloseDia()
+    {
+        SetNewDialogOption(404);
+    }
+
+    #region GameStateRelated
+    public void CloseGameState(Interactable focus)
 	{
 		// Requires reference to player controls (pathfinding component)
 		// Shut off player controls here
@@ -356,10 +373,16 @@ public class GameManager : MonoBehaviour
 		SetNewDialogOption(403);
 	}
 
-	public void StartPickupItemDialog(Interactable focus, int dialogToStart)
+	public void StartPickupItemDialog(Interactable focus, bool isWaterBucket = false)
 	{
-		CloseGameState(focus);
-		SetNewDialogOption(dialogToStart);
+		//CloseGameState(focus);
+		CloseGameWithoutAnim(focus);
+		if(isWaterBucket)
+			waterBucketCanvas.SetActive(true);
+		else
+			emptyBucketCanvas.SetActive(true);
+
+		//SetNewDialogOption(dialogToStart);
 	}
 
 	public void FlipCameraFocus(bool b)

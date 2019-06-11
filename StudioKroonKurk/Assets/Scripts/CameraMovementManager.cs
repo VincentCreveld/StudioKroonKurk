@@ -69,22 +69,24 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		Vector3 lPos = (isPlayer) ? lookatTarget.position + Vector3.up : lookatTarget.position;
 
 		Transform t = (isPlayer) ? playerHoverPos : movePos;
+        if (mngrHasControl)
+        {
+            while (true)
+            {
+                yield return null;
+                curTime += Time.deltaTime;
 
-		while(true)
-		{
-			yield return null;
-			curTime += Time.deltaTime;
+                //cam.LookAt(lookatTarget);
+                Vector3 targDir = lPos - t.position;
+                Quaternion targRotation = Quaternion.LookRotation(targDir);
 
-			//cam.LookAt(lookatTarget);
-			Vector3 targDir = lPos - t.position;
-			Quaternion targRotation = Quaternion.LookRotation(targDir);
+                cam.rotation = Quaternion.Lerp(startRot, targRotation, curTime / totalTime);
+                cam.position = Vector3.Slerp(initialPos, t.position, curTime / totalTime);
 
-			cam.rotation = Quaternion.Lerp(startRot, targRotation, curTime / totalTime);
-			cam.position = Vector3.Slerp(initialPos, t.position, curTime / totalTime);
-
-			if(curTime > totalTime)
-				break;
-		}
+                if (curTime > totalTime)
+                    break;
+            }
+        }
 	}
 
 	public IEnumerator MoveOutLoop(float totalTime)
