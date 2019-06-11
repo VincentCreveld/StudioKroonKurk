@@ -515,15 +515,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backdrop: {fileID: 7518128916610069005}
-  leftButtonBackdrop: {fileID: 3330837679443958362}
-  rightButtonBackdrop: {fileID: 6414207242642043906}
+  leftButtonBackdrop: {fileID: 6414207242642043906}
+  rightButtonBackdrop: {fileID: 3330837679443958362}
   midButtonBackdrop: {fileID: 543606522927401202}
-  leftButtonObj: {fileID: 3097506408764087997}
-  rightButtonObj: {fileID: 8257706768587651856}
+  leftButtonObj: {fileID: 8257706768587651856}
+  rightButtonObj: {fileID: 3097506408764087997}
   midButtonObj: {fileID: 2876061457466818113}
   mainText: {fileID: 9054523615785780489}
-  leftButtonText: {fileID: 1790412633735454684}
-  rightButtonText: {fileID: 894219996403827440}
+  leftButtonText: {fileID: 894219996403827440}
+  rightButtonText: {fileID: 1790412633735454684}
   midButtonText: {fileID: 5499541596693118007}
   mainButton: {fileID: 5024114644639491215}
   leftButton: {fileID: 5283948513019017901}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 5790436409086274594}
   - component: {fileID: 1790412633735454684}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 6259824495998549782}
   - component: {fileID: 894219996403827440}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

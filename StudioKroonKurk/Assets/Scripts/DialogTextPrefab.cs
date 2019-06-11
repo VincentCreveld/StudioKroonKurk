@@ -144,8 +144,8 @@ public class DialogTextPrefab : MonoBehaviour
 			yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.3f, selectedButtonColor));
 		else
 		{
-			yield return StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.3f, selectedButtonColor));
 			yield return StartCoroutine(FadeTextElement(rightButtonBackdrop, rightButtonText, 0.3f, selectedButtonColor));
+			yield return StartCoroutine(FadeTextElement(leftButtonBackdrop, leftButtonText, 0.3f, selectedButtonColor));
 		}
 
 		EnableButtonFunctionality();
@@ -154,13 +154,11 @@ public class DialogTextPrefab : MonoBehaviour
 	public void FadeToSmall(float t, bool isLeft = false)
 	{
 		DisableButtonFunctionality();
-		StartCoroutine(FadeSelectionToSmall(t));//, isLeft));
+		StartCoroutine(FadeSelectionToSmall(t));
 	}
 
-	public IEnumerator FadeSelectionToSmall(float timeBetweenElements)//, bool isLeft = false)
+	public IEnumerator FadeSelectionToSmall(float timeBetweenElements)
 	{
-		//isLeft = (buttonState == DialogButtonState.left);
-
 		yield return null;
 
 		StartCoroutine(FadeTextElement(backdrop, mainText, timeBetweenElements, (isPlayer) ? hiddenButtonColor : fadedTextElement, idleButtonColor.a));
