@@ -176,19 +176,7 @@ public partial class TreeQuest
     private int P2_D38 = 103038;
     private int P2_D39 = 103039;
     private int P2_D40 = 103040;
-    private int P2_D41 = 103041;
-    private int P2_D42 = 103042;
-    private int P2_D43 = 103043;
-    private int P2_D44 = 103044;
-    private int P2_D45 = 103045;
-    private int P2_D46 = 103046;
-    private int P2_D47 = 103047;
-    private int P2_D48 = 103048;
-    private int P2_D49 = 103049;
-    private int P2_D50 = 103050;
-    private int P2_D51 = 103051;
-    private int P2_D52 = 103052;
-    private int P2_D53 = 103053;
+
 
 
     #endregion
