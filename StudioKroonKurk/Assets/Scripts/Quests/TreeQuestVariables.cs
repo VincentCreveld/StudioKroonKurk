@@ -131,6 +131,8 @@ public partial class TreeQuest
     private int P2_C7 = 103107;
     private int P2_C8 = 103108;
     private int P2_C9 = 103109;
+    private int P2_C10 = 103110;
+    private int P2_C11 = 103111;
 
 
     private int P2_D0 = 103000;

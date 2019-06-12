@@ -10,7 +10,6 @@ public partial class TreeQuest : Quest
     public Transform emptyBucket, waterBucket;
     public GameObject jack;
     public Transform memorialPoint;
-    public GameObject flower;
     public string characterName;
     private void Start()
     {
@@ -35,7 +34,7 @@ public partial class TreeQuest : Quest
 		AddOption(new QuestGate(EntryId, QuestComp, Progress0, PN1_Entry, QuestClosed, questNo));
 		AddOption(new QuestStepGate(Progress0, P0_Entry, Progress1, questNo, 0));
 		AddOption(new QuestStepGate(Progress1, P1_Entry, QuestComp, questNo, 1));
-        AddOption(new QuestStepGate(Progress2, P2_Entry, QuestComp, questNo, 2));
+        AddOption(new QuestStepGate(Progress2, P2_Entry, QuestComp, questNo, 0));
 
 		AddOption(new ReturnControl(CloseDialog));
 		AddOption(new Function(AddProg, CloseDialog, CloseDiaFunc));
@@ -113,7 +112,7 @@ public partial class TreeQuest : Quest
     public void CreateQP2()
     {
         AddOption(new DelayElement(P2_A0, P2_D0, P2_AI0));
-        //AddOption(new DelayElement(P2_A1, , P2_AI1));
+        AddOption(new DelayElement(P2_A1, P2_D33, P2_AI1));
         AddOption(new DialogText(P2_D0, P2_D1, "Uhm... Hallo?",true));
         AddOption(new DialogText(P2_D1, P2_D2, "..."));
         AddOption(new DialogText(P2_D2, P2_D3, "Ja, oké... Ik ben " + characterName + ".",true));
@@ -129,9 +128,42 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D12, P2_D13, "..."));
         AddOption(new DialogText(P2_D13, P2_C2, "Oké, geen antwoord... Dat werkt dus niet.", true));
         AddOption(new DialogText(P2_D7, P2_D8, "Jack zei eerder dat je Daphne heet, is dat jou naam?",true));
-        AddOption(new DialogText(P2_D8, P2_D10, "Woooooooosh..."));
-
-
+        AddOption(new DialogText(P2_D8, P2_C3, "Woooooooosh..."));
+        AddOption(new Choice(P2_C3, P2_D16, P2_D14, "", "Ben jij de enige met een naam?", "Wie zijn de andere twee bomen?"));
+        AddOption(new DialogText(P2_D14, P2_D15, "..."));
+        AddOption(new DialogText(P2_D15, P2_C2, "Hmm, zo krijg ik geen reactie...", true));
+        AddOption(new DialogText(P2_D16, P2_D17, "Woosh.. Woosh.."));
+        AddOption(new DialogText(P2_D17, P2_C4, "Die ander twee zijn dan zeker Tom en Vincent.", true));
+        AddOption(new Choice(P2_C4, P2_D20, P2_D18, "", "Kunnen zij ook praten?", "Vraag over moeder"));
+        AddOption(new DialogText(P2_D18, P2_D19, "Kwam Jacks moeder regelmatig met jullie praten?", true));
+        AddOption(new DialogText(P2_D19, P2_C8, "Woooooooosh..."));
+        AddOption(new DialogText(P2_D20, P2_C6, "Woooooooosh..."));
+        AddOption(new Choice(P2_C6, P2_D21, P2_D22, "", "Kunnen alle bomen hier dan praten?", "Wat maakt jullie dan speciaal?"));
+        AddOption(new DialogText(P2_D21, P2_D17, "Woosh.. Woosh.."));
+        AddOption(new DialogText(P2_D22, P2_D23, "..."));
+        AddOption(new DialogText(P2_D23, P2_C7, "Oh, dat is een open vraag...", true));
+        AddOption(new Choice(P2_C7, P2_D24, P2_D23, "", "Vraag over moeder", "Lekker weertje, hè."));
+        AddOption(new DialogText(P2_D24, P2_D18, "Jack zei dat jullie heel belangrijk waren voor zijn moeder."));
+        AddOption(new Choice(P2_C8, P2_D25, P2_D27, "", "Waarover praatte jullie dan?", "Heeft zei jullie ook geplant?"));
+        AddOption(new DialogText(P2_D25, P2_D26, "..."));
+        AddOption(new DialogText(P2_D26, P2_C8, "Hmm... Geen antwoord.", true));
+        AddOption(new DialogText(P2_D27, P2_C9, "Woooooooosh..."));
+        AddOption(new Choice(P2_C9, P2_D28, P2_D29, "", "En de andere bomen?", "Wat was de reden?"));
+        AddOption(new DialogText(P2_D28, P2_D31, "Was daar ook een bijzondere reden voor?"));
+        AddOption(new DialogText(P2_D29, P2_D30, "Heeft ze alle bomen in dit bos geplant?"));
+        AddOption(new DialogText(P2_D30, P2_D32, "Woosh.. Woosh.."));
+        AddOption(new DialogText(P2_D31, P2_D32, "Woooooooosh..."));
+        AddOption(new DialogText(P2_D32, P2_A1, "Dus jullie drieën zijn echt bijzonder."));
+        AddOption(new DialogText(P2_D33, P2_C10, "Er staat 'Daphne 2001' waar zou dat voor zijn."));
+        AddOption(new Choice(P2_C10, P2_D34, P2_D35, "", "Ben jij de geest van iemand?", "Is die steen voor jou?"));
+        AddOption(new DialogText(P2_D34, P2_D36, "Woooooooosh..."));
+        AddOption(new DialogText(P2_D35, P2_D36, "Woooooooosh..."));
+        AddOption(new DialogText(P2_D36, P2_C11, "dus je bent ooit geplant ter nagedachtenis.", true));
+        AddOption(new Choice(P2_C11, P2_D37, P2_D35, "", "Waarom vertel je dit?", "En de andere bomen dan?"));
+        AddOption(new DialogText(P2_D37, P2_D38, "..."));
+        AddOption(new DialogText(P2_D38, P2_D39, "Wil je dat ik dit aan Jack vertel?", true));
+        AddOption(new DialogText(P2_D39, P2_D40, "Woooooooosh..."));
+        AddOption(new DialogText(P2_D40, AddProg, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen."));
     }
 
 
@@ -148,10 +180,7 @@ public partial class TreeQuest : Quest
     {
         jack.transform.position = memorialPoint.position; 
     }
-    private void StartGiveWater()
-    {
-        flower.SetActive(true);
-    }
+
     private void EnableMarker()
     {
         marker.gameObject.SetActive(true);
@@ -169,16 +198,16 @@ public partial class TreeQuest : Quest
 		if(currentQuestProgress < textPerProgressionToDo.Count && textPerProgressionToDo[currentQuestProgress] != string.Empty)
 			GameManager.instance.SetNewQuestProgress(textPerProgressionToDo[currentQuestProgress]);
 
-		//if(currentQuestProgress > questMarkerPositions.Count - 1)
-		//{
-		//	marker.gameObject.SetActive(false);
-		//	return;
-		//}
-		//else
-		//	marker.gameObject.SetActive(true);
-		//if(questMarkerPositions[currentQuestProgress].position != null)
-		//	marker.position = questMarkerPositions[currentQuestProgress].position;
-	}
+        //if (currentQuestProgress > questMarkerPositions.Count - 1)
+        //{
+        //    marker.gameObject.SetActive(false);
+        //    return;
+        //}
+        //else
+        //    marker.gameObject.SetActive(true);
+        //if (questMarkerPositions[currentQuestProgress].position != null)
+        //    marker.position = questMarkerPositions[currentQuestProgress].position;
+    }
     private void EnableWaterPickup()
     {
         emptyBucket.gameObject.SetActive(false);

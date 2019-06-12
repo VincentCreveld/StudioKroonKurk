@@ -427,7 +427,7 @@ MonoBehaviour:
   prefab: {fileID: 4574425559099820581, guid: 47d9117c70c74564b810ffee748e702e, type: 3}
   currentElement: {fileID: 0}
   previousElement: {fileID: 0}
-  higherPos: {fileID: 1258139959074581088}
+  higherPos: {fileID: 6747245303869874665}
   highPos: {fileID: 6747245303869874665}
   lowPos: {fileID: 5108352494531421365}
   lowerPos: {fileID: 36449180454612454}
@@ -552,6 +552,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4898881209242600461}
     m_Modifications:
+    - target: {fileID: 6576671439435229068, guid: 47d9117c70c74564b810ffee748e702e,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 4574425559099820581, guid: 47d9117c70c74564b810ffee748e702e,
         type: 3}
       propertyPath: mainBackdrop.r
@@ -676,11 +681,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576671439435229068, guid: 47d9117c70c74564b810ffee748e702e,
-        type: 3}
-      propertyPath: m_Name
-      value: DialogPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47d9117c70c74564b810ffee748e702e, type: 3}
