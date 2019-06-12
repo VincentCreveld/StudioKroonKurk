@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 	public bool skipAnimations = false;
 
 	// Hacky component for making talking gestures.
-	public Animator jackAnimator, playerAnimator;
+	public Animator jackAnimator, jackAnimator2, playerAnimator;
 
 	// Hacky bucket interfaces
 	public GameObject waterBucketCanvas, emptyBucketCanvas;
@@ -238,8 +238,35 @@ public class GameManager : MonoBehaviour
         SetNewDialogOption(404);
     }
 
-    #region GameStateRelated
-    public void CloseGameState(Interactable focus)
+	public void TalkAnim(bool isPlayer)
+	{
+		if(!isPlayer)
+		{
+			if(jackAnimator.gameObject.activeInHierarchy)
+			{
+				StartCoroutine(FlipTalk(jackAnimator));
+			}
+			if(jackAnimator2.gameObject.activeInHierarchy)
+			{
+				StartCoroutine(FlipTalk(jackAnimator2));
+			}
+		}
+		else
+		{
+			StartCoroutine(FlipTalk(playerAnimator));
+		}
+	}
+
+	private IEnumerator FlipTalk(Animator anim)
+	{
+		anim.SetTrigger("TalkTrigger");
+		anim.SetBool("IsTalking", false);
+		yield return new WaitForEndOfFrame();
+		anim.SetBool("IsTalking", true);
+	}
+
+	#region GameStateRelated
+	public void CloseGameState(Interactable focus)
 	{
 		// Requires reference to player controls (pathfinding component)
 		// Shut off player controls here
@@ -399,4 +426,10 @@ public class GameManager : MonoBehaviour
 		isFocusingPlayer = b;
 	}
 	#endregion
+
+	public void IncrementMarkerPos(int questNo)
+	{
+		if(questList.ContainsKey(questNo))
+			questList[questNo].IncrementQuestMarkerPos();
+	}
 }

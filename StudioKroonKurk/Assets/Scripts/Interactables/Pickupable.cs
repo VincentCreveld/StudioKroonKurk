@@ -17,6 +17,7 @@ public class Pickupable : Interactable
 	public int questProgressToMatch;
 	public bool executeFuntion = false;
 	public int functionToExecute = 0;
+	public bool incrementQuestMarker = false;
 
 	public bool checkForOtherItem = false;
 	public int itemToCheckId = 0;
@@ -83,6 +84,10 @@ public class Pickupable : Interactable
 			GameManager.instance.SetNewQuestProgress(textForProgress);
 		GameManager.instance.StartPickupItemDialog(this, isWater);
 		GameManager.instance.PickupItem(itemToAdd);
+
+		if(incrementQuestMarker)
+			GameManager.instance.IncrementMarkerPos(questToCheck);
+
 		Destroy(gameObject);
 	}
 

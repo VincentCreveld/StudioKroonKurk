@@ -140,6 +140,9 @@ public class DialogTextPrefab : MonoBehaviour
 		yield return StartCoroutine(FadeTextElement(backdrop, mainText, 0.3f, (isPlayer) ? selectedButtonColor : mainBackdrop, 1f, useDelay));
 		GameManager.instance.FlipCameraFocus(isPlayer);
 
+		if(mainText.text != string.Empty)
+			GameManager.instance.TalkAnim(isPlayer);
+
 		if(type == UITypes.singleButton)
 			yield return StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, 0.3f, selectedButtonColor));
 		else

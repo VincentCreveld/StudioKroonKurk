@@ -96,4 +96,9 @@ public class CollectionQuest : Quest
 		}
 		marker.position = questMarkerPositions[currentQuestProgress].position;
 	}
+
+	public override void IncrementQuestMarkerPos()
+	{
+		// jaaaaa
+	}
 }
