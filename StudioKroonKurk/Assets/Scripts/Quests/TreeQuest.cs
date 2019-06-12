@@ -89,7 +89,7 @@ public partial class TreeQuest : Quest
 		AddOption(new DialogText(P0_D14, P0_A2, "Ah de bloem is gegroeid! Nu kan ik hem eindelijk\nbij mijn moeder neerleggen."));
 
 		AddOption(new Choice(P0_C0, P0_C1, P0_D5, "Ik hoop dat het helpt.\nIk wil deze bloemen zelf groeien om naar mijn moeder te brengen.", "Oh wat lief!", "Is het voor iets speciaals?"));
-		AddOption(new Choice(P0_C1, P0_D6, P0_D9, "Heh. Naja, mijn moeder was altijd een beetje vreemd.\nWel ontzettend lief, maar wel gewoon een beetje vreemd.", "Hmm, Vreemd? Hoezo vreemd?", "Waaom wil je dan nu een bloem voor haar groeien?"));
+		AddOption(new Choice(P0_C1, P0_D6, P0_D9, "Heh. Naja, mijn moeder was altijd een beetje vreemd.\nWel ontzettend lief, maar wel gewoon een beetje vreemd.", "Hmm, Vreemd? Hoezo vreemd?", "Waarom wil je dan nu een bloem voor haar groeien?"));
 	}
 
 	public void CreateQP1()
@@ -132,15 +132,16 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D8, P2_C3, "Woooooooosh..."));
         AddOption(new Choice(P2_C3, P2_D16, P2_D14, "", "Ben jij de enige met een naam?", "Wie zijn de andere twee bomen?"));
         AddOption(new DialogText(P2_D14, P2_D15, "..."));
-        AddOption(new DialogText(P2_D15, P2_C2, "Hmm, zo krijg ik geen reactie...", true));
+        AddOption(new DialogText(P2_D15, P2_C3, "Hmm, zo krijg ik geen reactie...", true));
         AddOption(new DialogText(P2_D16, P2_D17, "Woosh.. Woosh.."));
-        AddOption(new DialogText(P2_D17, P2_C4, "Die ander twee zijn dan zeker Tom en Vincent.", true));
+        AddOption(new DialogText(P2_D17, P2_D41, "Die ander twee zijn dan zeker Tom en Vincent.", true));
+        AddOption(new DialogText(P2_D41, P2_C4, "Woooooooosh..."));
         AddOption(new Choice(P2_C4, P2_D20, P2_D18, "", "Kunnen zij ook praten?", "Vraag over moeder"));
         AddOption(new DialogText(P2_D18, P2_D19, "Kwam Jacks moeder regelmatig met jullie praten?", true));
         AddOption(new DialogText(P2_D19, P2_C8, "Woooooooosh..."));
         AddOption(new DialogText(P2_D20, P2_C6, "Woooooooosh..."));
         AddOption(new Choice(P2_C6, P2_D21, P2_D22, "", "Kunnen alle bomen hier dan praten?", "Wat maakt jullie dan speciaal?"));
-        AddOption(new DialogText(P2_D21, P2_D17, "Woosh.. Woosh.."));
+        AddOption(new DialogText(P2_D21, P2_C7, "Woosh.. Woosh.."));
         AddOption(new DialogText(P2_D22, P2_D23, "..."));
         AddOption(new DialogText(P2_D23, P2_C7, "Oh, dat is een open vraag...", true));
         AddOption(new Choice(P2_C7, P2_D24, P2_D23, "", "Vraag over moeder", "Lekker weertje, hè."));
@@ -155,7 +156,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D30, P2_D32, "Woosh.. Woosh.."));
         AddOption(new DialogText(P2_D31, P2_D32, "Woooooooosh..."));
         AddOption(new DialogText(P2_D32, P2_A1, "Dus jullie drieën zijn echt bijzonder."));
-        AddOption(new DialogText(P2_D33, P2_C10, "Er staat 'Daphne 2001' waar zou dat voor zijn."));
+        AddOption(new DialogText(P2_D33, P2_C10, "Er staat 'Daphne 2001' waar zou dat voor zijn.",true));
         AddOption(new Choice(P2_C10, P2_D34, P2_D35, "", "Ben jij de geest van iemand?", "Is die steen voor jou?"));
         AddOption(new DialogText(P2_D34, P2_D36, "Woooooooosh..."));
         AddOption(new DialogText(P2_D35, P2_D36, "Woooooooosh..."));

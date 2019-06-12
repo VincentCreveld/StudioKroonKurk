@@ -176,6 +176,7 @@ public partial class TreeQuest
     private int P2_D38 = 103038;
     private int P2_D39 = 103039;
     private int P2_D40 = 103040;
+    private int P2_D41 = 103041;
 
 
 
