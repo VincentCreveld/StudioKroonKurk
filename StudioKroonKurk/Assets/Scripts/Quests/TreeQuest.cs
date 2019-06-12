@@ -27,7 +27,8 @@ public partial class TreeQuest : Quest
 		CreateQPNeg1();
 		CreateQP0();
 		CreateQP1();
-	}
+		CreateQP2();
+    }
 
 	public void CreateProgressTreeStructure()
 	{
@@ -117,7 +118,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D1, P2_D2, "..."));
         AddOption(new DialogText(P2_D2, P2_D3, "Ja, oké... Ik ben " + characterName + ".",true));
         AddOption(new DialogText(P2_D3, P2_D4, "Heb jij ook een naam?",true));
-        AddOption(new DialogText(P2_D4, P2_D5, "Woooooooosh..."));
+        AddOption(new DialogText(P2_D4, P2_C0, "Woooooooosh..."));
 
         AddOption(new Choice(P2_C0, P2_D6, P2_D7, "", "Wat is je naam?", "Heet jij Daphne?"));
         AddOption(new DialogText(P2_D6, P2_D9, "..."));
@@ -149,7 +150,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D26, P2_C8, "Hmm... Geen antwoord.", true));
         AddOption(new DialogText(P2_D27, P2_C9, "Woooooooosh..."));
         AddOption(new Choice(P2_C9, P2_D28, P2_D29, "", "En de andere bomen?", "Wat was de reden?"));
-        AddOption(new DialogText(P2_D28, P2_D31, "Was daar ook een bijzondere reden voor?"));
+        AddOption(new DialogText(P2_D28, P2_D31, "Was daar ook een bijzondere reden voor?",true));
         AddOption(new DialogText(P2_D29, P2_D30, "Heeft ze alle bomen in dit bos geplant?"));
         AddOption(new DialogText(P2_D30, P2_D32, "Woosh.. Woosh.."));
         AddOption(new DialogText(P2_D31, P2_D32, "Woooooooosh..."));
@@ -208,6 +209,12 @@ public partial class TreeQuest : Quest
         //if (questMarkerPositions[currentQuestProgress].position != null)
         //    marker.position = questMarkerPositions[currentQuestProgress].position;
     }
+
+    public override void IncrementQuestMarkerPos()
+    {
+        // jaaaaa
+    }
+
     private void EnableWaterPickup()
     {
         emptyBucket.gameObject.SetActive(false);
