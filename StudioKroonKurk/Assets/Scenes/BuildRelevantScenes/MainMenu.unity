@@ -1256,7 +1256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -55.4}
+  m_AnchoredPosition: {x: 0, y: -75}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &198170733
@@ -1814,8 +1814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -44.299805, y: -123.4}
-  m_SizeDelta: {x: -88.6, y: 95.6}
+  m_AnchoredPosition: {x: -44.299805, y: -170.9}
+  m_SizeDelta: {x: -88.6, y: 190.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303560465
 MonoBehaviour:
@@ -1857,7 +1857,7 @@ MonoBehaviour:
 
     - Alleen voor dikke winst.
 
-    - Heet persson vraagt er om.
+    - Een heet persoon vraagt er om.
 
     - Bij het verliezen en inlossen van een weddenschap.'
 --- !u!222 &303560466
@@ -4184,7 +4184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -109.8}
+  m_AnchoredPosition: {x: 0, y: -146}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &806890563
@@ -6861,7 +6861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -166.2}
+  m_AnchoredPosition: {x: 0, y: -224}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1392743050
