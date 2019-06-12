@@ -432,4 +432,14 @@ public class GameManager : MonoBehaviour
 		if(questList.ContainsKey(questNo))
 			questList[questNo].IncrementQuestMarkerPos();
 	}
+
+	public void EndGameScene()
+	{
+		player.areaMask = 7;
+		// Do more end game stuff here
+
+		// Disable quest objects
+
+		// Enable picture
+	}
 }
