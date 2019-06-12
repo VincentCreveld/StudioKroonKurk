@@ -39,9 +39,12 @@ public class QuestProgressUIManager : MonoBehaviour
 		animTarget.sizeDelta = new Vector3(animTarget.sizeDelta.x, smallScale, 1);
 		animTarget.gameObject.SetActive(false);
 
-		uiButton.onClick.RemoveAllListeners();
-		uiButton.onClick.AddListener(OpenUI);
-		uiButton.onClick.AddListener(ResetContentFieldPos);
+		expandButton.gameObject.SetActive(false);
+
+		//SetupOpenUIButton();
+
+		eVDownObj.SetActive(false);
+		eVUpObj.SetActive(false);
 	}
 
 	private void Update()
@@ -69,16 +72,20 @@ public class QuestProgressUIManager : MonoBehaviour
 		expandButton.onClick.AddListener(ExpandUI);
 		expandButtonText.text = "Meer laden";
 
-		eVDownObj.SetActive(true);
-		eVUpObj.SetActive(false);
-
 		if(allElements.Count > 1)
+		{
 			expandButtonObj.SetActive(true);
+			eVDownObj.SetActive(true);
+			eVUpObj.SetActive(false);
+		}
 		else
+		{
 			expandButtonObj.SetActive(false);
+			vObj.SetActive(false);
+			xObj.SetActive(false);
+		}
 
-		vObj.SetActive(false);
-		xObj.SetActive(true);
+
 	}
 
 	public void ExpandUI()
@@ -115,18 +122,31 @@ public class QuestProgressUIManager : MonoBehaviour
 
 	public void CloseUI()
 	{
-		uiButton.onClick.RemoveAllListeners();
-		uiButton.onClick.AddListener(OpenUI);
-		uiButton.onClick.AddListener(ResetContentFieldPos);
-		//uiButtonText.text = defaultText;
+		if(allElements.Count > 1)
+			SetupOpenUIButton();
 
-		//(isUIBig) ? bigScale : mediumScale
 		StopAllCoroutines();
 		StartCoroutine(ScaleUI(animTarget.sizeDelta.y, smallScale, true));
 
 		expandButtonObj.SetActive(false);
-		vObj.SetActive(true);
-		xObj.SetActive(false);
+
+		if(allElements.Count > 1)
+		{
+			vObj.SetActive(true);
+			xObj.SetActive(false);
+		}
+		else
+		{
+			vObj.SetActive(false);
+			xObj.SetActive(false);
+		}
+	}
+
+	private void SetupOpenUIButton()
+	{
+		uiButton.onClick.RemoveAllListeners();
+		uiButton.onClick.AddListener(OpenUI);
+		uiButton.onClick.AddListener(ResetContentFieldPos);
 	}
 
 	private void SetContentField()
@@ -147,13 +167,14 @@ public class QuestProgressUIManager : MonoBehaviour
 		// Instance new obj
 		ProgressUIElement go = Instantiate(uiElementPrefab.gameObject, contentField.transform).GetComponent<ProgressUIElement>();
 
-		go.Init(text);
+		go.Init(text.ToUpper());
 
 		allElements.Add(go);
 
 		go.GetComponentInChildren<Text>().text = text;
 
 		SetContentField();
+
 		// Place obj to bottom obj pos + offset
 		go.transform.localPosition = allElements[0].transform.localPosition + new Vector3(0, -30 -(uiElementOffset + objectMargin) * -(allElements.Count - 1), 0);
 
@@ -163,6 +184,9 @@ public class QuestProgressUIManager : MonoBehaviour
 		uiButtonText.text = targetText;
 
 		CloseUI();
+
+		if(allElements.Count > 1)
+			SetupOpenUIButton();
 	}
 
 	public void ResetContentFieldPos()
