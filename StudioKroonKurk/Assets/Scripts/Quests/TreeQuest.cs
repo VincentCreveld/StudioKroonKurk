@@ -10,7 +10,10 @@ public partial class TreeQuest : Quest
     public Transform emptyBucket, waterBucket;
     public GameObject jack;
     public Transform memorialPoint;
-    public string characterName;
+    public string characterName = "Alex";
+
+    private int currentMarkerPos = 0;
+
     private void Start()
     {
         questId = questNo;
@@ -18,6 +21,10 @@ public partial class TreeQuest : Quest
         state = QuestState.canAccept;
         Initialise(questNo);
 		gm.SetNewQuestProgress("Vind Jack in het bos");
+
+        if(PlayerPrefs.HasKey("PlayerName"))
+            characterName = PlayerPrefs.GetString("PlayerName");
+
 	}
 
 	public override void Initialise(int i)
@@ -39,9 +46,11 @@ public partial class TreeQuest : Quest
 
 		AddOption(new ReturnControl(CloseDialog));
 		AddOption(new Function(AddProg, CloseDialog, CloseDiaFunc));
-		AddOption(new Function(SetToInProgress, PN1_C1, SetToInProgressFunc));
+        AddOption(new Function(RemoveRoots, AddProg, RemoveRootsFunc));
+        AddOption(new Function(SetToInProgress, PN1_C1, SetToInProgressFunc));
 		gm.dSFuncDict.Add(SetToInProgressFunc, () => SetQuestState(QuestState.ongoing));
 		gm.dSFuncDict.Add(CloseDiaFunc, IncrementQuestProgress);
+		gm.dSFuncDict.Add(RemoveRootsFunc, RemoveTheBlockade);
 
 		AddOption(new DialogText(QuestComp, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
 		AddOption(new DialogText(QuestCanAccept, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
@@ -70,7 +79,7 @@ public partial class TreeQuest : Quest
 
 		AddOption(new DelayElement(P0_A0, P0_C0, P0_AI0));
 		AddOption(new DelayElement(P0_A1, P0_D14, P0_AI1));
-		AddOption(new DelayElement(P0_A2, AddProg, P0_AI2));
+		AddOption(new DelayElement(P0_A2, RemoveRoots, P0_AI2));
 
 		AddOption(new DialogText(P0_D0, P0_D1,"Heb je de emmer al gevonden? Hij zou ergens naast\nmijn schuurtje moeten staan."));
 		AddOption(new DialogText(P0_D1, CloseDialog, "Top, ik zie hem al staan.", true));
@@ -146,7 +155,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D23, P2_C7, "Oh, dat is een open vraag...", true));
         AddOption(new Choice(P2_C7, P2_D24, P2_D23, "", "Vraag over moeder", "Lekker weertje, hè."));
         AddOption(new DialogText(P2_D24, P2_D18, "Jack zei dat jullie heel belangrijk waren voor zijn moeder."));
-        AddOption(new Choice(P2_C8, P2_D25, P2_D27, "", "Waarover praatte jullie dan?", "Heeft zei jullie ook geplant?"));
+        AddOption(new Choice(P2_C8, P2_D25, P2_D27, "", "Waarover praatte jullie dan?", "Heeft zij jullie ook geplant?"));
         AddOption(new DialogText(P2_D25, P2_D26, "..."));
         AddOption(new DialogText(P2_D26, P2_C8, "Hmm... Geen antwoord.", true));
         AddOption(new DialogText(P2_D27, P2_C9, "Woooooooosh..."));
@@ -167,6 +176,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D39, P2_D40, "Woooooooosh..."));
         AddOption(new DialogText(P2_D40, AddProg, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen."));
     }
+    
 
 
     private void AddOption(DialogEntity e)
@@ -187,6 +197,12 @@ public partial class TreeQuest : Quest
     {
         marker.gameObject.SetActive(true);
     }
+    
+    private void RemoveTheBlockade()
+    {
+        GameManager.instance.OpenArea();
+    }
+
     private void IncrementQuestProgress()
     {
 		if(currentQuestProgress == -1 && foundJackText != string.Empty)
@@ -200,20 +216,22 @@ public partial class TreeQuest : Quest
 		if(currentQuestProgress < textPerProgressionToDo.Count && textPerProgressionToDo[currentQuestProgress] != string.Empty)
 			GameManager.instance.SetNewQuestProgress(textPerProgressionToDo[currentQuestProgress]);
 
-        //if (currentQuestProgress > questMarkerPositions.Count - 1)
-        //{
-        //    marker.gameObject.SetActive(false);
-        //    return;
-        //}
-        //else
-        //    marker.gameObject.SetActive(true);
-        //if (questMarkerPositions[currentQuestProgress].position != null)
-        //    marker.position = questMarkerPositions[currentQuestProgress].position;
+        IncrementQuestMarkerPos();
     }
 
     public override void IncrementQuestMarkerPos()
     {
         // jaaaaa
+        currentMarkerPos++;
+        if (currentMarkerPos > questMarkerPositions.Count - 1)
+        {
+            marker.gameObject.SetActive(false);
+            return;
+        }
+        else
+            marker.gameObject.SetActive(true);
+        if (questMarkerPositions[currentMarkerPos].position != null)
+            marker.position = questMarkerPositions[currentMarkerPos].position;
     }
 
     private void EnableWaterPickup()

@@ -24,7 +24,7 @@ public partial class TreeQuest
 	public string foundJackText;
 	private int EntryId = 100300;
 	private int AddProg = 100900;
-	private int CloseDialog = 100901;
+    private int CloseDialog = 100901;
 	private int QuestComp = 100902;
 	private int QuestOngoing = 100903;
 	private int QuestCanAccept = 100904;
@@ -32,8 +32,11 @@ public partial class TreeQuest
 	private int CloseDiaFunc = 100906;
 	private int SetToInProgress = 100907;
 	private int SetToInProgressFunc = 100908;
-	#region ProgressGates
-	private int ProgressNeg1 = 100400;
+    private int RemoveRoots = 100909;
+    private int RemoveRootsFunc = 100910;
+
+    #region ProgressGates
+    private int ProgressNeg1 = 100400;
 	private int Progress0 = 100401;
 	private int Progress1 = 100402;
 	private int Progress2 = 100403;

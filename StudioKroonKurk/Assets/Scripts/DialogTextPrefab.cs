@@ -44,6 +44,12 @@ public class DialogTextPrefab : MonoBehaviour
 	{
 		type = UITypes.singleButton;
 
+        if (t == string.Empty || t.Length < 2)
+        {
+            mainText.gameObject.SetActive(false);
+            backdrop.gameObject.SetActive(false);
+        }
+
 		mainText.text = t;
 		midButtonText.text = mid;
 
@@ -64,11 +70,15 @@ public class DialogTextPrefab : MonoBehaviour
 	{
 		type = UITypes.twoButton;
 
-		mainText.text = t;
+        if (t == string.Empty || t.Length < 2)
+        {
+            mainText.gameObject.SetActive(false);
+            backdrop.gameObject.SetActive(false);
+        }
+
+        mainText.text = t;
 		leftButtonText.text = left;
 		rightButtonText.text = right;
-
-		
 
 		if(isPlayer)
 			backdrop.color = playerBackdrop;
@@ -137,7 +147,8 @@ public class DialogTextPrefab : MonoBehaviour
 
 	private IEnumerator FadeInSelection(float timeBetweenElements, bool useDelay)
 	{
-		yield return StartCoroutine(FadeTextElement(backdrop, mainText, 0.3f, (isPlayer) ? selectedButtonColor : mainBackdrop, 1f, useDelay));
+        if (!(mainText.text == string.Empty || mainText.text.Length < 2))
+            yield return StartCoroutine(FadeTextElement(backdrop, mainText, 0.3f, (isPlayer) ? selectedButtonColor : mainBackdrop, 1f, useDelay));
 		GameManager.instance.FlipCameraFocus(isPlayer);
 
 		if(mainText.text != string.Empty)
@@ -164,7 +175,8 @@ public class DialogTextPrefab : MonoBehaviour
 	{
 		yield return null;
 
-		StartCoroutine(FadeTextElement(backdrop, mainText, timeBetweenElements, (isPlayer) ? hiddenButtonColor : fadedTextElement, idleButtonColor.a));
+        if(!(mainText.text == string.Empty || mainText.text.Length < 2))
+		    StartCoroutine(FadeTextElement(backdrop, mainText, timeBetweenElements, (isPlayer) ? hiddenButtonColor : fadedTextElement, idleButtonColor.a));
 
 		if(type == UITypes.singleButton)
 			StartCoroutine(FadeTextElement(midButtonBackdrop, midButtonText, timeBetweenElements, new Color(0,0,0,0), 0));

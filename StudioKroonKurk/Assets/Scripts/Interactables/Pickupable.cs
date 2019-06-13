@@ -34,6 +34,7 @@ public class Pickupable : Interactable
 		GameManager.instance.itemList.Add(itemToAdd, new Item(itemToAdd, itemName));
     }
 
+    [ContextMenu("Pickup")]
 	public override void Execute()
 	{
 		if(checkForOtherItem && GameManager.instance.IsItemUnlocked(itemToCheckId) != ItemState.has)
