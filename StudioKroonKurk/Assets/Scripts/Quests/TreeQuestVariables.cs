@@ -45,25 +45,37 @@ public partial class TreeQuest
 	private int Progress1 = 100402;
 	private int Progress2 = 100403;
 	private int Progress3 = 100404;
-	#endregion
+    #endregion
 
-	#region Progress-1
-	private int PN1_Entry = 100000;
-	private int PN1_D0 = 100000;
-	private int PN1_D1 = 100001;
-	private int PN1_D2 = 100002;
-	private int PN1_D3 = 100003;
-	private int PN1_D4 = 100004;
-	private int PN1_D5 = 100005;
-	private int PN1_D6 = 100006;
-	private int PN1_C0 = 100100;
-	private int PN1_C1 = 100101;
-	private int PN1_C2 = 100102;
-	private int PN1_C3 = 100103;
-	#endregion
+    #region Progress-1
+    private int PN1_Entry = 100000;
+    private int PN1_D0 = 100000;
+    private int PN1_D1 = 100001;
+    private int PN1_D2 = 100002;
+    private int PN1_D3 = 100003;
+    private int PN1_D4 = 100004;
+    private int PN1_D5 = 100005;
+    private int PN1_D6 = 100006;
+    private int PN1_D7 = 100007;
+    private int PN1_D8 = 100008;
+    private int PN1_D9 = 100009;
+    private int PN1_D10 = 100010;
+    private int PN1_D11 = 100011;
+    private int PN1_D12 = 100012;
+    private int PN1_D13 = 100013;
+    private int PN1_D14 = 100014;
+    private int PN1_D15 = 100015;
+    private int PN1_D16 = 100016;
+    private int PN1_C0 = 100100;
+    private int PN1_C1 = 100101;
+    private int PN1_C2 = 100102;
+    private int PN1_C3 = 100103;
+    private int PN1_C4 = 100104;
+    private int PN1_C5 = 100105;
+    #endregion
 
-	#region Progress0
-	private int P0_Entry = 101200;
+    #region Progress0
+    private int P0_Entry = 101200;
 	// Item gates
 	private int P0_IG0 = 101200;
 	private int P0_IG1 = 101201;
@@ -94,8 +106,10 @@ public partial class TreeQuest
 	private int P0_D12 = 101012;
 	private int P0_D13 = 101013;
 	private int P0_D14 = 101014;
+    private int P0_D15 = 101015;
+    private int P0_D16 = 101016;
 
-	private int P0_C0 = 101100;
+    private int P0_C0 = 101100;
 	private int P0_C1 = 101101;
 	#endregion
 
@@ -118,6 +132,8 @@ public partial class TreeQuest
 	private int P1_D6 = 102006;
     private int P1_D7 = 102007;
     private int P1_D8 = 102008;
+    private int P1_D9 = 102009;
+    private int P1_D10 = 102010;
     #endregion
 
     #region Progress2
@@ -190,5 +206,48 @@ public partial class TreeQuest
     #endregion
 
     #region Progress3
+    #endregion
+    #region Progress3
+
+    private int P3_Entry = 104000;
+
+    private int P3_A0 = 104900;
+    private int P3_A1 = 104901;
+    private int P3_AI0 = 8;
+    private int P3_AI1 = 9;
+
+    private int P3_C0 = 104100;
+    private int P3_C1 = 104101;
+
+    private int P3_D0 = 104000;
+    private int P3_D1 = 104001;
+    private int P3_D2 = 104002;
+    private int P3_D3 = 104003;
+    private int P3_D4 = 104004;
+    private int P3_D5 = 104005;
+    private int P3_D6 = 104006;
+    private int P3_D7 = 104007;
+    private int P3_D8 = 104008;
+    private int P3_D9 = 104009;
+    private int P3_D10 = 104010;
+    private int P3_D11 = 104011;
+    private int P3_D12 = 104012;
+    private int P3_D13 = 104013;
+    private int P3_D14 = 104014;
+    private int P3_D15 = 104015;
+    private int P3_D16 = 104016;
+    private int P3_D17 = 104017;
+    private int P3_D18 = 104018;
+    private int P3_D19 = 104019;
+    private int P3_D20 = 104020;
+    private int P3_D21 = 104021;
+    private int P3_D22 = 104022;
+
+    #endregion
+
+    #region Progress4
+    private int P4_D0 = 105000;
+    private int P4_D1 = 105000;
+    private int P4_D2 = 105000;
     #endregion
 }
