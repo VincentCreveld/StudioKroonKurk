@@ -30,4 +30,15 @@ public abstract class Quest : MonoBehaviour
 	public abstract void Initialise(int i);
 
 	public abstract void IncrementQuestMarkerPos();
+
+    public virtual void DisableMarkerGraphic()
+    {
+        // LAAT LEEG
+    }
+
+    public virtual void EnableMarkerGraphic()
+    {
+        // LAAT LEEG, LAATSTE WEEK HACKING IN PROGRESS
+    }
 }
+

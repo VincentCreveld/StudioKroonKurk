@@ -34,6 +34,10 @@ public partial class TreeQuest
 	private int SetToInProgressFunc = 100908;
     private int RemoveRoots = 100909;
     private int RemoveRootsFunc = 100910;
+    private int RootsToTreeFunc = 100911;
+    private int ChangeRootsToTree = 100912;
+    private int RootsToHouseFunc = 100913;
+    private int ChangeRootsToHouse = 100914;
 
     #region ProgressGates
     private int ProgressNeg1 = 100400;

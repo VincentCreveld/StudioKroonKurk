@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
 			AudioManager.instance.PlayDialogClip(i);
 		}
 
-		previousDialog = currentDialog;
+        previousDialog = currentDialog;
 		currentDialog = GetEntityById(i);
 
 		// Failsafe
@@ -228,8 +228,17 @@ public class GameManager : MonoBehaviour
     [ContextMenu("OpenArea")]
     public void OpenArea()
     {
-        player.areaMask = NavMesh.AllAreas;
+        //                1111
+        player.areaMask = 15;
         rootsToDisable.SetActive(false);
+    }
+
+    [ContextMenu("CloseArea")]
+    public void CloseArea()
+    {
+        //                0111
+        player.areaMask = 7;
+        rootsToDisable.SetActive(true);
     }
 
     [ContextMenu("CloseDialogue")]
@@ -286,7 +295,10 @@ public class GameManager : MonoBehaviour
 		currentInteractable = focus;
 		isFocusingPlayer = false;
 
-		isGameStateOpen = false;
+        questList[1].DisableMarkerGraphic();
+
+
+        isGameStateOpen = false;
 		yield return StartCoroutine(camManager.MoveInLoop(focus.GetFocusTransform(), 0.8f));
 		mainCanvas.SetActive(true);
 	}
@@ -301,9 +313,11 @@ public class GameManager : MonoBehaviour
 
 	public void OpenGamestate()
 	{
-		// Finish up dialog as far as that is needed
-		// Re-enable player movement
-		diaManager.ResetOptions();
+        // Finish up dialog as far as that is needed
+        // Re-enable player movement
+        questList[1].EnableMarkerGraphic();
+
+        diaManager.ResetOptions();
 		StartCoroutine(OpenGame());
 	}
 
@@ -435,7 +449,6 @@ public class GameManager : MonoBehaviour
 
 	public void EndGameScene()
 	{
-		player.areaMask = 7;
 		// Do more end game stuff here
 
 		// Disable quest objects

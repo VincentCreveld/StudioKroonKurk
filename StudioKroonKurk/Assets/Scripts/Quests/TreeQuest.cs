@@ -12,7 +12,11 @@ public partial class TreeQuest : Quest
     public Transform memorialPoint;
     public string characterName = "Alex";
 
-    private int currentMarkerPos = 0;
+    public RuneRootController TreeRoots;
+    public RuneRootController HouseRoots;
+    public RuneRootController HillRoots;
+
+    private int currentMarkerPos = -1;
 
     private void Start()
     {
@@ -21,6 +25,8 @@ public partial class TreeQuest : Quest
         state = QuestState.canAccept;
         Initialise(questNo);
 		gm.SetNewQuestProgress("Vind Jack in het bos");
+
+        IncrementQuestMarkerPos();
 
         if(PlayerPrefs.HasKey("PlayerName"))
             characterName = PlayerPrefs.GetString("PlayerName");
@@ -47,12 +53,17 @@ public partial class TreeQuest : Quest
 		AddOption(new ReturnControl(CloseDialog));
 		AddOption(new Function(AddProg, CloseDialog, CloseDiaFunc));
         AddOption(new Function(RemoveRoots, AddProg, RemoveRootsFunc));
+        AddOption(new Function(ChangeRootsToTree, AddProg, RootsToTreeFunc));
+        AddOption(new Function(ChangeRootsToHouse, 404, RootsToHouseFunc));
+
         AddOption(new Function(SetToInProgress, PN1_C1, SetToInProgressFunc));
 		gm.dSFuncDict.Add(SetToInProgressFunc, () => SetQuestState(QuestState.ongoing));
 		gm.dSFuncDict.Add(CloseDiaFunc, IncrementQuestProgress);
 		gm.dSFuncDict.Add(RemoveRootsFunc, RemoveTheBlockade);
+		gm.dSFuncDict.Add(RootsToTreeFunc, RootsToTree);
+		gm.dSFuncDict.Add(RootsToHouseFunc, RootsToHouse);
 
-		AddOption(new DialogText(QuestComp, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
+        AddOption(new DialogText(QuestComp, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
 		AddOption(new DialogText(QuestCanAccept, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
 		AddOption(new DialogText(QuestClosed, CloseDialog, "Ik heb je hulp niet meer nodig."));
 	}
@@ -64,7 +75,7 @@ public partial class TreeQuest : Quest
 		AddOption(new DialogText(PN1_D2, PN1_D6, "Ja ze staan de hele dag in de zon.\nDat zou toch goed moeten zijn?"));
 		AddOption(new DialogText(PN1_D3, PN1_D5, "Ah oké, ik zal wel even op zoek gaan naar wat water.", true));
 		AddOption(new DialogText(PN1_D4, PN1_D3, "Nou, ik heb er spijt van dat ik niet veel tijd met mijn moeder heb doorgebracht.\nDus ik wil haar bloemen brengen."));
-		AddOption(new DialogText(PN1_D5, AddProg, "Dankjewel! Er staat volgens mij ergens naast mijn schuurtje een emmer."));
+		AddOption(new DialogText(PN1_D5, ChangeRootsToTree, "Dankjewel! Er staat volgens mij ergens naast mijn schuurtje een emmer."));
 		AddOption(new DialogText(PN1_D6, PN1_C2, "Als ze in de zon staan is het goed.\nGeef je ze ook water?", true));
 		AddOption(new Choice(PN1_C0, PN1_D1, SetToInProgress, "Het is echt heel belangrijk.\nZou je me kunnen helpen?", "Ik heb nu even geen tijd.", "Ja, tuurlijk kan ik helpen."));
 		AddOption(new Choice(PN1_C1, PN1_C2, PN1_D2, "Ik weet niet goed wat ik moet doen om\nde bloemen in leven te houden.", "Heb je de bloemen al water gegeven?", "Hebben de bloemen wel genoeg zonlicht?"));
@@ -177,7 +188,21 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D40, AddProg, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen."));
     }
     
+    private void RootsToTree()
+    {
+        HouseRoots.SetRootDir(false);
+        HouseRoots.SetColor1();
+        HillRoots.SetRootDir(true);
+        HillRoots.SetColor1();
+    }
 
+    private void RootsToHouse()
+    {
+        HouseRoots.SetRootDir(true);
+        HouseRoots.SetColor2();
+        HillRoots.SetRootDir(false);
+        HillRoots.SetColor2();
+    }
 
     private void AddOption(DialogEntity e)
     {
@@ -238,5 +263,15 @@ public partial class TreeQuest : Quest
     {
         emptyBucket.gameObject.SetActive(false);
         waterBucket.gameObject.SetActive(true);
+    }
+
+    public override void DisableMarkerGraphic()
+    {
+        marker.gameObject.SetActive(false);
+    }
+
+    public override void EnableMarkerGraphic()
+    {
+        marker.gameObject.SetActive(true);
     }
 }
