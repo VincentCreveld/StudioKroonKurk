@@ -159,7 +159,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D25, P2_D26, "..."));
         AddOption(new DialogText(P2_D26, P2_C8, "Hmm... Geen antwoord.", true));
         AddOption(new DialogText(P2_D27, P2_C9, "Woooooooosh..."));
-        AddOption(new Choice(P2_C9, P2_D28, P2_D29, "", "En de andere bomen?", "Wat was de reden?"));
+        AddOption(new Choice(P2_C9, P2_D29, P2_D28, "", "En de andere bomen?", "Wat was de reden?"));
         AddOption(new DialogText(P2_D28, P2_D31, "Was daar ook een bijzondere reden voor?",true));
         AddOption(new DialogText(P2_D29, P2_D30, "Heeft ze alle bomen in dit bos geplant?"));
         AddOption(new DialogText(P2_D30, P2_D32, "Woosh.. Woosh.."));
