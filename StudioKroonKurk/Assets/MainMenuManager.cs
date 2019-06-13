@@ -19,6 +19,8 @@ public class MainMenuManager : MonoBehaviour
 	public GameObject nameWarning;
 	public GameObject mainMenu;
 
+	public GameObject mainSelection, menuSelection;
+
 	[ContextMenu("ResetPrefs")]
 	public void ResetPrefs()
 	{
@@ -36,8 +38,6 @@ public class MainMenuManager : MonoBehaviour
 		string tx = input.text;
 		tx = Regex.Replace(tx, @"[^a-zA-Z0-9 ]", "");
 		input.text = tx;
-		if(PlayerPrefs.HasKey("PlayerName"))
-			Debug.Log(PlayerPrefs.GetString("PlayerName"));
 	}
 
 	public void OpenNameSetInteface()
@@ -73,7 +73,28 @@ public class MainMenuManager : MonoBehaviour
 		CloseNameSetInteface();
 	}
 
-	public void LoadMenuLevel()
+	public void CloseMainSelection()
+	{
+		if(nameIsSet)
+		{
+			mainSelection.SetActive(false);
+			menuSelection.SetActive(true);
+		}
+		else if(!PlayerPrefs.HasKey("PlayerName") ||
+			PlayerPrefs.GetString("PlayerName") == string.Empty ||
+			PlayerPrefs.GetString("PlayerName") == defaultName)
+		{
+			OpenNameSetInteface();
+		}
+	}
+
+	public void OpenMainSelection()
+	{
+		mainSelection.SetActive(true);
+		menuSelection.SetActive(false);
+	}
+
+	public void LoadLevel()
 	{
 		if(nameIsSet)
 		{
