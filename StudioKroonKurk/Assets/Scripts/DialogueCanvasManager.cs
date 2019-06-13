@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class DialogueCanvasManager : MonoBehaviour
@@ -48,10 +49,10 @@ public class DialogueCanvasManager : MonoBehaviour
 	{
 		DialogTextPrefab newPrefab = Instantiate(prefab, objParent);
 		newPrefab.Init(t, left, right, isPlayer);
-		newPrefab.transform.localPosition = lowerPos.localPosition;
+		//newPrefab.transform.localPosition = lowerPos.localPosition;
 		newPrefab.gameObject.SetActive(false);
-
-		elementToDelete = previousElement;
+        newPrefab.transform.localPosition = Vector3.zero;
+        elementToDelete = previousElement;
 		previousElement = currentElement;
 		currentElement = newPrefab;
 
