@@ -47,11 +47,9 @@ public class DialogueCanvasManager : MonoBehaviour
 	// Double button setup
 	public void CreateNewOption(string t, string left, string right, bool isPlayer = false)
 	{
-		DialogTextPrefab newPrefab = Instantiate(prefab, objParent);
+		DialogTextPrefab newPrefab = Instantiate(prefab, Vector3.zero, Quaternion.identity, objParent);
 		newPrefab.Init(t, left, right, isPlayer);
-		//newPrefab.transform.localPosition = lowerPos.localPosition;
 		newPrefab.gameObject.SetActive(false);
-        newPrefab.transform.localPosition = Vector3.zero;
         elementToDelete = previousElement;
 		previousElement = currentElement;
 		currentElement = newPrefab;
