@@ -140,7 +140,7 @@ public partial class TreeQuest : Quest
         AddOption(new DelayElement(P1_A0, P1_C0, P1_AI0));
         AddOption(new DelayElement(P1_A1, P1_D8, P1_AI1));
 
-        AddOption(new Choice(P1_C0, P1_D9, P1_D10, "", "Moeders graf", "Bomen uit tuin"));
+        AddOption(new Choice(P1_C0, P1_D9, P1_D1, "", "Moeders graf", "Bomen uit tuin"));
 
         AddOption(new DialogText(P1_D0, P1_D2, "Nee, maar deze plek was wel heel belangrijk voor haar."));
         AddOption(new DialogText(P1_D1, P1_D2, "Dit zijn Daphne, Tom en Vincent."));
@@ -153,7 +153,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P1_D8, AddProg, "Tegen bomen praten? Hmm... Zouden ze dan ook antwoorden?", true));
 
         AddOption(new DialogText(P1_D9, P1_D0, "Is dit het graf van je moeder?", true));
-        AddOption(new DialogText(P1_D10, P1_D1, "Tegen bomen praten? Hmm... Zouden ze dan ook antwoorden?", true));
+       // AddOption(new DialogText(P1_D10, P1_D1, "Tegen bomen praten? Hmm... Zouden ze dan ook antwoorden?", true));
     }
 
     public void CreateQP2()
