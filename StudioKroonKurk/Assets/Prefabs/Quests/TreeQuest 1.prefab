@@ -295,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561885572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.227, y: 0.619, z: 0.193}
+  m_LocalPosition: {x: 0.227, y: 0.613, z: 0.193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 168879461}
@@ -1952,7 +1952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290390479341975415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.115, y: -0.52, z: 1.937}
+  m_LocalPosition: {x: -0.115, y: -1.04, z: 1.937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1915926765839095698}
@@ -2352,7 +2352,7 @@ MonoBehaviour:
   waterBucket: {fileID: 6044440835399556974}
   jack: {fileID: 7246032298481678202}
   memorialPoint: {fileID: 5330287456007677769}
-  characterName: Yamir
+  characterName: Karol
   TreeRoots: {fileID: 0}
   HouseRoots: {fileID: 0}
   HillRoots: {fileID: 0}
@@ -9031,7 +9031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7635091508485345768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.115, y: -1.37, z: 1.937}
+  m_LocalPosition: {x: -0.115, y: -1.47, z: 1.937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5891075645509604018}
@@ -13369,7 +13369,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0.027038574, y: -0.24826622, z: 0.4453125}
-    m_Extent: {x: 2.933867, y: 1.4991736, z: 2.934116}
+    m_Extent: {x: 2.933867, y: 1.4991738, z: 2.934116}
   m_DirtyAABB: 0
 --- !u!1 &8747045102859213591
 GameObject:

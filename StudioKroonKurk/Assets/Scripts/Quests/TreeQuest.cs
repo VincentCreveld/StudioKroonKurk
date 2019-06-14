@@ -41,6 +41,7 @@ public partial class TreeQuest : Quest
 		CreateQP0();
 		CreateQP1();
 		CreateQP2();
+        CreateQP3();
     }
 
 	public void CreateProgressTreeStructure()
@@ -211,14 +212,13 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D37, P2_D38, "..."));
         AddOption(new DialogText(P2_D38, P2_D39, "Wil je dat ik dit aan Jack vertel?", true));
         AddOption(new DialogText(P2_D39, P2_D40, "Woooooooosh..."));
-        AddOption(new DialogText(P2_D40, AddProg, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen."));
+        AddOption(new DelayElement(P3_A0, AddProg, P3_AI0));
+        AddOption(new DialogText(P2_D40, P3_A0, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen."));
     }
 
      public void CreateQP3()
     {
-        AddOption(new DelayElement(P3_A0, P3_C0, P3_AI0));
         AddOption(new DelayElement(P3_A1, AddProg, P3_AI1));
-
         AddOption(new Choice(P3_C0, P3_D0, P3_D1, "Ik denk… Ik denk dat ik het nog eens moet proberen. /nOok al voelt het nog zo raar.", "Ik heb met ze gepraat", "Jack,we moeten even praten"));
 
         AddOption(new DialogText(P3_D0, P3_D2, "Echt? Haha, zeiden ze nog iets terug?"));

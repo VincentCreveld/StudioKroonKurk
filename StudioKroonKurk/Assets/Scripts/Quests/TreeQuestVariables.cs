@@ -206,15 +206,13 @@ public partial class TreeQuest
     #endregion
 
     #region Progress3
-    #endregion
-    #region Progress3
 
     private int P3_Entry = 104000;
 
     private int P3_A0 = 104900;
     private int P3_A1 = 104901;
-    private int P3_AI0 = 8;
-    private int P3_AI1 = 9;
+    private int P3_AI0 = 7;
+    private int P3_AI1 = 8;
 
     private int P3_C0 = 104100;
     private int P3_C1 = 104101;
