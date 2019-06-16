@@ -247,7 +247,7 @@ public partial class TreeQuest
 
     #region Progress4
     private int P4_D0 = 105000;
-    private int P4_D1 = 105000;
-    private int P4_D2 = 105000;
+    private int P4_D1 = 105001;
+    private int P4_D2 = 105002;
     #endregion
 }

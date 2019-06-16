@@ -42,6 +42,7 @@ public partial class TreeQuest : Quest
 		CreateQP1();
 		CreateQP2();
         CreateQP3();
+        CreateQP4();
     }
 
 	public void CreateProgressTreeStructure()
