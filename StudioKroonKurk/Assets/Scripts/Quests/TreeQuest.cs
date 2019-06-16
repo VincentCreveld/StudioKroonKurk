@@ -197,7 +197,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D25, P2_D26, "..."));
         AddOption(new DialogText(P2_D26, P2_C8, "Hmm... Geen antwoord.", true));
         AddOption(new DialogText(P2_D27, P2_C9, "Woooooooosh..."));
-        AddOption(new Choice(P2_C9, P2_D29, P2_D28, "", "En de andere bomen?", "Wat was de reden?"));
+        AddOption(new Choice(P2_C9, P2_D29, P2_D28, "", "En de andere bomen?", "Was daar een de reden voor?"));
         AddOption(new DialogText(P2_D28, P2_D31, "Was daar ook een bijzondere reden voor?",true));
         AddOption(new DialogText(P2_D29, P2_D30, "Heeft ze alle bomen in dit bos geplant?"));
         AddOption(new DialogText(P2_D30, P2_D32, "Woosh.. Woosh.."));
@@ -205,7 +205,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D32, P2_A1, "Dus jullie drieën zijn echt bijzonder."));
         AddOption(new DialogText(P2_D33, P2_C10, "Er staat 'Daphne 2001' waar zou dat voor zijn.",true));
         AddOption(new Choice(P2_C10, P2_D34, P2_D35, "", "Ben jij de geest van iemand?", "Is die steen voor jou?"));
-        AddOption(new DialogText(P2_D34, P2_D36, "Woooooooosh..."));
+        AddOption(new DialogText(P2_D34, P2_D36, "Woosh.. Woosh.."));
         AddOption(new DialogText(P2_D35, P2_D36, "Woooooooosh..."));
         AddOption(new DialogText(P2_D36, P2_C11, "dus je bent ooit geplant ter nagedachtenis.", true));
         AddOption(new Choice(P2_C11, P2_D37, P2_D35, "", "Waarom vertel je dit?", "En de andere bomen dan?"));
@@ -213,7 +213,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D38, P2_D39, "Wil je dat ik dit aan Jack vertel?", true));
         AddOption(new DialogText(P2_D39, P2_D40, "Woooooooosh..."));
         AddOption(new DelayElement(P3_A0, AddProg, P3_AI0));
-        AddOption(new DialogText(P2_D40, P3_A0, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen."));
+        AddOption(new DialogText(P2_D40, P3_A0, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen.",true));
     }
 
      public void CreateQP3()
