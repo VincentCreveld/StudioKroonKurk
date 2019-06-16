@@ -240,6 +240,8 @@ public partial class TreeQuest
     private int P3_D20 = 104020;
     private int P3_D21 = 104021;
     private int P3_D22 = 104022;
+    private int P3_D23 = 104023;
+    private int P3_D24 = 104024;
 
     #endregion
 

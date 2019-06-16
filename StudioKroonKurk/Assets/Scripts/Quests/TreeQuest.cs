@@ -219,29 +219,30 @@ public partial class TreeQuest : Quest
      public void CreateQP3()
     {
         AddOption(new DelayElement(P3_A1, AddProg, P3_AI1));
-        AddOption(new Choice(P3_C0, P3_D0, P3_D1, "Ik denk… Ik denk dat ik het nog eens moet proberen. /nOok al voelt het nog zo raar.", "Ik heb met ze gepraat", "Jack,we moeten even praten"));
+        AddOption(new Choice(P3_C0, P3_D0, P3_D1, "Ik denk… Ik denk dat ik het nog eens moet proberen. \nOok al voelt het nog zo raar.", "Ik heb met ze gepraat.", "Jack, we moeten even praten."));
 
         AddOption(new DialogText(P3_D0, P3_D2, "Echt? Haha, zeiden ze nog iets terug?"));
         AddOption(new DialogText(P3_D1, P3_D2, "Oh, waarover dan?"));
         AddOption(new DialogText(P3_D2, P3_C1, "Jack. Weet je wie deze bomen echt zijn?", true));
 
-        AddOption(new Choice(P3_C1, P3_D3, P3_D3, "Hoe bedoel je? Het zijn toch gewoon bomen?", "Ik denk dat er een reden was dat je moeder met ze sprak.", "Heb je ooit je moeder gevraagd wie Tom, Vincent en Daphne waren?"));
-
+        AddOption(new Choice(P3_C1, P3_D23, P3_D24, "Hoe bedoel je? Het zijn toch gewoon bomen?", "Er was een belangrijke reden.", "Heb je haar er ooit over gevraagd?"));
+        AddOption(new DialogText(P3_D23, P3_D3, "Ik denk dat er een reden was dat je moeder met ze sprak."));
+        AddOption(new DialogText(P3_D24, P3_D3, "Heb je ooit je moeder gevraagd wie Tom, Vincent en Daphne waren?"));
         AddOption(new DialogText(P3_D3, P3_D4, "Ik… Waar heb je het over?"));
         AddOption(new DialogText(P3_D4, P3_D5, "Volgens mij zijn hier kinderen begraven.", true));
         AddOption(new DialogText(P3_D5, P3_D6, "Ik... Wacht... Huh."));
         AddOption(new DialogText(P3_D6, P3_D7, "Dit is eigenlijk best logisch, denk ik."));
         AddOption(new DialogText(P3_D7, P3_D8, "Wat. Hoe dan?", true));
-        AddOption(new DialogText(P3_D8, P3_D9, "Weet je. Mijn ma, ze... reageerde altijd heftig op bepaalde vragen "));
+        AddOption(new DialogText(P3_D8, P3_D9, "Weet je. Mijn ma, ze... reageerde altijd heftig op bepaalde vragen. "));
         AddOption(new DialogText(P3_D9, P3_D10, "Toen ik klein was wilde ik graag een broertje hebben."));
         AddOption(new DialogText(P3_D10, P3_D11, "Als ik haar erom vroeg werd ze altijd heel stil."));
         AddOption(new DialogText(P3_D11, P3_D12, "Ik snapte nooit helemaal waarom, maar nu..."));
         AddOption(new DialogText(P3_D12, P3_D13, "Tom. Vincent. Daphne. Ze zijn mijn oudere broers en zus, denk ik."));
         AddOption(new DialogText(P3_D13, P3_D14, "..."));
         AddOption(new DialogText(P3_D14, P3_D15, "Ik snap nu waarom mijn moeder altijd met de bomen aan het praten was!"));
-        AddOption(new DialogText(P3_D15, P3_D16, "Haha.Ik denk dat ik haar een beetje beter bergrijp nu."));
-        AddOption(new DialogText(P3_D16, P3_D17, "Ze is wel echt nog steeds een gekkie."));
-        AddOption(new DialogText(P3_D17, P3_D18, "Maar ze was altijd wel heel lief hoor."));
+        AddOption(new DialogText(P3_D15, P3_D16, "Haha. Ik denk dat ik haar een beetje beter begrijp nu."));
+        AddOption(new DialogText(P3_D16, P3_D17, "Ik zal haar heel erg missen."));
+        AddOption(new DialogText(P3_D17, P3_D18, "Wat is het eigenlijk een mooi gebaar..."));
         AddOption(new DialogText(P3_D18, P3_D19, "Ik denk dat ik een keer een boom voor haar ga planten. Thuis."));
         AddOption(new DialogText(P3_D19, P3_D20, "Hey ehm... Bedankt dat je naar mijn verhaal hebt geluisterd."));
         AddOption(new DialogText(P3_D20, P3_D21, "Volgens mij was ik eventjes verdwaald geraakt."));
