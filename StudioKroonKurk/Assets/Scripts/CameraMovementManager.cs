@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,11 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 	private Quaternion targetRotation, prevTargetRotation;
 
 	private bool isFollowing = true;
-	
+
+    public GameObject fadePlane;
+
+    public List<GameObject> allUI;
+
 	[Range(0,1f)]
 	public float smoothing = 0.5f;
 
@@ -35,6 +40,10 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		camOffset = cam.position - playerObject.position;
 		defaultRotation = cam.rotation;
 		FollowPos = playerObject.transform.position + camOffset;
+
+        Color c = Color.black;
+        c.a = 0f;
+        fadePlane.GetComponent<Renderer>().material.color = c;
 	}
 
 	private void Update()
@@ -57,6 +66,70 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		StartCoroutine(MoveInLoop(target, panTime, isPlayer));
 	}
 
+    [ContextMenu("TestFade")]
+    public void TestFadeFunc()
+    {
+        FadeCamInAndOut(0.6f, 1, () => {
+            Debug.Log("Faded");
+
+        });
+    }
+
+    public void FadeCamInAndOut(float fadeDelay, float pause, Action ac)
+    {
+        StartCoroutine(FadeInOut(fadeDelay, pause, ac));
+    }
+
+    // Fades in plane then disables stuff, waits for some time and fade out again
+    private IEnumerator FadeInOut(float fadeDelay, float pause, Action ac)
+    {
+        foreach (var g in allUI)
+        {
+            g.SetActive(false);
+        }
+
+        yield return StartCoroutine(FadePlane(0, 1, 1f));
+        ac.Invoke();
+        yield return new WaitForSeconds(pause);
+        yield return StartCoroutine(FadePlane(1, 0, 1f));
+
+        foreach (var g in allUI)
+        {
+            g.SetActive(true);
+        }
+    }
+
+    private IEnumerator FadePlane(float startVal, float exitVal, float duration)
+    {
+        float curTime = 0f;
+
+        Color fadeCol = Color.black;
+
+        fadeCol.a = startVal;
+
+        float fadeVal = 0;
+
+        while (true)
+        {
+            yield return null;
+
+            curTime += Time.deltaTime;
+
+            fadeVal = Mathf.Lerp(startVal, exitVal, curTime / duration);
+
+            fadeCol.a = fadeVal;
+
+            fadePlane.GetComponent<Renderer>().material.color = fadeCol;
+
+
+            if (curTime > duration)
+            {
+                fadeCol.a = exitVal;
+                fadePlane.GetComponent<Renderer>().material.color = fadeCol;
+                break;
+            }
+        }
+    }
 	public IEnumerator MoveInLoop(Transform lookatTarget, float totalTime, bool isPlayer = false)
 	{
 		isFollowing = false;
@@ -69,6 +142,16 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
 		Vector3 lPos = (isPlayer) ? lookatTarget.position + Vector3.up : lookatTarget.position;
 
 		Transform t = (isPlayer) ? playerHoverPos : movePos;
+
+        /*
+         * 
+         * Haal deze if weg als je wilt zoomen bij de bomen
+         * 
+         * 
+         * 
+         * 
+         */
+
         if (mngrHasControl)
         {
             while (true)

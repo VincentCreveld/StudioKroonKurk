@@ -55,6 +55,7 @@ public partial class TreeQuest : Quest
 		AddOption(new ReturnControl(CloseDialog));
 		AddOption(new Function(AddProg, CloseDialog, CloseDiaFunc));
         AddOption(new Function(RemoveRoots, AddProg, RemoveRootsFunc));
+        AddOption(new Function(EnableRoots, AddProg, EnableRootsFunc));
         AddOption(new Function(ChangeRootsToTree, AddProg, RootsToTreeFunc));
         AddOption(new Function(ChangeRootsToHouse, 404, RootsToHouseFunc));
 
@@ -64,6 +65,8 @@ public partial class TreeQuest : Quest
 		gm.dSFuncDict.Add(RemoveRootsFunc, RemoveTheBlockade);
 		gm.dSFuncDict.Add(RootsToTreeFunc, RootsToTree);
 		gm.dSFuncDict.Add(RootsToHouseFunc, RootsToHouse);
+        gm.dSFuncDict.Add(EnableRootsFunc, EnableTheBlockade);
+
 
         AddOption(new DialogText(QuestComp, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
 		AddOption(new DialogText(QuestCanAccept, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
@@ -114,13 +117,13 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P0_D1, CloseDialog, "Top! Ik neem nog een kijkje.", true));
 
         // Emmer nog niet gevuld met water
-        AddOption(new DialogText(P0_D2, P0_D3, "In het noorden, aan de top van die berg. Volgens mij heb ik daar een beekje gezien."));
+        AddOption(new DialogText(P0_D2, P0_D3, "In het noorden, aan de top van die berg. Volgens mij heb ik daar een vijver gezien."));
         AddOption(new DialogText(P0_D3, CloseDialog, "Ik zal wel even kijken!", true));
 
         // Emmer en water aanwezig
         AddOption(new DialogText(P0_D4, P0_D15, "Ik heb het water voor je!", true));
-        AddOption(new DialogText(P0_D5, P0_C1, "Weet je... nu ze er niet meer is heb ik heel erg spijt dat ik niet meer tijd met haar heb doorgebracht."));
-        AddOption(new DialogText(P0_D6, P0_D7, "Toen ik klein was, bate ze koekjes voor mijn vrienden op school en die\ngaf ze dan aan mijn vrienden met een handgeschreven briefje erbij."));
+        AddOption(new DialogText(P0_D5, P0_C1, "Weet je... Nu ze er niet meer is heb ik heel erg spijt dat ik niet meer tijd met haar heb doorgebracht."));
+        AddOption(new DialogText(P0_D6, P0_D7, "Toen ik klein was, bakte ze koekjes voor mijn vrienden op school en die gaf ze dan aan mijn vrienden met een handgeschreven briefje erbij."));
         AddOption(new DialogText(P0_D7, P0_D8, "Daar schreef ze dan op dat ze zo blij is dat ze mijn vrienden waren."));
         AddOption(new DialogText(P0_D8, P0_D9, "En ik wil eigenlijk graag bloemen brengen omdat ze heel erg hield van planten en bomen."));
         AddOption(new DialogText(P0_D9, P0_D10, "We hadden vroeger drie bomen in de tuin en ze verzorgde die bomen zo goed.\nZe was dagelijks in de tuin bezig met de bomen."));
@@ -130,7 +133,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P0_D13, P0_A1, "Dus ik wil nu zelf graag een bloem groeien voor haar."));
         AddOption(new DialogText(P0_D14, P0_A2, "Ah de bloem is gegroeid! Nu kan ik hem eindelijk\nbij mijn moeder neerleggen."));
 
-        AddOption(new Choice(P0_C0, P0_C1, P0_D5, "Ik hoop echt dat het werkt! Mijn moeder zou zo blij worden als ze zag \ndat ik zelf een bloem geplant heb!", "Oh wat lief!", "Is het voor iets speciaals?"));
+        AddOption(new Choice(P0_C0, P0_C1, P0_D5, "Ik hoop echt dat het werkt! Mijn moeder zou zo blij worden als ze zag dat ik zelf een bloem geplant heb!", "Oh wat lief!", "Is het voor iets speciaals?"));
         AddOption(new Choice(P0_C1, P0_D6, P0_D16, "Mijn moeder was altijd wel ontzettend lief, \nmaar ook gewoon een beetje vreemd.", "Hmm, Vreemd? Hoezo vreemd?", "Waarom de bloem?"));
 
         AddOption(new DialogText(P0_D15, P0_A0, "Dankjewel! Ik geef het meteen aan de bloem!"));
@@ -151,8 +154,8 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P1_D4, P1_D5, "En zeg maar, ik wilde het wel, maar het lukte me niet\nom tegen planten te gaan praten."));
         AddOption(new DialogText(P1_D5, P1_D6, "Ik weet ook gewoon niet wat ik zou zeggen."));
         AddOption(new DialogText(P1_D6, P1_D7, "\"Hey Tom, hoe gaat het\"?"));
-        AddOption(new DialogText(P1_D7, P1_A1, "Nou laat maar. Ik weet het ook niet meer."));
-        AddOption(new DialogText(P1_D8, AddProg, "Tegen bomen praten? Hmm... Zouden ze dan ook antwoorden?", true));
+        AddOption(new DialogText(P1_D7, P1_A1, "Nou laat dan maar. Ik weet het ook niet meer."));
+        AddOption(new DialogText(P1_D8, EnableRoots, "Tegen bomen praten? Hmm... Zouden ze dan ook antwoorden?", true));
 
         AddOption(new DialogText(P1_D9, P1_D0, "Is dit het graf van je moeder?", true));
        // AddOption(new DialogText(P1_D10, P1_D1, "Tegen bomen praten? Hmm... Zouden ze dan ook antwoorden?", true));
@@ -298,6 +301,11 @@ public partial class TreeQuest : Quest
     private void RemoveTheBlockade()
     {
         GameManager.instance.OpenArea();
+    }
+
+    private void EnableTheBlockade()
+    {
+        GameManager.instance.CloseArea();
     }
 
     private void IncrementQuestProgress()
