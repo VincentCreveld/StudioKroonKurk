@@ -449,6 +449,7 @@ public class GameManager : MonoBehaviour
 
 	public void EndGameScene()
 	{
+        camManager.fadePlane.SetActive(true);
         camManager.FadeCamInAndOut(0.6f, 1, () =>
          {
              foreach (GameObject go in objectsToDisable)

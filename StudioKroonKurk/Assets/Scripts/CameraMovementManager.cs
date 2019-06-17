@@ -126,6 +126,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
             {
                 fadeCol.a = exitVal;
                 fadePlane.GetComponent<Renderer>().material.color = fadeCol;
+                fadePlane.SetActive(false);
                 break;
             }
         }
