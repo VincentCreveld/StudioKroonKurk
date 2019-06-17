@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+	public bool resetPrefs = true;
+
 	public InputField input;
 
 	public int maxNameLength = 16;
@@ -17,22 +19,45 @@ public class MainMenuManager : MonoBehaviour
 
 	public GameObject setNameInterface;
 	public GameObject nameWarning;
-	public GameObject mainMenu;
+	public GameObject mainMenu, mainMenu1, mainMenu2;
 
-	public GameObject mainSelection, menuSelection;
+	public GameObject mainSelection, menuSelection, statsSelection;
 
 	[ContextMenu("ResetPrefs")]
 	public void ResetPrefs()
 	{
 		PlayerPrefs.DeleteAll();
+		PlayerPrefs.SetInt("IsPlayed", 0);
 	}
 
 	private void Start()
 	{
-		if(Application.isEditor)
+		if(Application.isEditor && resetPrefs)
 			ResetPrefs();
+
+		if(!PlayerPrefs.HasKey("IsPlayed"))
+			PlayerPrefs.SetInt("IsPlayed", 0);
+
+		if(PlayerPrefs.HasKey("PlayerName"))
+			nameIsSet = true;
+		SetupMainMenu();
 	}
 
+	private void SetupMainMenu()
+	{
+		if(nameIsSet)
+		{
+			mainMenu1.SetActive(false);
+			mainMenu2.SetActive(true);
+		}
+		else
+		{
+			mainMenu1.SetActive(true);
+			mainMenu2.SetActive(false);
+		}
+	}
+
+	// String sanitising
 	public void OnGUI()
 	{
 		string tx = input.text;
@@ -40,18 +65,19 @@ public class MainMenuManager : MonoBehaviour
 		input.text = tx;
 	}
 
-	public void OpenNameSetInteface()
+	public void OpenNameSetInterface()
 	{
 		nameWarning.SetActive(false);
 		setNameInterface.SetActive(true);
 		mainMenu.SetActive(false);
 	}
 
-	public void CloseNameSetInteface()
+	public void CloseNameSetInterface()
 	{
 		nameWarning.SetActive(false);
 		setNameInterface.SetActive(false);
 		mainMenu.SetActive(true);
+		SetupMainMenu();
 	}
 
 	public void SetPlayerName()
@@ -63,14 +89,18 @@ public class MainMenuManager : MonoBehaviour
 		}
 		PlayerPrefs.SetString("PlayerName", input.text);
 		nameIsSet = true;
-		CloseNameSetInteface();
+		CloseNameSetInterface();
+		CloseMainSelection();
+		nameWarning.SetActive(false);
+		SetupMainMenu();
 	}
 
 	public void ChooseDefaultName()
 	{
 		PlayerPrefs.SetString("PlayerName", defaultName);
 		nameIsSet = true;
-		CloseNameSetInteface();
+		CloseNameSetInterface();
+		SetupMainMenu();
 	}
 
 	public void CloseMainSelection()
@@ -79,12 +109,23 @@ public class MainMenuManager : MonoBehaviour
 		{
 			mainSelection.SetActive(false);
 			menuSelection.SetActive(true);
+			statsSelection.SetActive(false);
 		}
 		else if(!PlayerPrefs.HasKey("PlayerName") ||
 			PlayerPrefs.GetString("PlayerName") == string.Empty ||
 			PlayerPrefs.GetString("PlayerName") == defaultName)
 		{
-			OpenNameSetInteface();
+			OpenNameSetInterface();
+		}
+		SetupMainMenu();
+	}
+
+	public void CloseMainSelection2()
+	{
+		if(nameIsSet)
+		{
+			mainSelection.SetActive(false);
+			menuSelection.SetActive(true);
 		}
 	}
 
@@ -92,6 +133,15 @@ public class MainMenuManager : MonoBehaviour
 	{
 		mainSelection.SetActive(true);
 		menuSelection.SetActive(false);
+		statsSelection.SetActive(false);
+		SetupMainMenu();
+	}
+
+	public void OpenStatsSelection()
+	{
+		mainSelection.SetActive(false);
+		menuSelection.SetActive(false);
+		statsSelection.SetActive(true);
 	}
 
 	public void LoadLevel()
@@ -104,7 +154,9 @@ public class MainMenuManager : MonoBehaviour
 			PlayerPrefs.GetString("PlayerName") == string.Empty ||
 			PlayerPrefs.GetString("PlayerName") == defaultName)
 		{
-			OpenNameSetInteface();
+			OpenNameSetInterface();
 		}
+
+		PlayerPrefs.SetInt("IsPlayed", 1);
 	}
 }
