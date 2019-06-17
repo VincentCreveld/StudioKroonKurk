@@ -93,3 +93,4 @@ MonoBehaviour:
   pulseSpeed: 1.346
   downtime: 1
   pulseMaterial: {fileID: 2100000, guid: 9fc8edadb9e875141b57dbc7c7162d51, type: 2}
+  breatheValue: 2.567

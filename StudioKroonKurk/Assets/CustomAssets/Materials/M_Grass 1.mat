@@ -108,7 +108,7 @@ Material:
     - _node_8227: 0
     - _windLineSize: 0.4749203
     m_Colors:
-    - _Color: {r: 0.46037734, g: 0.5471698, b: 0, a: 1}
+    - _Color: {r: 0.4953254, g: 0.5188679, b: 0.2716714, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _WaveAndDistance: {r: 12, g: 3.6, b: 1, a: 1}
     - _WavingTint: {r: 0.7, g: 0.6, b: 0.5, a: 0}
