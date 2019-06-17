@@ -40,6 +40,8 @@ public partial class TreeQuest
     private int ChangeRootsToTree = 100912;
     private int RootsToHouseFunc = 100913;
     private int ChangeRootsToHouse = 100914;
+    private int EndScene = 100917;
+    private int StartEndSceneFunc = 100918;
 
     #region ProgressGates
     private int ProgressNeg1 = 100400;

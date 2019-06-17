@@ -152,8 +152,8 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
          * 
          */
 
-        if (mngrHasControl)
-        {
+        //if (mngrHasControl)
+        //{
             while (true)
             {
                 yield return null;
@@ -169,7 +169,7 @@ public class CameraMovementManager : MonoBehaviour, ICamControl
                 if (curTime > totalTime)
                     break;
             }
-        }
+        //}
 	}
 
 	public IEnumerator MoveOutLoop(float totalTime)

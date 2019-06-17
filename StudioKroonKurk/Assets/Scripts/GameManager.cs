@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 	// Hacky bucket interfaces
 	public GameObject waterBucketCanvas, emptyBucketCanvas;
     public GameObject rootsToDisable;
-
+    public List<GameObject> objectsToDisable = new List<GameObject>();
 	public void Awake()
 	{
 		Application.targetFrameRate = 60;
@@ -432,12 +432,12 @@ public class GameManager : MonoBehaviour
 			return;
 
 
-		if(isFocusingPlayer)
-			camManager.FocusCamOnTarget(currentInteractable.GetFocusTransform());
-		else
-			camManager.FocusCamOnTarget(player.gameObject.transform, 0.4f, true);
+        if (isFocusingPlayer)
+            camManager.FocusCamOnTarget(currentInteractable.GetFocusTransform());
+        else
+            camManager.FocusCamOnTarget(player.gameObject.transform, 0.4f, true);
 
-		isFocusingPlayer = b;
+        isFocusingPlayer = b;
 	}
 	#endregion
 
@@ -449,10 +449,12 @@ public class GameManager : MonoBehaviour
 
 	public void EndGameScene()
 	{
-		// Do more end game stuff here
-
-		// Disable quest objects
-
-		// Enable picture
-	}
+        camManager.FadeCamInAndOut(0.6f, 1, () =>
+         {
+             foreach (GameObject go in objectsToDisable)
+             {
+                 go.SetActive(false);
+             }
+         });
+    }
 }

@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/BuildRelevantScenes/MenuScene.unity
     guid: e4089096f87c9944aa6ea96c5e8e7d2f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BuildRelevantScenes/JackLevelIntroScene.unity
     guid: 900b17819d37387468fa116c904c188f
   - enabled: 1
     path: Assets/Scenes/BuildRelevantScenes/JackLevelMainScene.unity
-    guid: 394476c212851b74ebf3855b032c5b5f
+    guid: edb5cb20acc77344d902f23e566a9360
   m_configObjects: {}

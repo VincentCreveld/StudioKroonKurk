@@ -58,6 +58,7 @@ public partial class TreeQuest : Quest
         AddOption(new Function(EnableRoots, AddProg, EnableRootsFunc));
         AddOption(new Function(ChangeRootsToTree, AddProg, RootsToTreeFunc));
         AddOption(new Function(ChangeRootsToHouse, 404, RootsToHouseFunc));
+        AddOption(new Function(EndScene, AddProg, StartEndSceneFunc));
 
         AddOption(new Function(SetToInProgress, PN1_C1, SetToInProgressFunc));
 		gm.dSFuncDict.Add(SetToInProgressFunc, () => SetQuestState(QuestState.ongoing));
@@ -66,6 +67,7 @@ public partial class TreeQuest : Quest
 		gm.dSFuncDict.Add(RootsToTreeFunc, RootsToTree);
 		gm.dSFuncDict.Add(RootsToHouseFunc, RootsToHouse);
         gm.dSFuncDict.Add(EnableRootsFunc, EnableTheBlockade);
+        gm.dSFuncDict.Add(StartEndSceneFunc, StartEndScene);
 
 
         AddOption(new DialogText(QuestComp, CloseDialog, "Je hebt me een groote dienst bewezen!\nDankjewel!"));
@@ -222,7 +224,7 @@ public partial class TreeQuest : Quest
 
      public void CreateQP3()
     {
-        AddOption(new DelayElement(P3_A1, AddProg, P3_AI1));
+        AddOption(new DelayElement(P3_A1, EndScene, P3_AI1));
         AddOption(new Choice(P3_C0, P3_D0, P3_D1, "Ik denk… Ik denk dat ik het nog eens moet proberen. \nOok al voelt het nog zo raar.", "Ik heb met ze gepraat.", "Jack, we moeten even praten."));
 
         AddOption(new DialogText(P3_D0, P3_D2, "Echt? Haha, zeiden ze nog iets terug?"));
@@ -246,7 +248,7 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P3_D14, P3_D15, "Ik snap nu waarom mijn moeder altijd met de bomen aan het praten was!"));
         AddOption(new DialogText(P3_D15, P3_D16, "Haha. Ik denk dat ik haar een beetje beter begrijp nu."));
         AddOption(new DialogText(P3_D16, P3_D17, "Ik zal haar heel erg missen."));
-        AddOption(new DialogText(P3_D17, P3_D18, "Wat is het eigenlijk een mooi gebaar..."));
+        AddOption(new DialogText(P3_D17, P3_D18, "Ze was altijd wel heel lief hoor..."));
         AddOption(new DialogText(P3_D18, P3_D19, "Ik denk dat ik een keer een boom voor haar ga planten. Thuis."));
         AddOption(new DialogText(P3_D19, P3_D20, "Hey ehm... Bedankt dat je naar mijn verhaal hebt geluisterd."));
         AddOption(new DialogText(P3_D20, P3_D21, "Volgens mij was ik eventjes verdwaald geraakt."));
@@ -286,7 +288,7 @@ public partial class TreeQuest : Quest
 
     private void StartEndScene()
     {
-		// TODO
+        gm.EndGameScene();
     }
     private void JackDisappears()
     {
