@@ -232,8 +232,8 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P3_D2, P3_C1, "Jack. Weet je wie deze bomen echt zijn?", true));
 
         AddOption(new Choice(P3_C1, P3_D23, P3_D24, "Hoe bedoel je? Het zijn toch gewoon bomen?", "Er was een belangrijke reden.", "Heb je haar er ooit over gevraagd?"));
-        AddOption(new DialogText(P3_D23, P3_D3, "Ik denk dat er een reden was dat je moeder met ze sprak."));
-        AddOption(new DialogText(P3_D24, P3_D3, "Heb je ooit je moeder gevraagd wie Tom, Vincent en Daphne waren?"));
+        AddOption(new DialogText(P3_D23, P3_D3, "Ik denk dat er een reden was dat je moeder met ze sprak.",true));
+        AddOption(new DialogText(P3_D24, P3_D3, "Heb je ooit je moeder gevraagd wie Tom, Vincent en Daphne waren?", true));
         AddOption(new DialogText(P3_D3, P3_D4, "Ik… Waar heb je het over?"));
         AddOption(new DialogText(P3_D4, P3_D5, "Volgens mij zijn hier kinderen begraven.", true));
         AddOption(new DialogText(P3_D5, P3_D6, "Ik... Wacht... Huh."));
