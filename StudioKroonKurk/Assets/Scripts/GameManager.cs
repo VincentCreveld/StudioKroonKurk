@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
 		else if(!skipAnimations && currentDialog is DelayElement)
 		{
 			DoAnimation(currentDialog as DelayElement);
+            diaManager.ResetOptions();
 			mainCanvas.SetActive(false);
 		}
 		else
