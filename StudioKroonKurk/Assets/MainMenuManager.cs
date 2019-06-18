@@ -21,7 +21,9 @@ public class MainMenuManager : MonoBehaviour
 	public GameObject nameWarning;
 	public GameObject mainMenu, mainMenu1, mainMenu2;
 
-	public GameObject mainSelection, menuSelection, statsSelection;
+	public GameObject mainSelection, menuSelection, statsSelection, loadingScreen;
+
+	public GameObject objToScale;
 
 	[ContextMenu("ResetPrefs")]
 	public void ResetPrefs()
@@ -148,7 +150,7 @@ public class MainMenuManager : MonoBehaviour
 	{
 		if(nameIsSet)
 		{
-			SceneManager.LoadScene(levelToLoad);
+			LoadLevel(levelToLoad);
 		}
 		else if(!PlayerPrefs.HasKey("PlayerName") ||
 			PlayerPrefs.GetString("PlayerName") == string.Empty ||
@@ -158,5 +160,33 @@ public class MainMenuManager : MonoBehaviour
 		}
 
 		PlayerPrefs.SetInt("IsPlayed", 1);
+	}
+
+	public void LoadLevel(string levelToLoad)
+	{
+		if(levelToLoad.Length < 1 || levelToLoad == string.Empty)
+			return;
+
+		mainSelection.SetActive(false);
+		menuSelection.SetActive(false);
+		statsSelection.SetActive(false);
+		loadingScreen.SetActive(true);
+
+		StartCoroutine(OperationTracker(levelToLoad));
+	}
+
+	private IEnumerator OperationTracker(string levelToLoad)
+	{
+		AsyncOperation op = SceneManager.LoadSceneAsync(levelToLoad);
+
+		Debug.Log("Started loading");
+
+		while(!op.isDone)
+		{
+			objToScale.transform.localScale = new Vector3(Mathf.Clamp01(op.progress), 1, 1);
+			yield return null;
+		}
+
+		Debug.Log("Done loading");
 	}
 }
