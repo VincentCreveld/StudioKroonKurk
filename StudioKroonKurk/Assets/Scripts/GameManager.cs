@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +48,9 @@ public class GameManager : MonoBehaviour
 	public GameObject waterBucketCanvas, emptyBucketCanvas;
     public GameObject rootsToDisable;
     public List<GameObject> objectsToDisable = new List<GameObject>();
+
+    public GameObject loadingScreen, objToScale;
+
 	public void Awake()
 	{
 		Application.targetFrameRate = 60;
@@ -458,5 +462,28 @@ public class GameManager : MonoBehaviour
                  go.SetActive(false);
              }
          });
+    }
+
+    public void LoadLevel(string levelToLoad)
+    {
+        if (levelToLoad.Length < 1 || levelToLoad == string.Empty)
+            return;
+
+        StartCoroutine(OperationTracker(levelToLoad));
+    }
+
+    private IEnumerator OperationTracker(string levelToLoad)
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync(levelToLoad);
+
+        loadingScreen.SetActive(true);
+
+        while (!op.isDone)
+        {
+            objToScale.transform.localScale = new Vector3(Mathf.Clamp01(op.progress), 1, 1);
+            yield return null;
+        }
+
+        GameManager.instance = null;
     }
 }

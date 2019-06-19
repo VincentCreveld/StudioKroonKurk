@@ -261,7 +261,10 @@ public partial class TreeQuest : Quest
     {
         AddOption(new DialogText(P4_D0, P4_D1, "Je hebt Jacks verhaal gehoord en hem gesteund, waardoor hij zijn weg uit het bos kon vinden."));
         AddOption(new DialogText(P4_D1, P4_D2, "Dit verhaal is nu tot zijn einde gekomen, maar…"));
-        AddOption(new DialogText(P4_D2, /*end, go back to main menu and now there's a photo next Jacks storyline, indicating it has been finished*/404, "…er zijn nog velen, die je ondersteuning kunnen gebruiken."));
+        AddOption(new DialogText(P4_D2, P4_D3, "…er zijn nog velen, die je ondersteuning kunnen gebruiken."));
+        AddOption(new DialogText(P4_D3, 89015678, "Dit verhaal is nu klaar. \nKlik op volgende om terug naar het hoofdmenu te gaan."));
+        AddOption(new Function(89015678, 404, 8768876));
+        gm.dSFuncDict.Add(8768876, () => gm.LoadLevel("MainMenu"));
     }
 
     

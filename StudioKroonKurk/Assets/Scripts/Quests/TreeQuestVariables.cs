@@ -253,5 +253,6 @@ public partial class TreeQuest
     private int P4_D0 = 105000;
     private int P4_D1 = 105001;
     private int P4_D2 = 105002;
+    private int P4_D3 = 105003;
     #endregion
 }
