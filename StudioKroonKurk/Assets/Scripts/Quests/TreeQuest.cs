@@ -214,12 +214,13 @@ public partial class TreeQuest : Quest
         AddOption(new DialogText(P2_D34, P2_D36, "Woosh.. Woosh.."));
         AddOption(new DialogText(P2_D35, P2_D36, "Woooooooosh..."));
         AddOption(new DialogText(P2_D36, P2_C11, "dus je bent ooit geplant ter nagedachtenis.", true));
-        AddOption(new Choice(P2_C11, P2_D37, P2_D35, "", "Waarom vertel je dit?", "En de andere bomen dan?"));
+        AddOption(new Choice(P2_C11, P2_D37, P2_D35, "", "Zal ik dit aan Jack vertellen?", "En de andere bomen dan?"));
         AddOption(new DialogText(P2_D37, P2_D38, "..."));
         AddOption(new DialogText(P2_D38, P2_D39, "Wil je dat ik dit aan Jack vertel?", true));
         AddOption(new DialogText(P2_D39, P2_D40, "Woooooooosh..."));
         AddOption(new DelayElement(P3_A0, AddProg, P3_AI0));
         AddOption(new DialogText(P2_D40, P3_A0, "Misschien dat het Jack verder helpt als hij dit hoort. Ik moet het hem vertellen.",true));
+        AddOption(new DialogText(P2_D35, P2_C11, "..."));
     }
 
      public void CreateQP3()
